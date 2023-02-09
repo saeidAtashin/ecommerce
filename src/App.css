@@ -1,39 +1,95 @@
-.App {
-  text-align: center;
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+--header-color: #131921;
+--downheader-color: #3b4149;
+--icon-color: #febd69 ;
+--baar-color: #232f3e;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+body {
+  font-family: 'Rubik', sans-serif;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: var(--icon-color);
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+.gap-10 {
+  gap: 10px;
+}
+.gap-15 {
+  gap: 15px;
+}
+.gap-30 {
+  gap: 30px;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+/* Header Part */
+
+.header-top-strip {
+  border-bottom: 1px solid var(--downheader-color);
+  background-color: var(--header-color);
 }
+
+.header-upper {
+  background-color: var(--header-color);
+}
+.header-upper .input-group-text {
+  background-color: var(--icon-color);
+}
+
+.header-botton {
+  background-color: var(--downheader-color);
+}
+
+.header-botton .menu-links a ,
+.header-botton .dropdown button {
+color: white;
+font-size: 14px;
+line-height: 18px;
+font-weight: 400;
+letter-spacing: 0.3;
+text-transform: uppercase;
+}
+.header-botton .dropdown button {
+  background: transparent;
+  border: none;
+}
+.header-botton .dropdown button::before{
+  content: url("../public/images/menu.svg") ;
+}
+.header-botton .dropdown button:focus {
+  box-shadow: none;
+}
+.header-upper-links img {
+  height: 35px;
+  width: 35px;
+}
+
+.header-botton .dropdown-menu {
+  background-color: var(--header-color);
+  width: 100%;
+  color: white;
+  margin-top: 40px;
+  transform: translate(0px, 60px) !important;
+}
+.header-botton .dropdown-item {
+  padding: 20px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid var(--downheader-color);
+}
+.header-botton .dropdown-item:hover{
+  background-color: #febd6916;
+  color: var(--icon-color) !important;
+}
+/* Header Ends Here */

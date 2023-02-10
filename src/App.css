@@ -93,3 +93,24 @@ text-transform: uppercase;
   color: var(--icon-color) !important;
 }
 /* Header Ends Here */
+
+
+
+
+/* footer part */
+
+footer {
+  background-color: var(--baar-color);
+}
+
+footer:not(:first-child) {
+  border-top: 1px solid var(--downheader-color);
+}
+footer .input-group-text {
+background-color: var(--baar-color);
+color: white;
+padding: 8px 17px;
+font-size: 400;
+line-height: 20px;
+}
+/* footer part ends here */

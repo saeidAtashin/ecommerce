@@ -9,6 +9,7 @@
 --downheader-color: #3b4149;
 --icon-color: #febd69 ;
 --baar-color: #232f3e;
+--bannertext-color: #bf4800 ;
 }
 
 body {
@@ -32,6 +33,19 @@ a {
 }
 .gap-30 {
   gap: 30px;
+}
+
+.button {
+  background-color: var(--baar-color);
+  color: white;
+  padding: 13px 33px;
+  font-size: 14px;
+  border-radius: 25px;
+}
+
+.button:hover{
+  background-color: var(--icon-color);
+  color: var(--header-color);
 }
 
 /* Header Part */
@@ -90,7 +104,7 @@ text-transform: uppercase;
 }
 .header-botton .dropdown-item:hover{
   background-color: #febd6916;
-  color: var(--icon-color) !important;
+  color: var(--header-color) !important;
 }
 /* Header Ends Here */
 
@@ -114,3 +128,89 @@ font-size: 400;
 line-height: 20px;
 }
 /* footer part ends here */
+
+
+
+/* home page */
+
+
+
+.main-banner-content h4 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--bannertext-color);
+  margin: 0 0 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+
+}
+
+.main-banner-content {
+  top:15%;
+  left: 8%;
+  font-size: 1.3vw;
+}
+
+.main-banner-content h5 {
+  font-size: 32px;
+  letter-spacing: -2px;
+  font-weight: 500;
+  padding: 0;
+  text-transform: none;
+}
+
+.main-banner-content p , Link {
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  color: var(--downheader-color);
+  font-weight: 500;
+  padding: 0;
+  text-transform: none;
+}
+
+
+/*  */
+
+.small-banner-content h4 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--bannertext-color);
+  margin: 0 0 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+
+}
+
+.small-banner-content {
+  top:50%;
+  transform: translateY(-50%);
+  left: 10%;
+  font-size: 1.3vw;
+}
+
+.small-banner-content h5 {
+  font-size: 22px;
+  letter-spacing: -1px;
+  font-weight: 500;
+  padding: 0;
+  text-transform: none;
+}
+
+.small-banner-content p {
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  color: var(--downheader-color);
+  font-weight: 500;
+  padding: 0;
+  text-transform: none;
+}
+
+.small-banner {
+  width: 49%;
+
+}
+/* home page ends here */
+
+

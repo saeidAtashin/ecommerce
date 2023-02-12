@@ -30,7 +30,7 @@ const ProductCard = () => {
             size={24}
             activeColor="#ffd700"
           />
-          ,<p className="price">$100.00</p>
+          <p className="price">$100.00</p>
         </div>
         <div className="action-bar position-absolute">
           <div className="d-flex flex-column gap-15">

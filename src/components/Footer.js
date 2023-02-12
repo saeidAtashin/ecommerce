@@ -53,13 +53,13 @@ const Footer = () => {
                   saeid.kase.atashin@gmail.com
                 </a>
                 <div className="social_icons d-flex align-items-center gap-30">
-                  <a className="text-white" href="">
+                  <a className="text-white" href="https://api.whatsapp.com/send?phone=9368165125">
                     <BsLinkedin className="text-white fs-4" />
                   </a>
-                  <a className="text-white" href="">
+                  <a className="text-white" href="https://api.whatsapp.com/send?phone=9368165125">
                     <BsGithub  className="text-white fs-4"/>
                   </a>
-                  <a className="text-white" href="">
+                  <a className="text-white" href="https://api.whatsapp.com/send?phone=9368165125">
                     <BsInstagram className="text-white fs-4" />
                   </a>
                   <a className="text-white" href="https://api.whatsapp.com/send?phone=9368165125">

@@ -10,6 +10,8 @@
 --icon-color: #febd69 ;
 --baar-color: #232f3e;
 --bannertext-color: #bf4800 ;
+--homewrapper-color: #f5f5f7;
+--catefories-color: #ededed;
 }
 
 body {
@@ -110,7 +112,6 @@ text-transform: uppercase;
 
 
 
-
 /* footer part */
 
 footer {
@@ -169,8 +170,7 @@ line-height: 20px;
   text-transform: none;
 }
 
-
-/*  */
+/* small banner */
 
 .small-banner-content h4 {
   font-size: 14px;
@@ -209,8 +209,52 @@ line-height: 20px;
 
 .small-banner {
   width: 49%;
-
 }
+
+/* home wrapper2 */
+
+.home-wrapper-2 {
+background-color: var(--homewrapper-color);
+}
+
+/* home wrapper 2 ends here */
+
+/* categories */
+
+.categories {
+background-color: white;
+box-shadow: 0 0 10px #0000001a;
+padding: 15px;
+}
+
+.categories > div {
+  width: 25%;
+}
+
+.categories > div > div {
+  width: 45%;
+}
+
+
+.categories > div:nth-child(1),
+.categories > div:nth-child(2),
+.categories > div:nth-child(3),
+.categories > div:nth-child(4)
+ {
+border-bottom: 1px solid var(--catefories-color);
+}
+.categories > div:nth-child(1),
+.categories > div:nth-child(2),
+.categories > div:nth-child(3),
+.categories > div:nth-child(5),
+.categories > div:nth-child(6),
+.categories > div:nth-child(7)
+ {
+border-right: 1px solid var(--catefories-color);
+}
+
+/* categories ends here */
+
 /* home page ends here */
 
 

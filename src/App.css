@@ -14,6 +14,7 @@
 --catefories-color: #ededed;
 --blog-color: #777;
 --price-color: #1c1c1b;
+--discount-color: #fc353c ;
 }
 
 .section-heading {
@@ -40,6 +41,11 @@ a {
 .form-control:focus {
   box-shadow: none;
   border-color: var(--icon-color);
+}
+
+
+.gap-05 {
+  gap: 5px;
 }
 
 .gap-10 {
@@ -336,6 +342,10 @@ color: var(--price-color);
   font-size: 16px;
   color: var(--price-color);
 }
+
+strike{
+  font-size: 18px;
+}
 .action-bar {
   top: 13%;
   right: -10%;
@@ -368,3 +378,33 @@ display: none;
   display: block;
 }
 /* product card ends here */
+
+
+/* special product card */
+.special-product-card {
+  padding: 20px 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.discount-badge {
+  border-radius: 50%;
+  background-color: var(--discount-color);
+}
+
+
+
+.pro-count p {
+  position: absolute;
+  top: -120%;
+  color: var(--blog-color);
+}
+.till-date{
+  font-weight: bold;
+}
+.red-p {
+  color: var(--discount-color);
+  font-size: 24px;
+  line-height: 44px;
+}
+/* special product card ends here */

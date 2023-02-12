@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import BlogCard from "../components/BlogCard";
 import ProductCard from "../components/ProductCard";
+import SpecialProduct from "../components/SpecialProduct";
 
 
 const Home = () => {
@@ -217,6 +218,24 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <section className="special-wrapper py-5 home-wrapper-2">
+      <div className="container-xxl">
+        <div className="row">
+          <div className="col-12">
+            <h3 className="section-heading">
+              Special Products
+            </h3>
+          </div>
+        </div>
+    <div className="row">
+      <SpecialProduct />
+      <SpecialProduct />
+      <SpecialProduct />
+    </div>
+      </div>
+      </section>
+
       <section className="maque-wrapper py-5">
       <div className="container">
         <div className="row">

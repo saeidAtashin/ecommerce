@@ -408,3 +408,51 @@ display: none;
   line-height: 44px;
 }
 /* special product card ends here */
+
+/* famous start */
+.first-famous-card {
+  height: 500px;
+  background-color: var(--baar-color);
+  display: flex;
+  align-items: end;
+}
+
+.other-famous-card {
+  height: 500px;
+  background-color: var(--catefories-color);
+  display: flex;
+  align-items: end;
+}
+
+.famous-card .famous-content {
+top: 10%;
+left: 5%;
+}
+
+.famous-content h5{
+font-size: 13px;
+line-height: 20px;
+font-weight: 400;
+color: white;
+margin-bottom: 7px;
+text-transform: uppercase ;
+}
+
+.famous-content h6{
+  font-size: 28px;
+  line-height: 38px;
+  font-weight: 500;
+  color: white;
+}
+.famous-content p{
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 100;
+  color: white;
+}
+
+.famous-card img {
+  border-radius: 10px;
+
+}
+/* famous ends */

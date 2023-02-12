@@ -415,6 +415,8 @@ display: none;
   background-color: var(--baar-color);
   display: flex;
   align-items: end;
+  border-radius: 10px;
+  z-index: 10;
 }
 
 .other-famous-card {
@@ -422,11 +424,12 @@ display: none;
   background-color: var(--catefories-color);
   display: flex;
   align-items: end;
+  border-radius: 10px;
 }
 
 .famous-card .famous-content {
 top: 10%;
-left: 5%;
+left: 4%;
 }
 
 .famous-content h5{
@@ -453,6 +456,27 @@ text-transform: uppercase ;
 
 .famous-card img {
   border-radius: 10px;
-
 }
+
+.famous-card:hover {
+scale: 1.05;
+transition: 0.3s;
+background-color: var(--icon-color);
+}
+
+.famous-card2 {
+  z-index: 1;
+}
+.tester div:first-child:hover {
+  scale: 1.1;
+  background-color: var(--price-color);
+  transition: 0.3s;
+  }
+  .famous-card img:hover {
+    scale: 1.5;
+    z-index: -10;
+    overflow: scroll;
+    /* background-color: var(--price-color); */
+    transition: 0.3s;
+    }
 /* famous ends */

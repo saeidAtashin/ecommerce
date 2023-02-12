@@ -17,7 +17,7 @@ const Home = () => {
                 <img
                   src="../images/main-banner-1.jpg"
                   className="img-fluid rounded-3"
-                  alt="main banner"
+                  alt="main-banner"
                 />
                 <div className="main-banner-content position-absolute">
                   <h4>SUPERCHARGED FOR PROS.</h4>
@@ -221,9 +221,15 @@ const Home = () => {
               <section className="famous-wrapper py-5 home-wrapper-2">
               <div className="container-xxl">
                 <div className="row">
-                  <div className="col-3">
+
+
+
+                
+
+                  
+                  <div className="col-3 tester">
                     <div className="famous-card position-relative first-famous-card">
-                      <img src="images/famous01.webp" alt="famous" className="my-4 img-fluid" />
+                      <img src="images/famous01.webp" alt="famouses" className="my-4 img-fluid" />
                       <div className="famous-content position-absolute">
                       <h5>Big Screen</h5>
                         <h6>Smart Watch Series 7</h6>
@@ -234,21 +240,14 @@ const Home = () => {
                   </div>
                   
 
-                  <div className="col-3">
-                    <div className="famous-card other-famous-card position-relative">
-                      <img src="images/laptop01.png" alt="laptop01" className=" img-fluid" />
-                      <div className="famous-content position-absolute">
-                      <h5 className="text-dark">Studio Display</h5>
-                        <h6 className="text-dark">600 nits of brightness</h6>
-                        <p className="text-dark">27-inch 5k Rating display</p>
-                      </div>
-                     
-                    </div>
-                  </div>
+
                   
-                  <div className="col-3">
-                    <div className="famous-card other-famous-card position-relative">
-                      <img src="images/samsung.png" alt="samsung" className=" img-fluid" />
+
+
+
+                  <div className="col-3 ">
+                    <div className="famous-card  famous-card2 other-famous-card position-relative">
+                      <img src="images/samsung.png" alt="samsunges" className=" img-fluid" />
                       <div className="famous-content position-absolute">
                       <h5 className="text-dark">Smartphone Samsung</h5>
                         <h6 className="text-dark">Now in Green </h6>
@@ -268,6 +267,21 @@ const Home = () => {
                     </div>
                   </div>
 
+
+
+                  <div className="col-3">
+                    <div className="famous-card other-famous-card position-relative">
+                      <img src="images/laptop01.png" alt="laptop01" className=" img-fluid" />
+                      <div className="famous-content position-absolute">
+                      <h5 className="text-dark">Studio Display</h5>
+                        <h6 className="text-dark">600 nits of brightness</h6>
+                        <p className="text-dark">27-inch 5k Rating display</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+
                 </div>
               </div>
               </section>
@@ -281,6 +295,7 @@ const Home = () => {
           </div>
         </div>
     <div className="row">
+      <SpecialProduct />
       <SpecialProduct />
       <SpecialProduct />
       <SpecialProduct />

@@ -12,7 +12,7 @@ const BreadCrumb = (props) => {
               <Link to="/" className="text-dark">
                 Home &nbsp;
               </Link> 
-              / {title}
+              / &nbsp; {title}
             </p>
           </div>
         </div>

@@ -325,7 +325,6 @@ color: var(--blog-color);
 
 .product-card:hover .action-bar{
   right: 5%;
-
 }
 
 .product-card .product-details h6 {
@@ -354,13 +353,12 @@ strike{
 
 .product-card .product-image img {
   object-fit: contain;
+  
 }
 
 .product-card .product-image {
   height: 270px;
-
 }
-
 
 .wishlist-icon {
   top:5% ;
@@ -456,27 +454,103 @@ text-transform: uppercase ;
 
 .famous-card img {
   border-radius: 10px;
-}
+  margin-bottom: 20px;
+transition: 0.3s;
 
+}
+.famous-card {
+transition: 0.3s;
+
+}
 .famous-card:hover {
 scale: 1.05;
-transition: 0.3s;
 background-color: var(--icon-color);
 }
 
-.famous-card2 {
-  z-index: 1;
-}
-.tester div:first-child:hover {
+
+.famous-card-t div:first-child:hover {
   scale: 1.1;
   background-color: var(--price-color);
-  transition: 0.3s;
   }
+
+
   .famous-card img:hover {
     scale: 1.5;
     z-index: -10;
     overflow: scroll;
-    /* background-color: var(--price-color); */
-    transition: 0.3s;
     }
 /* famous ends */
+
+
+/* Our Store start */
+
+.filter-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+.filter-title {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--price-color);
+  margin-bottom: 20px;
+}
+
+.filter-card ul ,
+.filter-card .form-check-label  {
+    list-style-type: none;
+    font-size: 13px;
+    line-height: 30px;
+    color: var(--blog-color);
+    cursor: pointer;
+}
+.filter-card .form-check-input:focus {
+  box-shadow: none;
+  border-color: var(--icon-color);
+}
+.filter-card .form-check-input:checked {
+  background-color: var(--icon-color);
+  border-color: var(--icon-color);
+}
+.sub-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--price-color);
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+.form-floating input{
+  background-color: #77777730;
+}
+
+.colors {
+  list-style-type: none ;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.colors li {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+
+}
+
+.random-products h5 {
+font-size: 14px;
+}
+
+.random-products p {
+  margin: 0;
+  }
+  
+.random-products:first-child {
+  border-bottom: 1px solid var(--catefories-color);
+}
+.random-products:last-child {
+margin-top: 16px;
+}
+/* Our Store ends here */

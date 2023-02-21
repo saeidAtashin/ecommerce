@@ -21,7 +21,7 @@ const ProductCard = (props) => {
           } `}
         >
           <div className="wishlist-icon position-absolute">
-            <Link>
+            <Link to="/wishlist">
               <img src="images/wish.svg" alt="wishlist" />
             </Link>
           </div>

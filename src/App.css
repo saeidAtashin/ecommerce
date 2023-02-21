@@ -672,18 +672,21 @@ padding: 3px;
 cursor: pointer;
 }
 
-.compare-product-details h5.title {
+.compare-product-details h5.title,
+ .wishlist-card h5.title {
 font-size: 15px;
 line-height: 22px;
 font-weight: 500;
 color: var(--price-color);
 }
 
-.compare-product-details h6.price {
-  font-size: 16px;
+.compare-product-details h6.price,
+ .wishlist-card h6.price {
+  font-size: 18px;
   line-height: 22px;
-  font-weight: 400;
-  color: ;
+  font-weight: 600;
+  color: var(--price-color);
+
 }
 
 .compare-product-card .product-detail {
@@ -694,7 +697,19 @@ color: var(--price-color);
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-
-
-
 /* Compare Product ends */
+
+
+/*  */
+.wishlist-card .cross{
+  top: 10px;
+  right: 20px;
+  width: 25px;
+  cursor: pointer;
+  padding: 3px;
+  cursor: pointer;
+  }
+
+
+
+/*  */

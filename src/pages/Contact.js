@@ -27,7 +27,7 @@ const Contact = () => {
     const marker = new mapboxgl.Marker({
       element: document.createElement("img"),
       anchor: "bottom",
-      img: "https://www.shareicon.net/data/512x512/2015/08/12/84141_down_512x512.png",
+      img: "images/location.webp",
     })
       .setLngLat([51.356634, 35.684183])
       .addTo(map);
@@ -35,7 +35,7 @@ const Contact = () => {
     // set marker image
     const img = marker.getElement();
     img.src =
-      "https://www.shareicon.net/data/512x512/2015/08/12/84141_down_512x512.png";
+      "images/location.webp";
     // get marker element
 
     const element = marker.getElement();

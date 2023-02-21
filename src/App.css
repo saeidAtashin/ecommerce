@@ -647,6 +647,54 @@ width: 49%;
 .contact-inner-wrapper address , .contact-inner-wrapper a, .contact-inner-wrapper p {
   color: var(--blog-color);
 }
-
-
 /* Contact page  end */
+
+
+.c{
+  position: absolute;
+}
+
+/* Compare Product */
+
+.compare-product-card {
+  padding: 20px 15px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+
+.compare-product-card .cross{
+top: 10px;
+right: 20px;
+width: 25px;
+cursor: pointer;
+padding: 3px;
+cursor: pointer;
+}
+
+.compare-product-details h5.title {
+font-size: 15px;
+line-height: 22px;
+font-weight: 500;
+color: var(--price-color);
+}
+
+.compare-product-details h6.price {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  color: ;
+}
+
+.compare-product-card .product-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+/* Compare Product ends */

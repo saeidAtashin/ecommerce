@@ -700,7 +700,7 @@ color: var(--price-color);
 /* Compare Product ends */
 
 
-/*  */
+/* wishlist start */
 .wishlist-card .cross{
   top: 10px;
   right: 20px;
@@ -712,4 +712,132 @@ color: var(--price-color);
 
 
 
-/*  */
+/* wishlist ends here */
+
+/* auth card */
+
+.auth-card{
+  padding: 20px;
+  background-color: rgb(186, 186, 186);
+  width: 500px;
+  border-radius: 10px;
+  margin: 30px auto;
+}
+
+
+
+/* auth card ends here*/
+
+
+
+
+
+button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.control {
+  border: 0;
+  border-radius: 8px;
+  outline: none;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #f9f9f9;
+  margin: 8px 0;
+  font-family: inherit;
+  text-align: left;
+  font-size: 16px;
+  transition: 0.4s;
+}
+
+.login-card {
+  width: 400px;
+  padding: 100px 30px 32px;
+  border-radius: 1.25rem;
+  background: var(--blog-color);
+  backdrop-filter: blur(26px);
+  text-align: center;
+}
+
+.login-card > h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: #f9f9f9;
+}
+
+.login-card img {
+  width: 120px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.login-card > h3 {
+  color: var(--icon-color);
+  margin: 0 0 40px;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.login-form {
+  width: 100%;
+  margin: 0;
+  display: grid;
+}
+
+.login-form input.control::placeholder {
+  color: #000000;
+}
+
+
+.login-form input.control {
+  background-color: var(--catefories-color);
+  color: #000;
+  font-weight: 500;
+}
+
+
+
+#bars {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 8px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+
+.weak {
+  
+  background-color : #bc2b38;
+  width: 33.33%;
+}
+
+.medium {
+  background-color : #d36f30 !important;
+  width: 66.66%;
+}
+
+.strong {
+  background-color : #1eb965;
+  width: 100%;
+}
+
+.strength {
+  text-align: left;
+  height: 30px;
+  text-transform: capitalize;
+}

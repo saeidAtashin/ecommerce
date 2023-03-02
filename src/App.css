@@ -756,16 +756,26 @@ button {
 }
 
 .login-card {
-  width: 400px;
-  padding: 100px 30px 32px;
+  width: 450px;
+  height: 480px;
+  padding: 30px 30px 32px;
   border-radius: 1.25rem;
   background: var(--blog-color);
   backdrop-filter: blur(26px);
   text-align: center;
 }
 
-.login-card > h2 {
-  font-size: 36px;
+.login-card2{
+  padding: 30px !important;
+  width: 450px;
+  height: 480px;
+  
+}
+
+
+
+.login-card2 > h2 {
+  font-size: 28px;
   font-weight: 600;
   margin: 0 0 6px;
   color: #f9f9f9;
@@ -791,6 +801,9 @@ button {
   margin: 0;
   display: grid;
 }
+
+
+
 
 .login-form input.control::placeholder {
   color: #000000;

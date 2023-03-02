@@ -62,7 +62,7 @@ const Login = () => {
               <div className="login-card">
                 <img src="images/account.webp" />
                 <h2>Sign Up</h2>
-                <h3>Enter your credentials</h3>
+                <h3 className="mb-0">Enter your credentials</h3>
                 <form className="login-form">
                   <div className="username">
                     <input
@@ -80,46 +80,26 @@ const Login = () => {
                     placeholder="Password"
                     onChange={handlePasswordChange}
                   />
-                  <div id="bars"><div className={strength}></div></div>
-                  
-                  <div id="weak" className={`${strength} text-center`}>
+
+                  <div id="weak" className={`${strength} text-center mb-2`}>
                     {strength ? `${strength} Pass` : ""}
                   </div>
-                  {/* <div className="weak"></div> */}
-                  <button className="button" type="button">
-                    JOIN NOW
-                  </button>
+
+
+                  <div>
+                  
+                  <div className="d-flex justify-content-between  align-items-center gap-15">
+                    <button className="button border-0 px-5">Login</button>
+                    <Link className="button signup bg-light text-secondary">SignUp</Link>
+                  </div>
+                </div>
+
+                  <Link to="/forgot-password" className="text-light mt-2">
+                    Forgot Password?
+                  </Link>
                 </form>
               </div>
 
-              {/* <div className="auth-card">
-              <h3 className="text-center">Login</h3>
-              <form action="" className="d-flex flex-column gap-30">
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    className="form-control"
-                    placeholder="Email"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    className="form-control"
-                  />
-                </div>
-                <div>
-                  <Link to="/forgot-password">Forgot Password?</Link>
-                  <div className="d-flex justify-content-center align-items-center gap-15">
-                    <button className="button border-0">Login</button>
-                    <Link className="button signup">SignUp</Link>
-                  </div>
-                </div>
-              </form>
-            </div> */}
             </div>
           </div>
         </div>

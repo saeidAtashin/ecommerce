@@ -61,7 +61,7 @@ const Login = () => {
             <div className="col-12 d-flex align-items-center justify-content-center">
               <div className="login-card">
                 <img src="images/account.webp" />
-                <h2>Sign Up</h2>
+                <h2>Log In</h2>
                 <h3 className="mb-0">Enter your credentials</h3>
                 <form className="login-form">
                   <div className="username">
@@ -89,8 +89,8 @@ const Login = () => {
                   <div>
                   
                   <div className="d-flex justify-content-between  align-items-center gap-15">
-                    <button className="button border-0 px-5">Login</button>
-                    <Link className="button signup bg-light text-secondary">SignUp</Link>
+                    <button type="submit" className="button border-0 px-5">Login</button>
+                    <Link to="/signup" className="button signup bg-light text-secondary">SignUp</Link>
                   </div>
                 </div>
 

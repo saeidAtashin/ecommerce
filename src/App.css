@@ -311,6 +311,24 @@ color: var(--blog-color);
   line-height: 22px;
   color: var(--blog-color);
 }
+.single-blog-card a {
+  font-size: 15px;
+  color: var(--blog-color);
+  margin-bottom: 20px;
+}
+.single-blog-card h3{
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--price-color);
+  
+}
+.single-blog-card ph3{
+  font-size: 14px;
+  color: var(--blog-color);
+  
+}
+
+
 /* blog part ends here */
 
 
@@ -857,3 +875,62 @@ button {
   height: 30px;
   text-transform: capitalize;
 }
+
+
+
+/* Main Product Page start */
+
+.description-wrapper h4 ,
+.reviews-wrapper h3{
+  font-size: 26px;
+  color: var(--price-color);
+  margin-bottom: 10px;
+}
+.description-wrapper p {
+  font-size: 14px;
+  color: var(--blog-color);
+}
+.description-wrapper {
+  
+}
+
+.review-inner-wrapper {
+  background-color: white;
+  padding: 30px;
+}
+
+.review-head {
+border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+padding-bottom: 20px;
+}
+
+.review-head h4 {
+font-size: 18px;  
+color: var(--price-color);
+}
+
+.review-head p, 
+.review-head a{
+font-size: 14px;  
+color: var(--blog-color);
+}
+
+.review-form {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) ;
+
+}
+
+.review-form h4{
+ font-size: 16px;
+ color: var(--blog-color);
+}
+
+.review:not(:last-child){
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) ;
+}
+.reviews p{
+  font-size: 14px;
+  color: var(--blog-color);
+}
+
+/* Main Product Page End here */

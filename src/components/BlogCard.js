@@ -18,7 +18,7 @@ A beautiful sunday morningrenaissance
                 <p className="desc">
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, 
                 </p>
-                <Link to="/" className="button" >Read More</Link>
+                <Link to="/blog/:id" className="button" >Read More</Link>
             </div>
         </div>
       

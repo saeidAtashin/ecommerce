@@ -5,13 +5,13 @@ import ReactStars from "react-rating-stars-component";
 import ProductCard from "../components/ProductCard";
 import Color from "../components/Color";
 
-
 const OurStore = () => {
-  const  [grid, setGrid]  = useState(4);
+  const [grid, setGrid] = useState(4);
 
   return (
     <>
-      <Meta title={"Our Store"} /> <BreadCrumb title="Our Store" />
+      <Meta title={"Our Store"} />
+      <BreadCrumb title="Our Store" />
       <div className="store-wrapper home-wrapper-2 py-5">
         <div className="container-xxl">
           <div className="row">
@@ -77,7 +77,7 @@ const OurStore = () => {
                   </div>
                   <h5 className="sub-title"> Colors </h5>
                   <div>
-                   <Color/>
+                    <Color />
                   </div>
                   <h5 className="sub-title"> Size </h5>
                   <div>
@@ -247,20 +247,20 @@ const OurStore = () => {
               </div>
               <div className="product-list py-4 ">
                 <div className="d-flex gap-10 flex-wrap flex-fill align-items-center w-100">
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
-                <ProductCard grid={grid}/>
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} />
                 </div>
               </div>
             </div>

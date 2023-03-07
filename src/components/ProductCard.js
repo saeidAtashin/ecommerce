@@ -13,7 +13,7 @@ const ProductCard = (props) => {
           location.pathname === "/store" ? `gr-${grid}` : "col-3"
         }`}
       >
-        <Link
+        <Link to="/product/:id"
           className={`product-card position-relative ${
             grid === 12
               ? "d-flex align-items-center justify-content-around "

@@ -10,7 +10,7 @@
 --icon-color: #febd69 ;
 --baar-color: #232f3e;
 --bannertext-color: #bf4800 ;
---homewrapper-color: #f5f5f7;
+--homewrapper-color: #d6d6d6;
 --catefories-color: #ededed;
 --blog-color: #777777;
 --price-color: #1c1c1b;
@@ -934,3 +934,7 @@ color: var(--blog-color);
 }
 
 /* Main Product Page End here */
+
+
+
+/* 7:12:43 */

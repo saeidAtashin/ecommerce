@@ -21,12 +21,12 @@ const SingleProduct = () => {
         <div className="container-xxl">
           <div className="row">
             <div className="col-12">
-                <h4>Description</h4>
+              <h4>Description</h4>
               <div className="bg-white p-3">
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
                   ipsum aperiam consequatur, harum unde ratione nulla explicabo
-                  et quam corrupti eius quas. Praesentium rerum cupiditate
+                  et quam corruptai eius quas. Praesentium rerum cupiditate
                   tempora, perferendis aperiam molestiae, culpa fuga,
                   exercitationem quasi reiciendis recusandae. Voluptatum quam
                   maxime eos suscipit quibusdam ad blanditiis dolores, dolor
@@ -47,7 +47,7 @@ const SingleProduct = () => {
         <div className="container-xxl">
           <div className="row">
             <div className="col-12">
-                <h3>Reviews</h3>
+              <h3>Reviews</h3>
               <div className="review-inner-wrapper">
                 <div className="review-head d-flex justify-content-between align-items-center">
                   <div>
@@ -77,7 +77,7 @@ const SingleProduct = () => {
                 </div>
 
                 <div className="review-form py-4">
-                    <h4>Write a Review</h4>
+                  <h4>Write a Review</h4>
                   <form action="" className="d-flex flex-column gap-15">
                     <div>
                       <ReactStars
@@ -113,50 +113,61 @@ const SingleProduct = () => {
                   </form>
                 </div>
                 <div className="reviews mt-4">
-                <div className="review">
-                   <div className="d-flex gap-10 align-items-center">
-                   <h4 className="mb-0">user name</h4>
-                   <ReactStars
+                  <div className="review">
+                    <div className="d-flex gap-10 align-items-center">
+                      <h4 className="mb-0">user name</h4>
+                      <ReactStars
                         count={5}
                         size={24}
                         value={4}
                         edit={false}
                         activeColor="#ffd700"
                       />
-                   </div>
-                      <p className="mt-3">Lorem ipsum dolor sit amet consecteturipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, delectus minima! Animi quaerat s g elit. Voluptatibus, delectus minima! Animi quaerat sed illo?</p>
                     </div>
-                                        <div className="review">
-                   <div className="d-flex gap-10 align-items-center">
-                   <h4 className="mb-0">user name</h4>
-                   <ReactStars
+                    <p className="mt-3">
+                      Lorem ipsum dolor sit amet consecteturipsum dolor sit amet
+                      consectetur adipisicing elit. Voluptatibus, delectus
+                      minima! Animi quaerat s g elit. Voluptatibus, delectus
+                      minima! Animi quaerat sed illo?
+                    </p>
+                  </div>
+                  <div className="review">
+                    <div className="d-flex gap-10 align-items-center">
+                      <h4 className="mb-0">user name</h4>
+                      <ReactStars
                         count={5}
                         size={24}
                         value={5}
                         edit={false}
                         activeColor="#ffd700"
                       />
-                   </div>
-                      <p className="mt-3">Lorem ipsum dolor sit amet consecteturipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, delectus minima! Animi quaerat s g elit. Voluptatibus, delectus minima! Animi quaerat sed illo?</p>
                     </div>
-                    <div className="review">
-                   <div className="d-flex gap-10 align-items-center">
-                   <h4 className="mb-0">user name</h4>
-                   <ReactStars
+                    <p className="mt-3">
+                      Lorem ipsum dolor sit amet consecteturipsum dolor sit amet
+                      consectetur adipisicing elit. Voluptatibus, delectus
+                      minima! Animi quaerat s g elit. Voluptatibus, delectus
+                      minima! Animi quaerat sed illo?
+                    </p>
+                  </div>
+                  <div className="review">
+                    <div className="d-flex gap-10 align-items-center">
+                      <h4 className="mb-0">user name</h4>
+                      <ReactStars
                         count={5}
                         size={24}
                         value={3}
                         edit={false}
                         activeColor="#ffd700"
                       />
-                   </div>
-                      <p className="mt-3">Lorem ipsum dolor sit amet consecteturipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, delectus minima! Animi quaerat s g elit. Voluptatibus, delectus minima! Animi quaerat sed illo?</p>
                     </div>
+                    <p className="mt-3">
+                      Lorem ipsum dolor sit amet consecteturipsum dolor sit amet
+                      consectetur adipisicing elit. Voluptatibus, delectus
+                      minima! Animi quaerat s g elit. Voluptatibus, delectus
+                      minima! Animi quaerat sed illo?
+                    </p>
+                  </div>
                 </div>
-
-
-
-
               </div>
             </div>
           </div>

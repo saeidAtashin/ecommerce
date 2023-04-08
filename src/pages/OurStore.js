@@ -245,8 +245,10 @@ const OurStore = () => {
                   </div>
                 </div>
               </div>
-              <div className="product-list py-4 ">
-                <div className="d-flex gap-10 flex-wrap flex-fill align-items-center w-100">
+              {/* <div className="product-list py-4 ">
+                <div className="d-flex gap-10 flex-wrap flex-fill align-items-center w-100"> */}
+                  <ProductCard grid={grid} />
+                  {/* <ProductCard grid={grid} />
                   <ProductCard grid={grid} />
                   <ProductCard grid={grid} />
                   <ProductCard grid={grid} />
@@ -258,15 +260,13 @@ const OurStore = () => {
                   <ProductCard grid={grid} />
                   <ProductCard grid={grid} />
                   <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
+                  <ProductCard grid={grid} /> */}
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        {/* </div>
+      </div> */}
     </>
   );
 };

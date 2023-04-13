@@ -1,19 +1,155 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Meta from "../components/Meta";
 import BreadCrumb from "../components/BreadCrumb";
 import ProductCard from "../components/ProductCard";
 import ReactStars from "react-rating-stars-component";
+import { Link, useNavigate, useParams } from "react-router-dom";
+// import EditProduct from "../admin/EditProduct";
 
 const SingleProduct = () => {
   const [orderdProduct, setOrderdProduct] = useState(true);
+  const { id } = useParams();
+  const [prodData, setProdData] = useState({});
+  const [showImage, setShowImage] = useState("");
+  const navigate = useNavigate();
+
+  const DeleteProduct = (id) => {
+    if (window.confirm("delete_product")) {
+      fetch("http://localhost:8000/products/" + id, {
+        method: "DELETE",
+
+      })
+        .then((res) => {
+          alert("REMOVED");
+          navigate("/product");
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  };
+
+
+  useEffect(() => {
+    fetch("http://localhost:8000/products/" + id)
+      .then((res) => {
+        return res.json();
+      })
+      .then((resp) => {
+        setProdData(resp);
+        setShowImage(resp.def_img);
+        console.log(id);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
+  const EditProduct = (id) => {
+    navigate("/editproduct/" + id);
+  };
+
   return (
     <>
-      <Meta title={"Product Name"} /> <BreadCrumb title="Product Name" />
+      <Meta title={prodData.name} />
+
+      <BreadCrumb brand={prodData.brand} title={prodData.name} />
+
       <div className="main-product-wrapper py-5 home-wrapper-2">
         <div className="container-xxl">
-          <div className="row">
-            <div className="col-6"></div>
-            <div className="col-6"></div>
+          <div className="row bg-white d-flex align-items-between justify-content-between">
+            <div className="col-3">
+              {prodData && (
+                <>
+                  <div className="d-flex flex-column align-items-start justify-content-center">
+                    <div className="d-flex flex-column align-items-center justify-content-center">
+                      <h1>{prodData.name}</h1>
+
+                      <div className="product-image d-flex">
+                        <img
+                          src={`/${showImage}`}
+                          alt={prodData.name}
+                          style={{ scale: "0.8", height: "275px" }}
+                          className="img-fluid"
+                        />
+                      </div>
+
+                      <div className="smallpic d-flex gap-10 justify-content-center">
+                        <img
+                          src={`/${prodData.def_img}`}
+                          alt={prodData.name}
+                          className="img-fluid smallpicborder"
+                          onClick={() => setShowImage(prodData.def_img)}
+                        />
+
+                        <img
+                          src={`/${prodData.sec_img}`}
+                          alt={prodData.name}
+                          className="img-fluid smallpicborder"
+                          onClick={() => setShowImage(prodData.sec_img)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+            <div className="col-6 d-flex flex-column  justify-content-around ">
+              {prodData && (
+                <>
+                  <div>
+                    <h2>{prodData.product_title}</h2>
+                  </div>
+                  <div className="d-flex gap-30">
+                    <div className="d-flex align-items-center gap-10">
+                      <p className="fs-2 ">Price :</p>
+                      <p
+                        className={`price-in-single ${
+                          prodData.isOffer == "true"
+                            ? "text-decoration-line-through"
+                            : "fs-2 text-danger"
+                        }`}
+                      >
+                        ${prodData.org_price}
+                      </p>
+                      {prodData.isOffer === "true" && (
+                        <p className="text-danger fw-bold fs-2">
+                          ${prodData.new_price}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="d-flex align-items-center justify-content-between">
+                    <div className="">
+                      <button className="btn btn-info add-to-card ">
+                        Add To Card
+                      </button>
+                      <span className="number-added-to-card badge bg-dark text-whit fs-6">
+                        10
+                      </span>
+                    </div>
+                    <div>
+                      <Link
+                        to={`/editproduct/${id}`}
+                        className="btn btn-warning add-to-card text-dark"
+                      >
+                        Edit Product
+                      </Link>
+                    </div>
+                    <div>
+                      <button className="btn btn-danger add-to-card"
+                       onClick={() => {
+                        DeleteProduct(prodData.id);
+                      }}
+                      >
+                        Delete Product
+                      </button>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -23,21 +159,7 @@ const SingleProduct = () => {
             <div className="col-12">
               <h4>Description</h4>
               <div className="bg-white p-3">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
-                  ipsum aperiam consequatur, harum unde ratione nulla explicabo
-                  et quam corruptai eius quas. Praesentium rerum cupiditate
-                  tempora, perferendis aperiam molestiae, culpa fuga,
-                  exercitationem quasi reiciendis recusandae. Voluptatum quam
-                  maxime eos suscipit quibusdam ad blanditiis dolores, dolor
-                  nemo a quisquam recusandae quo consectetur, ullam nostrum
-                  cupiditate sint ipsam esse qui iste. Culpa voluptatem facere
-                  illo veniam veritatis eligendi odio impedit animi quidem, enim
-                  voluptates non harum cum dignissimos obcaecati ratione. Eum
-                  voluptatibus inventore deserunt doloribus voluptatum explicabo
-                  ullam nobis dolorem, facere eos doloremque quam distinctio
-                  accusantium maiores corrupti enim saepe fugiat illo.
-                </p>
+                <p>{prodData && prodData.description}</p>
               </div>
             </div>
           </div>
@@ -181,9 +303,6 @@ const SingleProduct = () => {
             </div>
           </div>
           <div className="row">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
             <ProductCard />
           </div>
         </div>

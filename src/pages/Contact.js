@@ -6,10 +6,13 @@ import { AiOutlineHome } from "react-icons/ai";
 import { BiPhoneCall } from "react-icons/bi";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+
   const mapContainer = useRef(null);
   const markerRef = useRef(null);
+const { t } = useTranslation();
 
   useEffect(() => {
     // initialize map
@@ -55,7 +58,7 @@ const Contact = () => {
 
   return (
     <>
-      <Meta title={"Contact Us"} /> <BreadCrumb title="Contact Us" />
+      <Meta title={t("contact_us")} /> <BreadCrumb title={t("contact_us")} />
       <div className="contact-wrapper py-5 home-wrapper-2">
         <div className="container-xxl">
           <div className="row">

@@ -1,8 +1,14 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 const BreadCrumb = (props) => {
-  const { title } = props;
+const isInnerPage = "trie"
+
+  const {  brand  , title } = props;
+
+  const { t } = useTranslation();
+
   return (
     <div className="breadcrumb mb-0 py-4">
       <div className="container-xxl">
@@ -10,9 +16,12 @@ const BreadCrumb = (props) => {
           <div className="col-12">
             <p className="text-center mb-0">
               <Link to="/" className="text-dark">
-                Home &nbsp;
+                {t("home")} &nbsp;
               </Link> 
-              / &nbsp; {title}
+              {
+                brand ? `/ ${t("brand", {brand})} ` : ""
+              }
+              / &nbsp; {t("title", {title})}
             </p>
           </div>
         </div>

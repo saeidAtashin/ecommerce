@@ -19,6 +19,8 @@ import ShippingPolicy from "./pages/ShippingPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import SingleProduct from "./pages/SingleProduct";
+import AddProduct from "./admin/AddProduct";
+import EditProduct from "./admin/EditProduct";
 
 function App() {
   return ( <>
@@ -36,12 +38,15 @@ function App() {
       <Route path="compare-product" element={<CompareProduct />} />
       <Route path="wishlists" element={<Wishlist />} />
       <Route path="login" element={<Login />} />
+      <Route path="signup" element={<Signup />} />
       <Route path="forgot-password" element={<Forgotpassword />} />
       <Route path="privacy-policy" element={<PrivacyPolicy />} />
       <Route path="reset-password" element={<Resetpassword />} />
       <Route path="refund-policy" element={<RefundPolicy />} />
       <Route path="shipping-policy" element={<ShippingPolicy />} />
       <Route path="term-conditions" element={<TermConditions />} />
+      <Route path="admin/addproduct" element={<AddProduct />} />
+      <Route path="editproduct/:id" element={<EditProduct />} />
     </Route>
     </Routes></BrowserRouter>
   

@@ -11,7 +11,7 @@ const ShippingPolicy = () => {
       <div className="container-xxl">
         <div className="row">
           <div className="col-12">
-            <img src="/images/2build.gif" className="w-100 img-fluid" alt="building" />
+            <img src="/images/2build.gif" className="w-10000 img-fluid" alt="building" />
           </div>
         </div>
         </div>

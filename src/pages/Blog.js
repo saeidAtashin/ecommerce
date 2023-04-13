@@ -1,13 +1,15 @@
 import React from "react";
 import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
+import { useTranslation } from "react-i18next";
 import BlogCard from "../components/BlogCard";
-import ProductCard from "../components/ProductCard";
 
 const Blog = () => {
+  const { t } = useTranslation();
+
   return (
     <>
-      <Meta title={"Blogs"} /> <BreadCrumb title="Blogs" />
+      <Meta title={t("blogs")} /> <BreadCrumb title={t("blogs")} />
       <div className="blog-wrapper home-wrapper-2 py-5">
         <div className="container-xxl">
           <div className="row">

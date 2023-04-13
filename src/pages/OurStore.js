@@ -1,17 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
 import ReactStars from "react-rating-stars-component";
 import ProductCard from "../components/ProductCard";
 import Color from "../components/Color";
+import { useTranslation } from "react-i18next";
+import Pagination from "../components/Pagination";
 
 const OurStore = () => {
   const [grid, setGrid] = useState(4);
+  const { t } = useTranslation();
+  const [productPerPage, setProductPerPage] = useState(9)
+
+  const [prodData, setProdData] = useState([]);
+
+
+  useEffect(() => {
+    fetch("http://localhost:8000/products/")
+      .then((res) => {
+        return res.json();
+      })
+      .then((resp) => {
+        setProdData(resp);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
+
 
   return (
     <>
-      <Meta title={"Our Store"} />
-      <BreadCrumb title="Our Store" />
+      <Meta title={t("our_store")} />
+      <BreadCrumb title={t("our_store")} />
       <div className="store-wrapper home-wrapper-2 py-5">
         <div className="container-xxl">
           <div className="row">
@@ -211,6 +233,8 @@ const OurStore = () => {
                       <img
                         onClick={() => {
                           setGrid(3);
+                          setProductPerPage(8)
+
                         }}
                         src="images/gr4.svg"
                         alt=""
@@ -219,6 +243,7 @@ const OurStore = () => {
                       <img
                         onClick={() => {
                           setGrid(4);
+                          setProductPerPage(9)
                         }}
                         src="images/gr3.svg"
                         alt=""
@@ -227,6 +252,7 @@ const OurStore = () => {
                       <img
                         onClick={() => {
                           setGrid(6);
+                          setProductPerPage(6)
                         }}
                         src="images/gr2.svg"
                         alt=""
@@ -236,6 +262,7 @@ const OurStore = () => {
                       <img
                         onClick={() => {
                           setGrid(12);
+                          setProductPerPage(5)
                         }}
                         src="images/gr.svg"
                         alt=""
@@ -245,28 +272,20 @@ const OurStore = () => {
                   </div>
                 </div>
               </div>
-              {/* <div className="product-list py-4 ">
-                <div className="d-flex gap-10 flex-wrap flex-fill align-items-center w-100"> */}
-                  <ProductCard grid={grid} />
-                  {/* <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} />
-                  <ProductCard grid={grid} /> */}
+              <div className="product-list py-4 ">
+                <div className="d-flex gap-10 flex-wrap flex-fill align-items-center w-100 justify-content-center ">
+                  <ProductCard grid={grid} 
+                  productPerPage={productPerPage}
+                  />
                 </div>
+
               </div>
+
+
             </div>
           </div>
-        {/* </div>
-      </div> */}
+        </div>
+      </div>
     </>
   );
 };

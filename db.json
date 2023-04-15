@@ -212,17 +212,13 @@
       }
     }
   ],
-    
   "users": [
     {
-      "id": 1,
-      "name":"admin",
-      "email":"admin@gmail.com",
-      "password":"adminn",
-      "phonenumber": "09368165125",
-      "role":"admin"
+      "id": "test",
+      "email": "saeid.kase.atashin@gmail.com",
+      "password": "test",
+      "phone": "1234",
+      "userType": "user"
     }
   ]
-
-  
 }

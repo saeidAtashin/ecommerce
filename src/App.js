@@ -22,14 +22,10 @@ import SingleProduct from "./pages/SingleProduct";
 import AddProduct from "./admin/AddProduct";
 import EditProduct from "./admin/EditProduct";
 
-import { useSelector } from "react-redux";
-
-import { increment, decrement } from "./toolkit/reducer";
 
 
 function App() {
   return ( <>
-
   <BrowserRouter>
   <Routes>
     <Route path="/" element={<Layout/>} >

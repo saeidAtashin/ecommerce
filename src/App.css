@@ -816,6 +816,35 @@ button {
   transition: 0.4s;
 }
 
+.controlchekbox {
+  border: 0;
+  border-radius: 8px;
+  outline: none;
+  width: 50%;
+  height: 28px;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #f9f9f9;
+  margin: 8px 0;
+  font-size: 16px;
+  transition: 0.4s;
+}
+.controladmin {
+  border: 0;
+  border-radius: 8px;
+  outline: none;
+  width: 50%;
+  height: 28px;
+  padding: 0 16px;
+  border-radius: 6px;
+  color: #f9f9f9;
+  margin: 8px 0;
+  font-size: 16px;
+  transition: 0.4s;
+}
+
+
 .login-card {
   width: 450px;
   height: 480px;
@@ -866,8 +895,10 @@ button {
   display: grid;
 }
 
-
-
+.back-btn {
+  background-color: var(--bannertext-color);
+  cursor: pointer;
+}
 
 .login-form input.control::placeholder {
   color: #000000;

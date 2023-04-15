@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
+import { useDispatch } from "react-redux";
+import { increment } from "../toolkit/reducer";
 
 const ProductCard = ({ grid, productPerPage }) => {
   const [prodData, setProdData] = useState([]);
   const [admin, setAdmin] = useState(true);
+  const dispatch = useDispatch()
 
   const [currentPage, setCurrentPage] = useState(1);
-  // const [productPerPage, setProductPerPage] = useState(9)
 
   const navigate = useNavigate();
 
@@ -48,9 +50,7 @@ const ProductCard = ({ grid, productPerPage }) => {
       });
   }, []);
 
-  // const { grid, setProductPerPage } = props;
   let location = useLocation();
-  // alert(location)
 
   const lastProductIndex = currentPage * productPerPage;
   const firstProductIndex = lastProductIndex - productPerPage;
@@ -79,7 +79,7 @@ const ProductCard = ({ grid, productPerPage }) => {
                 </Link>
               </div>
 
-              <div
+              <div 
                 className="product-image d-flex"
                 onClick={() => {
                   DetailProduct(item.id);
@@ -101,13 +101,13 @@ const ProductCard = ({ grid, productPerPage }) => {
               </div>
               <div
                 className="product-details"
-                onClick={() => {
-                  DetailProduct(item.id);
-                }}
+                
               >
                 <h5 className="brand">{item.name}</h5>
                 <h6 className="brand">{item.brand}</h6>
-                <h5 className="product-title">{item.product_title}</h5>
+                <h5 className="product-title"                 onClick={() => {
+                  DetailProduct(item.id);
+                }}>{item.product_title}</h5>
                 <ReactStars
                   classNames="ReactStars"
                   count={5}
@@ -125,7 +125,7 @@ const ProductCard = ({ grid, productPerPage }) => {
                   Sapiente nostrum nesciunt, qui nihil impedt minima{" "}
                 </p>
                 <div className="d-flex justify-content-between">
-                  <div className="d-flex align-items-center gap-10">
+                  <div className="d-flex align-items-center gap-05">
                     <p
                       className={`price mb-0 ${
                         item.isOffer === true
@@ -142,8 +142,12 @@ const ProductCard = ({ grid, productPerPage }) => {
                     )}
                   </div>
                   <div className="d-flex align-items-center gap-10 ">
-                    <button className="btn btn-info line-height-btn p-0 px-2 ">
-                      Add to Cart
+                    <button className="btn btn-info line-height-btn p-0 px-2 fs-6"
+                    onClick={() => {
+                      dispatch(increment("push"))
+                    }}
+                    >
+                      Buy Now
                     </button>
                   </div>
                 </div>

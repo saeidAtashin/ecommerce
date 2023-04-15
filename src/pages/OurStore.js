@@ -85,7 +85,7 @@ const OurStore = () => {
                         id="floatingInput"
                         placeholder="From"
                       />
-                      <label htmlfor="floatingInput"> From </label>
+                      <label htmlFor="floatingInput"> From </label>
                     </div>
                     <div className="form-floating">
                       <input
@@ -94,7 +94,7 @@ const OurStore = () => {
                         id="floatingInput1"
                         placeholder="To"
                       />
-                      <label htmlfor="floatingInput1"> To </label>
+                      <label htmlFor="floatingInput1"> To </label>
                     </div>
                   </div>
                   <h5 className="sub-title"> Colors </h5>
@@ -207,8 +207,8 @@ const OurStore = () => {
                       Sort By:
                     </p>
                     <select name="" id="" className="form-control form-select">
-                      <option value="manual">Feaured</option>
-                      <option value="best-selling" selected="selected">
+                      <option value="manual" >Featured</option>
+                      <option value="best-selling" defaultValue="selected">
                         {" "}
                         Best Selling{" "}
                       </option>
@@ -228,7 +228,7 @@ const OurStore = () => {
                   </div>
 
                   <div className="d-flex align-items-center gap-10">
-                    <p className="totalproducts mb-0">21 Products</p>
+                    <p className="totalproducts mb-0">{prodData.length} Products</p>
                     <div className="d-flex gap-10 align-items-center grid">
                       <img
                         onClick={() => {

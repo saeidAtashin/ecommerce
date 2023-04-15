@@ -82,7 +82,7 @@ Link img {
   padding: 20px;
 }
 .line-height-btn {
-  line-height: 40px !important;
+  line-height: 30px !important;
 }
 .button {
   background-color: var(--baar-color);
@@ -391,7 +391,7 @@ color: var(--blog-color);
 .mb-0000 {
   margin-bottom: 0 !important;
 }
-.product-details {
+.product-title {
   cursor: pointer;
 }
 .product-card .product-details h6 {

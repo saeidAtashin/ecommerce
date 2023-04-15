@@ -7,6 +7,13 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+// import store from "./redux/store";
+
+import {store} from './toolkit/store'
+
+import { Provider } from "react-redux";
+
+
 
 i18n
   .use(initReactI18next)
@@ -39,7 +46,9 @@ const loadingMarkup = (
 );
 
 root.render(
+  <Provider store={store}>
   <Suspense fallback={loadingMarkup}>
     <App />
   </Suspense>
+  </Provider>
 );

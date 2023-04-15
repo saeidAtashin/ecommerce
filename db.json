@@ -2,12 +2,12 @@
   "products": [
     {
       "id": 1,
-      "name": "Apple Watch SE",
+      "name": "Apple Watch SE update",
       "def_img": "images/smartwatch1.png",
       "sec_img": "images/Smartwatch.png",
       "brand": "Apple",
       "product_title": "A great deal to love.And the S8 SiP makes it up to 20% faster,1 giving it the power to do more.",
-      "avrage_stars": "4",
+      "avrage_stars": 4,
       "org_price": "5000",
       "new_price": "3999",
       "isActive": true,
@@ -38,7 +38,7 @@
       "sec_img": "images/watch.jpg",
       "brand": "Apple",
       "product_title": "A great deal to love.And the S8 SiP makes it up to 20% faster,1 giving it the power to do more.",
-      "avrage_stars": "4",
+      "avrage_stars": 4,
       "org_price": "5000",
       "new_price": "3999",
       "isActive": true,
@@ -56,7 +56,7 @@
       "sec_img": "images/redwatch2.png",
       "brand": "Apple",
       "product_title": "A great deal to love.And the S8 SiP makes it up to 20% faster,1 giving it the power to do more.",
-      "avrage_stars": "4",
+      "avrage_stars": 4,
       "org_price": "5000",
       "new_price": "3999",
       "isActive": true,
@@ -74,7 +74,7 @@
       "sec_img": "images/headphone2.webp",
       "brand": "Apple",
       "product_title": "A great deal to love.And the S8 SiP makes it up to 20% faster,1 giving it the power to do more.",
-      "avrage_stars": "4",
+      "avrage_stars": 4,
       "org_price": "5000",
       "new_price": "3999",
       "isActive": true,
@@ -92,7 +92,7 @@
       "sec_img": "images/laptop01.png",
       "brand": "Apple",
       "product_title": "A great deal to love.And the S8 SiP makes it up to 20% faster,1 giving it the power to do more.",
-      "avrage_stars": "4",
+      "avrage_stars": 4,
       "org_price": "5000",
       "new_price": "3999",
       "isActive": true,
@@ -110,7 +110,7 @@
       "sec_img": "images/sam.png",
       "brand": "Apple",
       "product_title": "A great deal to love.And the S8 SiP makes it up to 20% faster,1 giving it the power to do more.",
-      "avrage_stars": "4",
+      "avrage_stars": 4,
       "org_price": "5000",
       "new_price": "3999",
       "isActive": true,
@@ -128,7 +128,7 @@
       "sec_img": "images/tab3.jpg",
       "brand": "Apple",
       "product_title": "A great deal to love.And the S8 SiP makes it up to 20% faster,1 giving it the power to do more.",
-      "avrage_stars": "4",
+      "avrage_stars": 4,
       "org_price": "5000",
       "new_price": "3999",
       "isActive": true,
@@ -146,7 +146,7 @@
       "sec_img": "images/smartwatch1.png",
       "brand": "Apple",
       "product_title": "A great deal to love.And the S8 SiP makes it up to 20% faster,1 giving it the power to do more.",
-      "avrage_stars": "4",
+      "avrage_stars": 4,
       "org_price": "5000",
       "new_price": "3999",
       "isActive": true,
@@ -164,7 +164,7 @@
       "sec_img": "images/Keyboard2.png",
       "brand": "Apple",
       "product_title": "A great deal to love.And the S8 SiP makes it up to 20% faster,1 giving it the power to do more.",
-      "avrage_stars": "4",
+      "avrage_stars": 4,
       "org_price": "5000",
       "new_price": "3999",
       "isActive": true,
@@ -182,7 +182,7 @@
       "sec_img": "images/Mouse2.png",
       "brand": "Apple",
       "product_title": "A great deal to love.And the S8 SiP makes it up to 20% faster,1 giving it the power to do more.",
-      "avrage_stars": "4",
+      "avrage_stars": 4,
       "org_price": "5000",
       "new_price": "3999",
       "isActive": true,
@@ -200,7 +200,7 @@
       "sec_img": "images/jbl2.png",
       "brand": "Apple",
       "product_title": "A great deal to love.And the S8 SiP makes it up to 20% faster,1 giving it the power to do more.",
-      "avrage_stars": "4",
+      "avrage_stars": 4,
       "org_price": "5000",
       "new_price": "3999",
       "isActive": true,
@@ -212,10 +212,17 @@
       }
     }
   ],
-  "wishlist": [
+    
+  "users": [
     {
-      "id": "1",
-      "product_titless": "test"
+      "id": 1,
+      "name":"admin",
+      "email":"admin@gmail.com",
+      "password":"adminn",
+      "phonenumber": "09368165125",
+      "role":"admin"
     }
   ]
+
+  
 }

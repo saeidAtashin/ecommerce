@@ -4,6 +4,8 @@ import BreadCrumb from "../components/BreadCrumb";
 import ProductCard from "../components/ProductCard";
 import ReactStars from "react-rating-stars-component";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { increment, makeRequest, numIncrement } from "../toolkit/reducer";
+import { useDispatch, useSelector } from "react-redux";
 // import EditProduct from "../admin/EditProduct";
 
 const SingleProduct = () => {
@@ -12,6 +14,8 @@ const SingleProduct = () => {
   const [prodData, setProdData] = useState({});
   const [showImage, setShowImage] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const buyCount = useSelector((state) => state.counter.value)
 
   const DeleteProduct = (id) => {
     if (window.confirm("delete_product")) {
@@ -122,23 +126,24 @@ const SingleProduct = () => {
                   </div>
                   <div className="d-flex align-items-center justify-content-between">
                     <div className="">
-                      <button className="btn btn-info add-to-card ">
+                      <button className="btn btn-info add-to-card" onClick={() => dispatch(makeRequest())}>
                         Add To Card
                       </button>
                       <span className="number-added-to-card badge bg-dark text-whit fs-6">
-                        10
+                      {buyCount}
                       </span>
                     </div>
                     <div>
                       <Link
                         to={`/editproduct/${id}`}
                         className="btn btn-warning add-to-card text-dark"
+                        onClick={() => dispatch(increment())}
                       >
                         Edit Product
                       </Link>
                     </div>
                     <div>
-                      <button className="btn btn-danger add-to-card"
+                      <button className="btn btn-danger add-to-card" 
                        onClick={() => {
                         DeleteProduct(prodData.id);
                       }}
@@ -229,9 +234,9 @@ const SingleProduct = () => {
                         placeholder="Comments"
                       ></textarea>
                     </div>
-                    <divc className="d-flex justify-content-end">
+                    <div className="d-flex justify-content-end">
                       <button className="button border-0">Submit Review</button>
-                    </divc>
+                    </div>
                   </form>
                 </div>
                 <div className="reviews mt-4">

@@ -394,6 +394,11 @@ color: var(--blog-color);
 .product-title {
   cursor: pointer;
 }
+
+.product-details {
+  margin-right: 80px;
+}
+
 .product-card .product-details h6 {
 color: var(--bannertext-color);
 font-size: 13px;

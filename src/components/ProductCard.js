@@ -3,12 +3,14 @@ import ReactStars from "react-rating-stars-component";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
 import { useDispatch } from "react-redux";
-import { increment } from "../toolkit/reducer";
+import { useGetAllProductsQuery } from "../toolkit/features/productApi";
 
 const ProductCard = ({ grid, productPerPage, userType }) => {
+  const { data, error, isLoading } = useGetAllProductsQuery();
+
   const [prodData, setProdData] = useState([]);
   const [admin, setAdmin] = useState(true);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -37,29 +39,20 @@ const ProductCard = ({ grid, productPerPage, userType }) => {
     navigate("/editproduct/" + id);
   };
 
-  useEffect(() => {
-    fetch("http://localhost:8000/products/")
-      .then((res) => {
-        return res.json();
-      })
-      .then((resp) => {
-        setProdData(resp);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
-
   let location = useLocation();
 
   const lastProductIndex = currentPage * productPerPage;
   const firstProductIndex = lastProductIndex - productPerPage;
-  const currentProducts = prodData.slice(firstProductIndex, lastProductIndex);
+  const currentProducts = data?.slice(firstProductIndex, lastProductIndex);
 
   return (
     <>
-      {currentProducts &&
-        currentProducts.map((item, index) => (
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>An error occured...</p>
+      ) : (
+        currentProducts?.map((item, index) => (
           <div
             key={index}
             className={`col-3 ${
@@ -79,7 +72,7 @@ const ProductCard = ({ grid, productPerPage, userType }) => {
                 </Link>
               </div>
 
-              <div 
+              <div
                 className="product-image d-flex"
                 onClick={() => {
                   DetailProduct(item.id);
@@ -99,15 +92,17 @@ const ProductCard = ({ grid, productPerPage, userType }) => {
                   className="img-fluid"
                 />
               </div>
-              <div
-                className="product-details"
-                
-              >
+              <div className="product-details ">
                 <h5 className="brand">{item.name}</h5>
                 <h6 className="brand">{item.brand}</h6>
-                <h5 className="product-title"                 onClick={() => {
-                  DetailProduct(item.id);
-                }}>{item.product_title}</h5>
+                <h5
+                  className="product-title"
+                  onClick={() => {
+                    DetailProduct(item.id);
+                  }}
+                >
+                  {item.product_title}
+                </h5>
                 <ReactStars
                   classNames="ReactStars"
                   count={5}
@@ -142,11 +137,7 @@ const ProductCard = ({ grid, productPerPage, userType }) => {
                     )}
                   </div>
                   <div className="d-flex align-items-center gap-10 ">
-                    <button className="btn btn-info line-height-btn p-0 px-2 fs-6"
-                    onClick={() => {
-                      dispatch(increment("push"))
-                    }}
-                    >
+                    <button className="btn btn-info line-height-btn p-0 px-2 fs-6">
                       Buy Now
                     </button>
                   </div>
@@ -163,7 +154,7 @@ const ProductCard = ({ grid, productPerPage, userType }) => {
                   <Link>
                     <img src="images/add-cart.svg" alt="addcart" />
                   </Link>
-                  { (userType === "admin") && (
+                  {userType === "admin" && (
                     <>
                       <button
                         className="edit-hover"
@@ -205,14 +196,15 @@ const ProductCard = ({ grid, productPerPage, userType }) => {
               </div>
             </div>
           </div>
-        ))}
+        ))
+      )}
       <div className="d-flex alig-items-center justify-content-center text-center">
-      <Pagination
-        totalProduct={prodData.length}
-        productPerPage={productPerPage}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-      />
+        <Pagination
+          totalProduct={data?.length}
+          productPerPage={productPerPage}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
       </div>
     </>
   );

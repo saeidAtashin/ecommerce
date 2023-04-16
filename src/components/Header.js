@@ -24,7 +24,7 @@ const Header = ({ username }) => {
   const currentLanguage = lang.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();
 
-  const buyCount = useSelector((state) => state.counter.value);
+  // const buyCount = useSelector((state) => state.counter.value);
   // const filter = useSelector((state) => state.productFilter.filter);
 
   // const dispatch = useDispatch();
@@ -180,7 +180,7 @@ const Header = ({ username }) => {
                     <img src="/images/cart.svg" alt="cart" />
                     <div className="d-flex flex-column gap-10">
                       <span className="badge bg-white text-dark text-whit fs-6">
-                        {buyCount}
+                        {/* {buyCount} */}
                       </span>
                       <p className="mb-0">$500</p>
                     </div>

@@ -39,7 +39,8 @@ const Header = ({ username }) => {
         <div className="container-xxl">
           <div className="row align-items-center justify-content-center">
             <div className="col-3 ">
-              <p className="text-white mb-0">{t("free_sipping")}</p>
+              <p className="text-white mb-0">{t("free_sipping")}
+              </p>
             </div>
             <div className="dropdown col-2 d-flex align-items-center justify-content-center">
               <button

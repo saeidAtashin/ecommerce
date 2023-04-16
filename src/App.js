@@ -21,6 +21,8 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import SingleProduct from "./pages/SingleProduct";
 import AddProduct from "./admin/AddProduct";
 import EditProduct from "./admin/EditProduct";
+import Cart from "./pages/Cart";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -62,6 +64,7 @@ function App() {
             <Route path="term-conditions" element={<TermConditions />} />
             <Route path="admin/addproduct" element={<AddProduct />} />
             <Route path="editproduct/:id" element={<EditProduct />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>

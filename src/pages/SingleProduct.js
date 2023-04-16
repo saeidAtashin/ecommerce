@@ -8,20 +8,19 @@ import { increment, makeRequest, numIncrement } from "../toolkit/reducer";
 import { useDispatch, useSelector } from "react-redux";
 // import EditProduct from "../admin/EditProduct";
 
-const SingleProduct = () => {
+const SingleProduct = ({ userType }) => {
   const [orderdProduct, setOrderdProduct] = useState(true);
   const { id } = useParams();
   const [prodData, setProdData] = useState({});
   const [showImage, setShowImage] = useState("");
   const navigate = useNavigate();
-  const dispatch = useDispatch()
-  const buyCount = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch();
+  const buyCount = useSelector((state) => state.counter.value);
 
   const DeleteProduct = (id) => {
     if (window.confirm("delete_product")) {
       fetch("http://localhost:8000/products/" + id, {
         method: "DELETE",
-
       })
         .then((res) => {
           alert("REMOVED");
@@ -33,7 +32,6 @@ const SingleProduct = () => {
         });
     }
   };
-
 
   useEffect(() => {
     fetch("http://localhost:8000/products/" + id)
@@ -126,27 +124,41 @@ const SingleProduct = () => {
                   </div>
                   <div className="d-flex align-items-center justify-content-between">
                     <div className="">
-                      <button className="btn btn-info add-to-card" onClick={() => dispatch(makeRequest())}>
+                      <button
+                        className="btn btn-info add-to-card"
+                        onClick={() => dispatch(makeRequest())}
+                      >
                         Add To Card
                       </button>
                       <span className="number-added-to-card badge bg-dark text-whit fs-6">
-                      {buyCount}
+                        {buyCount}
                       </span>
                     </div>
                     <div>
                       <Link
                         to={`/editproduct/${id}`}
-                        className="btn btn-warning add-to-card text-dark"
-                        onClick={() => dispatch(increment())}
+                        className={`btn add-to-card  ${
+                          userType === "admin"
+                            ? "btn-warning"
+                            : "btn-outline-secondary disabled"
+                        }`}
+                        
                       >
                         Edit Product
                       </Link>
+                      
                     </div>
                     <div>
-                      <button className="btn btn-danger add-to-card" 
-                       onClick={() => {
-                        DeleteProduct(prodData.id);
-                      }}
+                      <button
+                        className={`btn add-to-card  ${
+                          userType === "admin"
+                            ? "btn-danger"
+                            : "btn-outline-secondary disabled" 
+                        }`}
+                        data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                        onClick={() => {
+                          // DeleteProduct(prodData.id);
+                        }}
                       >
                         Delete Product
                       </button>

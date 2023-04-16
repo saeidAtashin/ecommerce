@@ -5,7 +5,7 @@ import Pagination from "./Pagination";
 import { useDispatch } from "react-redux";
 import { increment } from "../toolkit/reducer";
 
-const ProductCard = ({ grid, productPerPage }) => {
+const ProductCard = ({ grid, productPerPage, userType }) => {
   const [prodData, setProdData] = useState([]);
   const [admin, setAdmin] = useState(true);
   const dispatch = useDispatch()
@@ -163,7 +163,7 @@ const ProductCard = ({ grid, productPerPage }) => {
                   <Link>
                     <img src="images/add-cart.svg" alt="addcart" />
                   </Link>
-                  {admin && (
+                  { (userType === "admin") && (
                     <>
                       <button
                         className="edit-hover"

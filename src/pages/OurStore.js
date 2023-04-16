@@ -7,7 +7,7 @@ import Color from "../components/Color";
 import { useTranslation } from "react-i18next";
 import Pagination from "../components/Pagination";
 
-const OurStore = () => {
+const OurStore = ({userType}) => {
   const [grid, setGrid] = useState(4);
   const { t } = useTranslation();
   const [productPerPage, setProductPerPage] = useState(9)
@@ -276,6 +276,7 @@ const OurStore = () => {
                 <div className="d-flex gap-10 flex-wrap flex-fill align-items-center w-100 justify-content-center ">
                   <ProductCard grid={grid} 
                   productPerPage={productPerPage}
+                  userType={userType}
                   />
                 </div>
 

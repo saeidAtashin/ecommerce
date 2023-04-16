@@ -214,11 +214,18 @@
   ],
   "users": [
     {
-      "id": "test",
+      "id": "sasa",
       "email": "saeid.kase.atashin@gmail.com",
-      "password": "test",
-      "phone": "1234",
+      "password": "sasa",
+      "phone": "021",
       "userType": "user"
+    },
+    {
+      "id": "admin",
+      "email": "saeidsaeid@outlook.com",
+      "password": "admin",
+      "phone": "0936",
+      "userType": "admin"
     }
   ]
 }

@@ -3,10 +3,10 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 
-const Layout = () => {
+const Layout = ({ username }) => {
   return (
     <>
-      <Header />
+      <Header username={username} />
       <Outlet />
       <Footer />
     </>

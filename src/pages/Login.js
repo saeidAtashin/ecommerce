@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Meta from "../components/Meta";
 import BreadCrumb from "../components/BreadCrumb";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,6 +13,10 @@ const Login = () => {
 
   const navigate = useNavigate()
 
+  useEffect(() => {
+     sessionStorage.clear()
+  }, [])
+
 
 const ProceedLogin = (e) => {
     e.preventDefault()
@@ -21,14 +25,20 @@ const ProceedLogin = (e) => {
       return res.json()
     }).then((resp) => {
       console.log(resp)
+      
       if(Object.keys(resp).length === 0){
       alert("enter valid username")
       }else{
         if(resp.password === password){
           alert("every thing is fine")
+          sessionStorage.setItem('username', resp.id)
+          sessionStorage.setItem('userType', resp.userType)
           navigate("/")
+          window.location.reload();
+
         }else{
-          alert("not valid data")
+          alert("username and password dont match")
+
         }
       }
     }).catch((err) => {

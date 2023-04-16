@@ -19,12 +19,12 @@ const lang = [
   },
 ];
 
-const Header = () => {
+const Header = ({ username }) => {
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = lang.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();
 
-  const buyCount = useSelector((state) => state.counter.value)
+  const buyCount = useSelector((state) => state.counter.value);
   // const filter = useSelector((state) => state.productFilter.filter);
 
   // const dispatch = useDispatch();
@@ -149,13 +149,25 @@ const Header = () => {
                   </Link>
                 </div>
                 <div>
-                  <Link
-                    to="/login"
-                    className="d-flex align-items-center gap-10 text-white"
-                  >
+                  <Link className="d-flex align-items-center gap-10 text-white">
                     <img src="/images/user.svg" alt="user" />
                     <p className="mb-0">
-                      Log In <br /> My Account
+                      {username ? (
+                        <Link
+                          className="text-white"
+                          onClick={() => {
+                            sessionStorage.clear();
+                            username = username;
+                            window.location.reload();
+                          }}
+                        >
+                          Log Out <br /> {username}
+                        </Link>
+                      ) : (
+                        <Link className="text-white" to="/login">
+                          Log In <br /> My Account
+                        </Link>
+                      )}
                     </p>
                   </Link>
                 </div>
@@ -166,7 +178,9 @@ const Header = () => {
                   >
                     <img src="/images/cart.svg" alt="cart" />
                     <div className="d-flex flex-column gap-10">
-                      <span className="badge bg-white text-dark text-whit fs-6">{buyCount}</span>
+                      <span className="badge bg-white text-dark text-whit fs-6">
+                        {buyCount}
+                      </span>
                       <p className="mb-0">$500</p>
                     </div>
                   </Link>

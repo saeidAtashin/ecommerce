@@ -4,14 +4,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
 import { useDispatch } from "react-redux";
 import { useGetAllProductsQuery } from "../toolkit/features/productApi";
-
+import {addToCart} from '../toolkit/features/cartSlice'
 const ProductCard = ({ grid, productPerPage, userType }) => {
   const { data, error, isLoading } = useGetAllProductsQuery();
 
-  const [prodData, setProdData] = useState([]);
-  const [admin, setAdmin] = useState(true);
-  const dispatch = useDispatch();
-
+  const dispatch = useDispatch()
+  
   const [currentPage, setCurrentPage] = useState(1);
 
   const navigate = useNavigate();
@@ -38,6 +36,11 @@ const ProductCard = ({ grid, productPerPage, userType }) => {
   const EditProduct = (id) => {
     navigate("/editproduct/" + id);
   };
+
+  const handleAddToCart = (item) => {
+    console.log(item)
+    dispatch(addToCart(item))
+  }
 
   let location = useLocation();
 
@@ -137,7 +140,9 @@ const ProductCard = ({ grid, productPerPage, userType }) => {
                     )}
                   </div>
                   <div className="d-flex align-items-center gap-10 ">
-                    <button className="btn btn-info line-height-btn p-0 px-2 fs-6">
+                    <button
+                    onClick={() => handleAddToCart(item)}
+                    className="btn btn-info line-height-btn p-0 px-2 fs-6">
                       Buy Now
                     </button>
                   </div>

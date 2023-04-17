@@ -17,6 +17,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import productReducer, { productFetch } from "./toolkit/features/productsSlice";
 import { productApi } from "./toolkit/features/productApi";
+import cartSlice from "./toolkit/features/cartSlice";
 
 i18n
   .use(initReactI18next)
@@ -38,10 +39,11 @@ i18n
 const store = configureStore({
   reducer: {
     products: productReducer,
+    cart: cartSlice,
     [productApi.reducerPath]: productApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
-  return  getDefaultMiddleware().concat(productApi.middleware);
+    return getDefaultMiddleware().concat(productApi.middleware);
   },
 });
 

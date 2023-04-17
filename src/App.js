@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import Layout from "./components/Layout";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -43,6 +45,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <ToastContainer/>
         <Routes>
           <Route path="/" element={<Layout username={username} />}>
             <Route index element={<Home />} />

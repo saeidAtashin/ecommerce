@@ -4,14 +4,17 @@ import BreadCrumb from "../components/BreadCrumb";
 import ProductCard from "../components/ProductCard";
 import ReactStars from "react-rating-stars-component";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import {
   useGetAllProductsQuery,
   useGetProductsByIdQuery,
 } from "../toolkit/features/productApi";
+import {addToCart} from '../toolkit/features/cartSlice'
 
 const SingleProduct = ({ userType }) => {
   const { id } = useParams();
   const { data, error, isLoading } = useGetProductsByIdQuery(id);
+  const dispatch = useDispatch()
 
   const [orderdProduct, setOrderdProduct] = useState(true);
   const [showImage, setShowImage] = useState("");
@@ -37,6 +40,11 @@ const SingleProduct = ({ userType }) => {
     navigate("/editproduct/" + id);
   };
 
+  const handleAddToCart = (id) => {
+    console.log(id)
+    dispatch(addToCart(id))
+    
+  }
   return (
     <>
       {isLoading ? (
@@ -116,7 +124,9 @@ const SingleProduct = ({ userType }) => {
                         </div>
                         <div className="d-flex align-items-center justify-content-between">
                           <div className="">
-                            <button className="btn btn-info add-to-card">
+                            <button
+                            onClick={() => handleAddToCart(data)}
+                             className="btn btn-info add-to-card">
                               Add To Card
                             </button>
                             <span className="number-added-to-card badge bg-dark text-whit fs-6">

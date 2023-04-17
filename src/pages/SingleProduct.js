@@ -16,6 +16,10 @@ const SingleProduct = ({ userType }) => {
   const { data, error, isLoading } = useGetProductsByIdQuery(id);
   const dispatch = useDispatch()
 
+
+
+
+
   const [orderdProduct, setOrderdProduct] = useState(true);
   const [showImage, setShowImage] = useState("");
   const navigate = useNavigate();
@@ -45,6 +49,8 @@ const SingleProduct = ({ userType }) => {
     dispatch(addToCart(id))
     
   }
+
+
   return (
     <>
       {isLoading ? (

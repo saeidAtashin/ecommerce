@@ -17,7 +17,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import productReducer, { productFetch } from "./toolkit/features/productsSlice";
 import { productApi } from "./toolkit/features/productApi";
-import cartSlice from "./toolkit/features/cartSlice";
+import cartSlice, { getTotals } from "./toolkit/features/cartSlice";
 
 i18n
   .use(initReactI18next)
@@ -48,6 +48,7 @@ const store = configureStore({
 });
 
 store.dispatch(productFetch());
+store.dispatch(getTotals());
 
 const container = document.getElementById("root");
 const root = createRoot(container);

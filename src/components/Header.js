@@ -4,7 +4,8 @@ import { BsSearch } from "react-icons/bs";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import cookies from "js-cookie";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getTotals } from "../toolkit/features/cartSlice";
 const lang = [
   {
     code: "fa",
@@ -20,6 +21,9 @@ const lang = [
 ];
 
 const Header = ({ username }) => {
+  const dispatch = useDispatch();
+
+  const { cartTotalQuantity } = useSelector((state) => state.cart);
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = lang.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();
@@ -28,6 +32,9 @@ const Header = ({ username }) => {
   // const filter = useSelector((state) => state.productFilter.filter);
 
   // const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cartTotalQuantity, dispatch]);
 
   useEffect(() => {
     document.body.dir = currentLanguage.dir || "ltr";
@@ -39,8 +46,7 @@ const Header = ({ username }) => {
         <div className="container-xxl">
           <div className="row align-items-center justify-content-center">
             <div className="col-3 ">
-              <p className="text-white mb-0">{t("free_sipping")}
-              </p>
+              <p className="text-white mb-0">{t("free_sipping")}</p>
             </div>
             <div className="dropdown col-2 d-flex align-items-center justify-content-center">
               <button
@@ -182,7 +188,7 @@ const Header = ({ username }) => {
                       <span className="badge bg-white text-dark text-whit fs-6">
                         {/* {buyCount} */}
                       </span>
-                      <p className="mb-0">$500</p>
+                      <p className="mb-0">{cartTotalQuantity}</p>
                     </div>
                   </Link>
                 </div>

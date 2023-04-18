@@ -40,9 +40,6 @@ const SingleProduct = ({ userType }) => {
     }
   };
 
-  const EditProduct = (id) => {
-    navigate("/editproduct/" + id);
-  };
 
   const handleAddToCart = (id) => {
     console.log(id)
@@ -114,7 +111,7 @@ const SingleProduct = ({ userType }) => {
                             <p className="fs-2 ">Price :</p>
                             <p
                               className={`price-in-single ${
-                                data.isOffer == "true"
+                                data.isOffer === true
                                   ? "text-decoration-line-through"
                                   : "fs-2 text-danger"
                               }`}
@@ -163,7 +160,7 @@ const SingleProduct = ({ userType }) => {
                               data-placement="top"
                               data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
                               onClick={() => {
-                                // DeleteProduct(data.id);
+                                DeleteProduct(data.id);
                               }}
                             >
                               Delete Product

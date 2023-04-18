@@ -59,6 +59,7 @@ function App() {
             <Route path="wishlists" element={<Wishlist />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
+            <Route path="cart" element={<Cart />} />
             <Route path="forgot-password" element={<Forgotpassword />} />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="reset-password" element={<Resetpassword />} />

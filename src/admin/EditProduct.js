@@ -9,7 +9,7 @@ const EditProduct = () => {
   const [prodData, setProdData] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:8000/products/" + id)
+    fetch("https://apitest-lovat.vercel.app/products/" + id)
       .then((res) => {
         return res.json();
       })
@@ -56,7 +56,7 @@ const EditProduct = () => {
       description,
     };
 
-    fetch("http://localhost:8000/products/" + id, {
+    fetch("https://apitest-lovat.vercel.app/products/" + id, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(prosuctdetials),

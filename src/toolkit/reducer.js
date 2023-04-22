@@ -3,8 +3,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const getProduct = createAsyncThunk(
   "products/getproduct",
   async ({ id }) => {
-    return fetch("http://localhost:8000/products/").then((res) =>  {
-       const userlist = res.json()
+    return fetch("https://apitest-lovat.vercel.app/products/").then((res) => {
+      const userlist = res.json();
     });
   }
 );
@@ -21,7 +21,7 @@ export const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    increment: (state ,action) => {
+    increment: (state, action) => {
       state.value += 1;
       state.loading = false;
       state.userlist.push = "userlist";

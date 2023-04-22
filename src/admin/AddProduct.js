@@ -33,16 +33,14 @@ const AddProduct = () => {
       description,
     };
 
-    
-
-    fetch("http://localhost:8000/products", {
+    fetch("https://apitest-lovat.vercel.app/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(prosuctdetials),
     })
       .then((res) => {
         alert("saved");
-        navigate("/product")
+        navigate("/product");
       })
       .catch((err) => {
         console.log(err.message);

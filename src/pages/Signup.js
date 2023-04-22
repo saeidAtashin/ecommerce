@@ -15,7 +15,7 @@ const Signup = () => {
     e.preventDefault();
     let registerObj = { id, email, password, phone, userType };
 
-    fetch("http://localhost:8000/users", {
+    fetch("https://apitest-lovat.vercel.app/users", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(registerObj),

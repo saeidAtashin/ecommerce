@@ -19,7 +19,7 @@ const Login = () => {
   const ProceedLogin = (e) => {
     e.preventDefault();
     if (validate()) {
-      fetch("http://localhost:8000/users/" + username)
+      fetch("https://apitest-lovat.vercel.app/users/" + username)
         .then((res) => {
           return res.json();
         })

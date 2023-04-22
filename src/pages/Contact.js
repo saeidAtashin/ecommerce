@@ -9,10 +9,9 @@ import { BsInfoCircle } from "react-icons/bs";
 import { useTranslation } from "react-i18next";
 
 const Contact = () => {
-
   const mapContainer = useRef(null);
   const markerRef = useRef(null);
-const { t } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     // initialize map
@@ -37,8 +36,7 @@ const { t } = useTranslation();
 
     // set marker image
     const img = marker.getElement();
-    img.src =
-      "images/location.webp";
+    img.src = "images/location.webp";
     // get marker element
 
     const element = marker.getElement();
@@ -60,7 +58,7 @@ const { t } = useTranslation();
     <>
       <Meta title={t("contact_us")} /> <BreadCrumb title={t("contact_us")} />
       <div className="contact-wrapper py-5 home-wrapper-2">
-        <div className="container-xxl">
+        <div className="container-sm">
           <div className="row">
             <div className="col-12 d-flex align-items-center justify-content-center">
               <div
@@ -119,19 +117,19 @@ const { t } = useTranslation();
                           Hno : Somewhere in the World
                         </address>
                       </li>
-                      <li  className="mb-3 d-flex gap-15 align-items-center">
+                      <li className="mb-3 d-flex gap-15 align-items-center">
                         <BiPhoneCall className="fs-5" />
-                        <a href="tel:+98 9368165125" > +98 9368165125 </a>
+                        <a href="tel:+98 9368165125"> +98 9368165125 </a>
                       </li>
-                      <li  className="mb-3 d-flex gap-15 align-items-center">
+                      <li className="mb-3 d-flex gap-15 align-items-center">
                         <AiOutlineMail className="fs-5" />
                         <a href="mailto:saeid.kase.atashin@gmail.com">
-                        saeid.kase.atashin@gmail.com
+                          saeid.kase.atashin@gmail.com
                         </a>
                       </li>
-                      <li  className="mb-3 d-flex gap-15 align-items-center">
+                      <li className="mb-3 d-flex gap-15 align-items-center">
                         <BsInfoCircle className="fs-5" />
-                        <p className="mb-0"> Mondey - friday  10 AM - 8 PM</p>
+                        <p className="mb-0"> Mondey - friday 10 AM - 8 PM</p>
                       </li>
                     </ul>
                   </div>

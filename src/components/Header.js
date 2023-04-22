@@ -43,7 +43,7 @@ const Header = ({ username }) => {
   return (
     <>
       <header className="header-top-strip py-3 ">
-        <div className="container-xxl">
+        <div className="container-sm">
           <div className="row align-items-center justify-content-center">
             <div className="col-3 ">
               <p className="text-white mb-0">{t("free_sipping")}</p>
@@ -106,17 +106,32 @@ const Header = ({ username }) => {
         </div>
       </header>
       <header className="header-upper py-3 ">
-        <div className="container-xxl ">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-2">
+        <div className="container-sm ">
+          <div className=" navbar navbar-expand-md d-flex row align-items-center justify-content-center border-00">
+            <button
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarFirst"
+              className="navbar-toggler text-white border-0 "
+              aria-controls="navbarFirst"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              {/* <span className="navbar-toggler-icon"></span> */}
+              Menu
+            </button>
+            <div className="col-2 collapse navbar-collapse" id="navbarFirst">
               <h4>
                 <Link className="text-white" to="/">
-                  Atash Shop.
+                  Atashin Shop.
                 </Link>
               </h4>
             </div>
-            <div className="col-5 mb-0000">
-              <div className="input-group mb-0000">
+            <div
+              className="col-5 collapse navbar-collapse mb-0000 "
+              id="navbarFirst"
+            >
+              <div className="input-group mb-0000 widthquery">
                 <input
                   type="text"
                   // onChange={(e) => dispatch(setFilter(e.target.value))}
@@ -131,8 +146,11 @@ const Header = ({ username }) => {
                 </span>
               </div>
             </div>
-            <div className="col-5 align-items-center">
-              <div className="header-upper-links d-flex  align-items-center justify-content-between">
+            <div
+              className="col-5 collapse navbar-collapse align-items-center "
+              id="navbarFirst"
+            >
+              <div className="header-upper-links d-flex  align-items-center justify-content-between flex-xl-row flex-sm-column align-items-sm-start gap-sm-2 mt-sm-2">
                 <div>
                   <Link
                     to="/compare-product"
@@ -198,7 +216,7 @@ const Header = ({ username }) => {
         </div>
       </header>
       <header className="header-botton py-3">
-        <div className="container-xxl">
+        <div className="container-sm">
           <div className="row">
             <div className="col-12">
               <div className="menu-bottom d-flex align-items-center gap-30">

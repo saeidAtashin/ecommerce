@@ -8,9 +8,9 @@ const CompareProduct = () => {
       <Meta title={"Compare Product"} />
       <BreadCrumb title="Compare Product" />
       <div className="compare-product-wrapper py-5 home-wrapper-2">
-        <div className="container-xxl">
+        <div className="container-sm">
           <div className="row">
-          <div className="col-3  d-flex gap-10 justify-content-between">
+            <div className="col-3  d-flex gap-10 justify-content-between">
               <div className="compare-product-card flex-shrink-1 position-relative ">
                 <img
                   src="images/cross.svg"
@@ -58,7 +58,6 @@ const CompareProduct = () => {
                   </div>
                 </div>
               </div>
-
             </div>
             <div className="col-3  d-flex gap-10 justify-content-between">
               <div className="compare-product-card flex-shrink-1 position-relative ">
@@ -108,7 +107,6 @@ const CompareProduct = () => {
                   </div>
                 </div>
               </div>
-
             </div>
             <div className="col-3  d-flex gap-10 justify-content-between">
               <div className="compare-product-card flex-shrink-1 position-relative ">
@@ -158,7 +156,6 @@ const CompareProduct = () => {
                   </div>
                 </div>
               </div>
-
             </div>
             <div className="col-3  d-flex gap-10 justify-content-between">
               <div className="compare-product-card flex-shrink-1 position-relative ">
@@ -208,7 +205,6 @@ const CompareProduct = () => {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>

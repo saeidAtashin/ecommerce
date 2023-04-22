@@ -32,7 +32,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="container-xxl cart-container">
+    <div className="container-sm cart-container">
       <h2> Shoppimg Cart</h2>
       {cart.cartItems.length === 0 ? (
         <div className="cart-empty">

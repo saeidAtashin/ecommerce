@@ -9,16 +9,12 @@ import {
   useGetAllProductsQuery,
   useGetProductsByIdQuery,
 } from "../toolkit/features/productApi";
-import {addToCart} from '../toolkit/features/cartSlice'
+import { addToCart } from "../toolkit/features/cartSlice";
 
 const SingleProduct = ({ userType }) => {
   const { id } = useParams();
   const { data, error, isLoading } = useGetProductsByIdQuery(id);
-  const dispatch = useDispatch()
-
-
-
-
+  const dispatch = useDispatch();
 
   const [orderdProduct, setOrderdProduct] = useState(true);
   const [showImage, setShowImage] = useState("");
@@ -40,13 +36,11 @@ const SingleProduct = ({ userType }) => {
     }
   };
 
-
   const handleAddToCart = (id) => {
-    console.log(id)
-    dispatch(addToCart(id))
-    
-  }
-
+    console.log(id);
+    dispatch(addToCart(id));
+    navigate("/cart");
+  };
 
   return (
     <>
@@ -62,7 +56,7 @@ const SingleProduct = ({ userType }) => {
             <BreadCrumb brand={data.brand} title={data.name} />
 
             <div className="main-product-wrapper py-5 home-wrapper-2">
-              <div className="container-xxl">
+              <div className="container-sm">
                 <div className="row bg-white d-flex align-items-between justify-content-between">
                   <div className="col-3">
                     {data && (
@@ -100,7 +94,7 @@ const SingleProduct = ({ userType }) => {
                       </>
                     )}
                   </div>
-                  <div className="col-6 d-flex flex-column  justify-content-around ">
+                  <div className="col-lg-6 col-sm-12 d-flex flex-column  justify-content-around ">
                     {data && (
                       <>
                         <div>
@@ -128,8 +122,9 @@ const SingleProduct = ({ userType }) => {
                         <div className="d-flex align-items-center justify-content-between">
                           <div className="">
                             <button
-                            onClick={() => handleAddToCart(data)}
-                             className="btn btn-info add-to-card">
+                              onClick={() => handleAddToCart(data)}
+                              className="btn btn-info add-to-card"
+                            >
                               Add To Card
                             </button>
                             <span className="number-added-to-card badge bg-dark text-whit fs-6">
@@ -174,7 +169,7 @@ const SingleProduct = ({ userType }) => {
               </div>
             </div>
             <div className="description-wrapper py-5 home-wrapper-2">
-              <div className="container-xxl">
+              <div className="container-sm">
                 <div className="row">
                   <div className="col-12">
                     <h4>Description</h4>
@@ -186,7 +181,7 @@ const SingleProduct = ({ userType }) => {
               </div>
             </div>
             <section className="reviews-wrapper home-wrapper-2">
-              <div className="container-xxl">
+              <div className="container-sm">
                 <div className="row">
                   <div className="col-12">
                     <h3>Reviews</h3>
@@ -321,7 +316,7 @@ const SingleProduct = ({ userType }) => {
               </div>
             </section>
             <section className="popular-wrapper py-5 home-wrapper-2">
-              <div className="container-xxl">
+              <div className="container-sm">
                 <div className="row">
                   <div className="col-12">
                     <h3 className="section-heading">Our Popular Products</h3>

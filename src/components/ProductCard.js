@@ -40,6 +40,7 @@ const ProductCard = ({ grid, productPerPage, userType }) => {
   const handleAddToCart = (item) => {
     console.log(item)
     dispatch(addToCart(item))
+    navigate("/cart")
   }
 
   let location = useLocation();
@@ -143,6 +144,7 @@ const ProductCard = ({ grid, productPerPage, userType }) => {
                     <button
                     onClick={() => handleAddToCart(item)}
                     className="btn btn-info line-height-btn p-0 px-2 fs-6">
+                      
                       Buy Now
                     </button>
                   </div>

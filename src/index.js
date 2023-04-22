@@ -54,7 +54,7 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 const loadingMarkup = (
   <>
-    <div className="container-xxl">
+    <div className="container-sm">
       <div className="row align-items-center justify-content-center">
         <img className="col-3 " src="/images/Infinity-1.svg" />
       </div>

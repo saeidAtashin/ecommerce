@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const SpecialProduct = () => {
   return (
-    <div className="col-6 mb-3">
+    <div className="col-lg-12 col-sm-12 mb-3">
       <div className="special-product-card">
         <div className="d-flex justify-content-between align-items-center">
           <div>
@@ -35,23 +35,21 @@ const SpecialProduct = () => {
                 <span className="badge discount-badge p-3">1</span>:
                 <span className="badge discount-badge p-3">1</span>
               </div>
- 
             </div>
             <div className="pro-count my-4 position-relative">
-                <p>Products: 5</p>
-                <div className="progress">
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    style={{width: "25%"}}
-                    aria-valuenow="25"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
+              <p>Products: 5</p>
+              <div className="progress">
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  style={{ width: "25%" }}
+                  aria-valuenow="25"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
               </div>
-              <Link className="button mb-2">
-              Add to Card</Link>
+            </div>
+            <Link className="button mb-2">Add to Card</Link>
           </div>
         </div>
       </div>

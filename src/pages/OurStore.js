@@ -7,13 +7,12 @@ import Color from "../components/Color";
 import { useTranslation } from "react-i18next";
 import Pagination from "../components/Pagination";
 
-const OurStore = ({userType}) => {
+const OurStore = ({ userType }) => {
   const [grid, setGrid] = useState(4);
   const { t } = useTranslation();
-  const [productPerPage, setProductPerPage] = useState(9)
+  const [productPerPage, setProductPerPage] = useState(9);
 
   const [prodData, setProdData] = useState([]);
-
 
   useEffect(() => {
     fetch("http://localhost:8000/products/")
@@ -28,14 +27,12 @@ const OurStore = ({userType}) => {
       });
   }, []);
 
-
-
   return (
     <>
       <Meta title={t("our_store")} />
       <BreadCrumb title={t("our_store")} />
       <div className="store-wrapper home-wrapper-2 py-5">
-        <div className="container-xxl">
+        <div className="container-sm">
           <div className="row">
             <div className="col-3">
               <div className="filter-card mb-3">
@@ -207,7 +204,7 @@ const OurStore = ({userType}) => {
                       Sort By:
                     </p>
                     <select name="" id="" className="form-control form-select">
-                      <option value="manual" >Featured</option>
+                      <option value="manual">Featured</option>
                       <option value="best-selling" defaultValue="selected">
                         {" "}
                         Best Selling{" "}
@@ -228,13 +225,14 @@ const OurStore = ({userType}) => {
                   </div>
 
                   <div className="d-flex align-items-center gap-10">
-                    <p className="totalproducts mb-0">{prodData.length} Products</p>
+                    <p className="totalproducts mb-0">
+                      {prodData.length} Products
+                    </p>
                     <div className="d-flex gap-10 align-items-center grid">
                       <img
                         onClick={() => {
                           setGrid(3);
-                          setProductPerPage(8)
-
+                          setProductPerPage(8);
                         }}
                         src="images/gr4.svg"
                         alt=""
@@ -243,7 +241,7 @@ const OurStore = ({userType}) => {
                       <img
                         onClick={() => {
                           setGrid(4);
-                          setProductPerPage(9)
+                          setProductPerPage(9);
                         }}
                         src="images/gr3.svg"
                         alt=""
@@ -252,7 +250,7 @@ const OurStore = ({userType}) => {
                       <img
                         onClick={() => {
                           setGrid(6);
-                          setProductPerPage(6)
+                          setProductPerPage(6);
                         }}
                         src="images/gr2.svg"
                         alt=""
@@ -262,7 +260,7 @@ const OurStore = ({userType}) => {
                       <img
                         onClick={() => {
                           setGrid(12);
-                          setProductPerPage(5)
+                          setProductPerPage(5);
                         }}
                         src="images/gr.svg"
                         alt=""
@@ -274,15 +272,13 @@ const OurStore = ({userType}) => {
               </div>
               <div className="product-list py-4 ">
                 <div className="d-flex gap-10 flex-wrap flex-fill align-items-center w-100 justify-content-center ">
-                  <ProductCard grid={grid} 
-                  productPerPage={productPerPage}
-                  userType={userType}
+                  <ProductCard
+                    grid={grid}
+                    productPerPage={productPerPage}
+                    userType={userType}
                   />
                 </div>
-
               </div>
-
-
             </div>
           </div>
         </div>

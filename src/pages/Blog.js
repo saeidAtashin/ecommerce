@@ -11,7 +11,7 @@ const Blog = () => {
     <>
       <Meta title={t("blogs")} /> <BreadCrumb title={t("blogs")} />
       <div className="blog-wrapper home-wrapper-2 py-5">
-        <div className="container-xxl">
+        <div className="container-sm">
           <div className="row">
             <div className="col-3">
               <div className="filter-card mb-3">
@@ -26,16 +26,16 @@ const Blog = () => {
             </div>
             <div className="col-9">
               <div className="row">
-              <div className="col-6 mb-4">
+                <div className="col-lg-6 col-sm-12 mb-4">
                   <BlogCard />
                 </div>
-                <div className="col-6 mb-4">
+                <div className="col-lg-6 col-sm-12 mb-4">
                   <BlogCard />
                 </div>
-                <div className="col-6 mb-4">
+                <div className="col-lg-6 col-sm-12 mb-4">
                   <BlogCard />
                 </div>
-                <div className="col-6 mb-4">
+                <div className="col-lg-6 col-sm-12 mb-4">
                   <BlogCard />
                 </div>
               </div>

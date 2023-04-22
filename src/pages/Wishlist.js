@@ -8,7 +8,7 @@ const Whishlists = () => {
       <Meta title={"Whishlists"} />
       <BreadCrumb title="Whishlists" />
       <div className="whishlist-wrapper home-wrapper-2 py-5">
-        <div className="container-xxl">
+        <div className="container-sm">
           <div className="row">
             <div className="col-3">
               <div className="wishlist-card position-relative ">

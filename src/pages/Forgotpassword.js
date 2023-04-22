@@ -9,7 +9,7 @@ const Forgotpassword = () => {
       <Meta title={"Forgot Password"} />
       <BreadCrumb title="Forgot Password" />
       <div className="login-wrapper me-wrapper-2 py-5">
-        <div className="container-xxl">
+        <div className="container-sm">
           <div className="row">
             <div className="col-12 d-flex align-items-center justify-content-center">
               <div className="login-card login-card2 d-flex flex-column justify-content-around align-items-center">

@@ -64,6 +64,8 @@ const EditProduct = () => {
       .then((res) => {
         alert("saved");
         navigate("/product");
+        window.location.reload();
+
       })
       .catch((err) => {
         console.log(err.message);

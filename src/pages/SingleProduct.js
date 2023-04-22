@@ -22,7 +22,7 @@ const SingleProduct = ({ userType }) => {
 
   const DeleteProduct = (id) => {
     if (window.confirm("delete_product")) {
-      fetch("http://localhost:8000/products/" + id, {
+      fetch("https://apitest-lovat.vercel.app/products/" + id, {
         method: "DELETE",
       })
         .then((res) => {

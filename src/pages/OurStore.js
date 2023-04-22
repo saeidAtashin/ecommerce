@@ -15,7 +15,7 @@ const OurStore = ({ userType }) => {
   const [prodData, setProdData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/products/")
+    fetch("https://apitest-lovat.vercel.app/products/")
       .then((res) => {
         return res.json();
       })

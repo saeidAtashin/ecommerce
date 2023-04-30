@@ -70,114 +70,15 @@ const OurStore = ({ userType }) => {
       <div className="store-wrapper home-wrapper-2 py-5">
         <div className="container-sm">
           <div className="row">
-            {/* <div className="col-3">
+            <div className={`${windowSize.width < 1560 ?"d-none" :   "col-3"}`}>
 
 
-              <Accordion defaultActiveKey="0">
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="0">
-                    Shop By Categories
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-                      <ul className="ps-0">
-                        <li> Watch </li>
-                        <li> Tv </li>
-                        <li> Camera </li>
-                        <li> Laptop </li>
-                      </ul>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="1">
-                    Filter by
-                  </Accordion.Toggle>
-                  <Accordion.Collapse eventKey="1">
-                    <Card.Body>
-                      <h5 className="sub-title"> Availablity </h5>
-                      <div>
-                        <div className="form-check">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id=""
-                          />
-                          <label className="form-check-label" htmlFor="">
-                            In Stock {1}
-                          </label>
-                        </div>
-                        <div className="form-check">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id=""
-                          />
-                          <label className="form-check-label" htmlFor="">
-                            Out of Stock {0}
-                          </label>
-                        </div>
-                      </div>
-                      <h5 className="sub-title"> Price </h5>
-                      <div className="d-flex align-items-center gap-10">
-                        <div className="form-floating">
-                          <input
-                            type="email"
-                            className="form-control text-input-center"
-                            id="floatingInput"
-                            placeholder="From"
-                          />
-                          <label htmlFor="floatingInput"> From </label>
-                        </div>
-                        <div className="form-floating">
-                          <input
-                            type="email"
-                            className="form-control"
-                            id="floatingInput1"
-                            placeholder="To"
-                          />
-                          <label htmlFor="floatingInput1"> To </label>
-                        </div>
-                      </div>
-                      <h5 className="sub-title"> Colors </h5>
-                      <div>
-                        <Color />
-                      </div>
-                      <h5 className="sub-title"> Size </h5>
-                      <div>
-                        <div className="form-check">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="color-1"
-                          />
-                          <label className="form-check-label" htmlFor="color-1">
-                            S {2}
-                          </label>
-                        </div>
-                        <div className="form-check">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="color-2"
-                          />
-                          <label className="form-check-label" htmlFor="color-2">
-                            M {2}
-                          </label>
-                        </div>
-                      </div>
-                    </Card.Body>
-                  </Accordion.Collapse>
-                </Card>
-              </Accordion>
+
+
 
               <div
                 className={`filter-card mb-3 ${
-                  windowSize.width < 1000 ? "d-none" : ""
+                  windowSize.width < 1560 ? "d-none" : ""
                 }`}
               >
                 <h3 className="filter-title"> Shop By Categories </h3>
@@ -193,7 +94,7 @@ const OurStore = ({ userType }) => {
 
               <div
                 className={`filter-card mb-3 ${
-                  windowSize.width < 1000 ? "d-none" : ""
+                  windowSize.width < 1560 ? "d-none" : ""
                 }`}
               >
                 <h3 className="filter-title"> Filter by </h3>
@@ -280,7 +181,7 @@ const OurStore = ({ userType }) => {
 
               <div
                 className={`filter-card mb-3 ${
-                  windowSize.width < 1000 ? "d-none" : ""
+                  windowSize.width < 1560 ? "d-none" : ""
                 }`}
               >
                 <h3 className="filter-title"> Product Tags </h3>
@@ -304,7 +205,7 @@ const OurStore = ({ userType }) => {
 
               <div
                 className={`filter-card mb-3 ${
-                  windowSize.width < 1000 ? "d-none" : ""
+                  windowSize.width < 1560 ? "d-none" : ""
                 }`}
               >
                 <h3 className="filter-title"> Random Product </h3>
@@ -358,9 +259,10 @@ const OurStore = ({ userType }) => {
                 </div>
               </div>
 
-            </div> */}
+              </div>
 
-            <div className={` ${windowSize.width < 1000 ? "col-12" : "col-9"}`}>
+
+            <div className={` ${windowSize.width < 1560 ? "col-12" : "col-9"}`}>
               <div className="filter-sort-grid MB-4">
                 <div className="d-flex justify-content-between align-items-center">
                   <div className="d-flex align-items-center gap-10">
@@ -463,11 +365,12 @@ const OurStore = ({ userType }) => {
                     userType={userType}
                   />
                 </div>
-              </div>
+              {/* </div> */}
+            </div>
+            </div>
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };

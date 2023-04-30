@@ -5,7 +5,7 @@ import ReactStars from "react-rating-stars-component";
 import ProductCard from "../components/ProductCard";
 import Color from "../components/Color";
 import { useTranslation } from "react-i18next";
-import Pagination from "../components/Pagination";
+import { Accordion, Card } from "react-bootstrap";
 
 const OurStore = ({ userType }) => {
   const [grid, setGrid] = useState(4);
@@ -27,24 +27,177 @@ const OurStore = ({ userType }) => {
       });
   }, []);
 
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (windowSize.width < 1560) {
+      setGrid(4);
+    }
+    if (windowSize.width < 1406) {
+      setGrid(6);
+    }
+    if (windowSize.width < 1205) {
+      setGrid(12);
+    }
+  }, [windowSize]);
+
   return (
     <>
+      <div>
+        <p>Grid: {grid}</p>
+
+        <p>Window width: {windowSize.width}</p>
+        <p>Window height: {windowSize.height}</p>
+      </div>
+
       <Meta title={t("our_store")} />
       <BreadCrumb title={t("our_store")} />
       <div className="store-wrapper home-wrapper-2 py-5">
         <div className="container-sm">
           <div className="row">
-            <div className="col-3">
-              <div className="filter-card mb-3">
+
+            
+            {/* <div className="col-3">
+
+
+              <Accordion defaultActiveKey="0">
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="0">
+                    Shop By Categories
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0">
+                    <Card.Body>
+                      <ul className="ps-0">
+                        <li> Watch </li>
+                        <li> Tv </li>
+                        <li> Camera </li>
+                        <li> Laptop </li>
+                      </ul>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="1">
+                    Filter by
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="1">
+                    <Card.Body>
+                      <h5 className="sub-title"> Availablity </h5>
+                      <div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id=""
+                          />
+                          <label className="form-check-label" htmlFor="">
+                            In Stock {1}
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id=""
+                          />
+                          <label className="form-check-label" htmlFor="">
+                            Out of Stock {0}
+                          </label>
+                        </div>
+                      </div>
+                      <h5 className="sub-title"> Price </h5>
+                      <div className="d-flex align-items-center gap-10">
+                        <div className="form-floating">
+                          <input
+                            type="email"
+                            className="form-control text-input-center"
+                            id="floatingInput"
+                            placeholder="From"
+                          />
+                          <label htmlFor="floatingInput"> From </label>
+                        </div>
+                        <div className="form-floating">
+                          <input
+                            type="email"
+                            className="form-control"
+                            id="floatingInput1"
+                            placeholder="To"
+                          />
+                          <label htmlFor="floatingInput1"> To </label>
+                        </div>
+                      </div>
+                      <h5 className="sub-title"> Colors </h5>
+                      <div>
+                        <Color />
+                      </div>
+                      <h5 className="sub-title"> Size </h5>
+                      <div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="color-1"
+                          />
+                          <label className="form-check-label" htmlFor="color-1">
+                            S {2}
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="color-2"
+                          />
+                          <label className="form-check-label" htmlFor="color-2">
+                            M {2}
+                          </label>
+                        </div>
+                      </div>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+              </Accordion>
+
+              <div
+                className={`filter-card mb-3 ${
+                  windowSize.width < 1000 ? "d-none" : ""
+                }`}
+              >
                 <h3 className="filter-title"> Shop By Categories </h3>
                 <div>
                   <ul className="ps-0">
-                    <li> Watch </li> <li> Tv </li> <li> Camera </li>
+                    <li> Watch </li>
+                    <li> Tv </li>
+                    <li> Camera </li>
                     <li> Laptop </li>
                   </ul>
                 </div>
               </div>
-              <div className="filter-card mb-3">
+
+              <div
+                className={`filter-card mb-3 ${
+                  windowSize.width < 1000 ? "d-none" : ""
+                }`}
+              >
                 <h3 className="filter-title"> Filter by </h3>
                 <div>
                   <h5 className="sub-title"> Availablity </h5>
@@ -125,7 +278,13 @@ const OurStore = ({ userType }) => {
                   </div>
                 </div>
               </div>
-              <div className="filter-card mb-3">
+
+
+              <div
+                className={`filter-card mb-3 ${
+                  windowSize.width < 1000 ? "d-none" : ""
+                }`}
+              >
                 <h3 className="filter-title"> Product Tags </h3>
                 <div>
                   <div className="product-tags d-flex flex-wrap align-items-center gap-10">
@@ -144,7 +303,12 @@ const OurStore = ({ userType }) => {
                   </div>
                 </div>
               </div>
-              <div className="filter-card">
+
+              <div
+                className={`filter-card mb-3 ${
+                  windowSize.width < 1000 ? "d-none" : ""
+                }`}
+              >
                 <h3 className="filter-title"> Random Product </h3>
                 <div>
                   <div className="random-products mb-0 d-flex align-items-center">
@@ -195,8 +359,14 @@ const OurStore = ({ userType }) => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-9">
+
+            </div> */}
+
+
+
+
+
+            <div className={` ${windowSize.width < 1000 ? "col-12" : "col-9"}`}>
               <div className="filter-sort-grid MB-4">
                 <div className="d-flex justify-content-between align-items-center">
                   <div className="d-flex align-items-center gap-10">
@@ -224,39 +394,60 @@ const OurStore = ({ userType }) => {
                     </select>
                   </div>
 
-                  <div className="d-flex align-items-center gap-10">
+                  <div className="d-flex align-items-center gap-10 ">
                     <p className="totalproducts mb-0">
                       {prodData.length} Products
                     </p>
-                    <div className="d-flex gap-10 align-items-center grid">
+                    <div
+                      className={`d-flex gap-10 align-items-center grid  ${
+                        windowSize.width < 1205 ? "d-none" : ""
+                      }`}
+                    >
                       <img
-                        onClick={() => {
-                          setGrid(3);
-                          setProductPerPage(8);
-                        }}
+                        onClick={
+                          windowSize.width > 1560
+                            ? () => {
+                                setGrid(3);
+                                setProductPerPage(8);
+                              }
+                            : null
+                        }
                         src="images/gr4.svg"
                         alt=""
-                        className="f-block img-fluid"
+                        className={`f-block img-fluid ${
+                          windowSize.width < 1560 ? "opacity-disable" : ""
+                        }`}
                       />
                       <img
-                        onClick={() => {
-                          setGrid(4);
-                          setProductPerPage(9);
-                        }}
+                        onClick={
+                          windowSize.width > 1560
+                            ? () => {
+                                setGrid(4);
+                                setProductPerPage(9);
+                              }
+                            : null
+                        }
                         src="images/gr3.svg"
                         alt=""
-                        className="f-block img-fluid"
+                        className={`f-block img-fluid ${
+                          windowSize.width < 1406 ? "opacity-disable" : ""
+                        }`}
                       />
                       <img
-                        onClick={() => {
-                          setGrid(6);
-                          setProductPerPage(6);
-                        }}
+                        onClick={
+                          windowSize.width > 1560
+                            ? () => {
+                                setGrid(6);
+                                setProductPerPage(6);
+                              }
+                            : null
+                        }
                         src="images/gr2.svg"
                         alt=""
-                        className="f-block img-fluid"
+                        className={`f-block img-fluid ${
+                          windowSize.width < 1205 ? "opacity-disable " : ""
+                        }`}
                       />
-
                       <img
                         onClick={() => {
                           setGrid(12);

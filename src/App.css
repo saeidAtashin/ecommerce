@@ -932,6 +932,9 @@ button {
   font-weight: 500;
 }
 
+.opacity-disable{
+  opacity: 0.3;
+}
 
 
 #bars {

@@ -107,7 +107,7 @@ const Header = ({ username }) => {
       </header>
       <header className="header-upper py-3 ">
         <div className="container-sm ">
-          <div className=" navbar navbar-expand-md d-flex row align-items-center justify-content-center border-00">
+          <div className=" navbar navbar-expand-xl d-flex row align-items-center justify-content-center border-00">
             <button
               type="button"
               data-bs-toggle="collapse"

@@ -6,6 +6,7 @@ import ProductCard from "../components/ProductCard";
 import Color from "../components/Color";
 import { useTranslation } from "react-i18next";
 import { Accordion, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const OurStore = ({ userType }) => {
   const [grid, setGrid] = useState(4);
@@ -58,20 +59,17 @@ const OurStore = ({ userType }) => {
 
   return (
     <>
-      <div>
-        <p>Grid: {grid}</p>
-
-        <p>Window width: {windowSize.width}</p>
-        <p>Window height: {windowSize.height}</p>
-      </div>
-
+      <Link
+        to="admin/addproduct"
+        className="text-dark mb-0 container-sm col-3 d-flex align-items-center justify-content-center btn btn-warning d-none d-none-off"
+      >
+        <p className="mb-0">ADMIN</p>
+      </Link>
       <Meta title={t("our_store")} />
       <BreadCrumb title={t("our_store")} />
       <div className="store-wrapper home-wrapper-2 py-5">
         <div className="container-sm">
           <div className="row">
-
-            
             {/* <div className="col-3">
 
 
@@ -361,10 +359,6 @@ const OurStore = ({ userType }) => {
               </div>
 
             </div> */}
-
-
-
-
 
             <div className={` ${windowSize.width < 1000 ? "col-12" : "col-9"}`}>
               <div className="filter-sort-grid MB-4">

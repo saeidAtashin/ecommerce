@@ -1270,17 +1270,20 @@ width: 100%;
 
 /* mediaqueru */
 
-@media (max-width: 1172px){
+@media (max-width: 1560px){
   
-  body{
-    /* background-color: var(--bannertext-color); */
-  }
+
   .dropdown{
     display: none;
   }
   .header-top-strip {
     display: none;
 
+  }
+
+  .d-none-off {
+
+    display: block !important;
   }
   
   .border-00{

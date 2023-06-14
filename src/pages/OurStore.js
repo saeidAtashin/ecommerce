@@ -12,8 +12,13 @@ const OurStore = ({ userType }) => {
   const [grid, setGrid] = useState(4);
   const { t } = useTranslation();
   const [productPerPage, setProductPerPage] = useState(9);
+  const [selectedValue, setSelectedValue] = useState("numberOfSell");
 
   const [prodData, setProdData] = useState([]);
+
+  // const handleSelectChange = (event) => {
+  //   setSelectedValue(event.target.value);
+  // };
 
   useEffect(() => {
     fetch("https://apitest-lovat.vercel.app/products/")
@@ -57,6 +62,27 @@ const OurStore = ({ userType }) => {
     }
   }, [windowSize]);
 
+  // Update data based on the selected value
+  const handleSelectChange = () => {
+    if (selectedValue === "best-selling") {
+      setSelectedValue("numberOfSell");
+    } else if (selectedValue === "featured") {
+      setSelectedValue("isOffer");
+    } else if (selectedValue === "title-ascending") {
+      setSelectedValue("name");
+    } else if (selectedValue === "title-descending") {
+      setSelectedValue("-name");
+    } else if (selectedValue === "price-ascending") {
+      setSelectedValue("org_price");
+    } else if (selectedValue === "price-descending") {
+      setSelectedValue("-org_price");
+    } else if (selectedValue === "created-ascending") {
+      setSelectedValue("id");
+    } else if (selectedValue === "created-descending") {
+      setSelectedValue("-id");
+    }
+  };
+
   return (
     <>
       <Link
@@ -70,12 +96,7 @@ const OurStore = ({ userType }) => {
       <div className="store-wrapper home-wrapper-2 py-5">
         <div className="container-sm">
           <div className="row">
-            <div className={`${windowSize.width < 1560 ?"d-none" :   "col-3"}`}>
-
-
-
-
-
+            <div className={`${windowSize.width < 1560 ? "d-none" : "col-3"}`}>
               <div
                 className={`filter-card mb-3 ${
                   windowSize.width < 1560 ? "d-none" : ""
@@ -178,7 +199,6 @@ const OurStore = ({ userType }) => {
                 </div>
               </div>
 
-
               <div
                 className={`filter-card mb-3 ${
                   windowSize.width < 1560 ? "d-none" : ""
@@ -258,9 +278,7 @@ const OurStore = ({ userType }) => {
                   </div>
                 </div>
               </div>
-
-              </div>
-
+            </div>
 
             <div className={` ${windowSize.width < 1560 ? "col-12" : "col-9"}`}>
               <div className="filter-sort-grid MB-4">
@@ -269,12 +287,15 @@ const OurStore = ({ userType }) => {
                     <p className="mb-0" style={{ width: "100px" }}>
                       Sort By:
                     </p>
-                    <select name="" id="" className="form-control form-select">
-                      <option value="manual">Featured</option>
-                      <option value="best-selling" defaultValue="selected">
-                        {" "}
-                        Best Selling{" "}
-                      </option>
+                    <select
+                      name=""
+                      id="mySelect"
+                      className="form-control form-select"
+                      defaultValue={selectedValue}
+                      onChange={handleSelectChange}
+                    >
+                      <option value="best-selling">Best Selling</option>
+                      <option value="featured">Featured</option>
                       <option value="title-ascending">
                         Alphabetically, A-Z
                       </option>
@@ -286,7 +307,9 @@ const OurStore = ({ userType }) => {
                       <option value="price-descending">Price, high-low</option>
 
                       <option value="created-ascending">Date, old-new</option>
-                      <option value="created-descending">Date, new-old</option>
+                      <option value="created-descending" selected>
+                        Date, new-old
+                      </option>
                     </select>
                   </div>
 
@@ -363,14 +386,15 @@ const OurStore = ({ userType }) => {
                     grid={grid}
                     productPerPage={productPerPage}
                     userType={userType}
+                    onSelectedValueChange={handleSelectChange}
                   />
                 </div>
-              {/* </div> */}
-            </div>
-            </div>
+                {/* </div> */}
+              </div>
             </div>
           </div>
         </div>
+      </div>
     </>
   );
 };

@@ -1,16 +1,109 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import BlogCard from "../components/BlogCard";
 import ProductCard from "../components/ProductCard";
 import SpecialProduct from "../components/SpecialProduct";
 import Meta from "../components/Meta";
+import Modal from "../components/Modal";
 
 const Home = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [thanksShow, setThanksShow] = useState(false);
+  const [noMessage, setNoMessage] = useState(false);
+  const handleInputChange = (e) => {
+    setPhoneNumber(e.target.value);
+    localStorage.setItem("myData", true);
+
+    if (e.target.value == !null) {
+      setNoMessage(true);
+    } else {
+      setNoMessage(false);
+    }
+  };
+
+  const handleButtonClick = () => {
+    if (phoneNumber) {
+      fetch(
+        `http://ippanel.com:8080/?apikey=g1Kk8mw70X2LoPjApu8v-kk4ez0fk5AqrjnE6jZC8DM=&pid=pzasny0splmcw4i&fnum=3000505&tnum=${phoneNumber}&p1=test&v1=تست`
+      );
+      setThanksShow(true);
+      setTimeout(() => {
+        setPhoneNumber("");
+        setThanksShow(false);
+        handleCloseModal();
+        setNoMessage(false);
+      }, 2000);
+    } else {
+      setNoMessage(true);
+      setThanksShow(true);
+
+      setTimeout(() => {
+        console.log(phoneNumber);
+
+        setPhoneNumber("");
+        setThanksShow(false);
+        handleCloseModal();
+        setNoMessage(false);
+      }, 2000);
+    }
+  };
+
+  useEffect(() => {
+    const myData = localStorage.getItem("myData");
+    if (myData == "true") {
+      console.log("kooj");
+    } else {
+      handleOpenModal();
+    }
+  }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem('myData', false);
+  // }, []);
+
   return (
     <>
       <Meta title={"AtashinShop."} />
       <section className="home-wrapper-1 py-5">
+        <div>
+          <button onClick={handleOpenModal}>Recieve Message</button>
+          <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+            <div className="modal-container">
+              {thanksShow == false ? (
+                <>
+                  <label htmlFor="phoneNumber">Welcome Message</label>
+                  <input
+                    className="modal-input"
+                    type="text"
+                    id="phoneNumber"
+                    value={phoneNumber}
+                    onChange={handleInputChange}
+                    placeholder="Enter your phone number"
+                  />
+                  <button onClick={handleButtonClick} className="buttonsmall ">
+                    Submit
+                  </button>
+                </>
+              ) : (
+                <div
+                  className={` ${
+                    noMessage === false ? "thanks-message" : "no-message"
+                  }`}
+                ></div>
+              )}
+            </div>
+          </Modal>
+        </div>
+
         <div className="container-sm">
           <div className="row">
             <div className="col-lg-6 col-sm-12">
@@ -121,7 +214,9 @@ const Home = () => {
                   <img src="/images/service-05.png" alt="services" />
                   <div>
                     <h6>Afrodable Prices</h6>
-                    <p className="mb-0 displaynone">Get Factoru Default Price</p>
+                    <p className="mb-0 displaynone">
+                      Get Factoru Default Price
+                    </p>
                   </div>
                 </div>
                 <div className="d-flex align-items-center flex-sm-column2 justify-content-center">
@@ -207,7 +302,7 @@ const Home = () => {
       <section className="famous-wrapper py-5 home-wrapper-2">
         <div className="container-sm">
           <div className="row">
-          <div className="col-12">
+            <div className="col-12">
               <h3 className="section-heading mb-2">Featured Collection</h3>
             </div>
             <div className="col-lg-3 col-sm-12 mb-5 famous-card-t">
@@ -281,28 +376,21 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-          <div className="col-sm-12 col-lg-6 ">
-
-            <SpecialProduct />
-          </div>
-          <div className="col-sm-12 col-lg-6 ">
-
-            <SpecialProduct />
-          </div>
-          <div className="col-sm-12 col-lg-6 ">
-
-            <SpecialProduct />
-          </div>
-          <div className="col-sm-12 col-lg-6 ">
-
-            <SpecialProduct />
-          </div>
-
-
+            <div className="col-sm-12 col-lg-6 ">
+              <SpecialProduct />
+            </div>
+            <div className="col-sm-12 col-lg-6 ">
+              <SpecialProduct />
+            </div>
+            <div className="col-sm-12 col-lg-6 ">
+              <SpecialProduct />
+            </div>
+            <div className="col-sm-12 col-lg-6 ">
+              <SpecialProduct />
+            </div>
           </div>
         </div>
       </section>
-
 
       <section className="maque-wrapper py-5">
         <div className="container">

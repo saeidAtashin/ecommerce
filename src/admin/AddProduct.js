@@ -32,7 +32,7 @@ const AddProduct = () => {
       isOffer,
       description,
     };
-
+    
     fetch("https://apitest-lovat.vercel.app/products", {
       method: "POST",
       headers: { "content-type": "application/json" },

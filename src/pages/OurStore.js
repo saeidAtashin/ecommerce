@@ -18,7 +18,12 @@ const OurStore = ({ userType }) => {
 
   // const handleSelectChange = (event) => {
   //   setSelectedValue(event.target.value);
+  // 
   // };
+
+
+
+
 
   useEffect(() => {
     fetch("https://apitest-lovat.vercel.app/products/")
@@ -307,7 +312,7 @@ const OurStore = ({ userType }) => {
                       <option value="price-descending">Price, high-low</option>
 
                       <option value="created-ascending">Date, old-new</option>
-                      <option value="created-descending" selected>
+                      <option value="created-descending">
                         Date, new-old
                       </option>
                     </select>
@@ -389,7 +394,7 @@ const OurStore = ({ userType }) => {
                     onSelectedValueChange={handleSelectChange}
                   />
                 </div>
-                {/* </div> */}
+
               </div>
             </div>
           </div>

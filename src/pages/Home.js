@@ -8,6 +8,29 @@ import Meta from "../components/Meta";
 import Modal from "../components/Modal";
 
 const Home = () => {
+  var myHeaders = new Headers();
+  myHeaders.append(
+    "Authorization",
+    "AccessKey b46ttaaqVQ1DoO8aPOQyy5_chwmoZwcz9Oz6iZgzzLM="
+  );
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+    pattern_code: "p2hoyk9bkj",
+    originator: "+985000125475",
+    recipient: "+989368165125",
+    values: {
+      "verification-code": "تست ستتس",
+    },
+  });
+
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -32,9 +55,10 @@ const Home = () => {
 
   const handleButtonClick = () => {
     if (phoneNumber) {
-      fetch(
-        `http://ippanel.com:8080/?apikey=g1Kk8mw70X2LoPjApu8v-kk4ez0fk5AqrjnE6jZC8DM=&pid=pzasny0splmcw4i&fnum=3000505&tnum=${phoneNumber}&p1=test&v1=تست`
-      );
+      fetch("http://rest.ippanel.com/v1/messages/patterns/send", requestOptions)
+        .then((response) => response.text())
+        .then((result) => console.log(result))
+        .catch((error) => console.log("error", error));
       setThanksShow(true);
       setTimeout(() => {
         setPhoneNumber("");

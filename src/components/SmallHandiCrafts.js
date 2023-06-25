@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useGetAllProductsQuery } from "../toolkit/features/productApi";
+import { Link, useNavigate } from "react-router-dom";
 
 const SmallHandiCrafts = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
 
   const [numberOfShow, setNumberOfShow] = useState(1);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,6 +36,15 @@ const SmallHandiCrafts = () => {
     return <p>No banners available.</p>;
   }
 
+
+
+
+  const Openhandicraft = (id) => {
+    console.log("object");
+    navigate("/product/" + (id));
+
+  };
+
   return (
     <div className="d-flex gap-10 flex-wrap justify-content-between align-items-center">
       {console.log(data)}
@@ -46,6 +57,7 @@ const SmallHandiCrafts = () => {
           <div
             className="small-banner position-relative mt-2"
             key={bannerData.id}
+            onClick={(id) => Openhandicraft(bannerData.id)}
           >
             <img
               src={bannerData.def_img}
@@ -60,6 +72,9 @@ const SmallHandiCrafts = () => {
                 <br />
                 to<span className="to-price"> {bannerData.new_price} $ </span>.
               </p>
+              <Link className="button buttonsmall chane-gbuttom-place change-buttom-opacity">
+                More Details
+              </Link>
             </div>
           </div>
         ))

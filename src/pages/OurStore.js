@@ -80,12 +80,12 @@ const OurStore = ({ userType, data,id }) => {
 
   return (
     <>
-      <Link
+      {/* <Link
         to="admin/addproduct"
         className="text-dark mb-0 container-sm col-3 d-flex align-items-center justify-content-center btn btn-warning d-none d-none-off"
       >
         <p className="mb-0">ADMIN</p>
-      </Link>
+      </Link> */}
       <Meta title={t("our_store")} />
       <BreadCrumb title={t("our_store")} />
       <div className="store-wrapper home-wrapper-2 py-5">

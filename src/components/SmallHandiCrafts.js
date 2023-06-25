@@ -44,12 +44,12 @@ const SmallHandiCrafts = () => {
       ) : (
         filteredData.map((bannerData) => (
           <div
-            className="small-banner position-relative p-3"
+            className="small-banner position-relative mt-2"
             key={bannerData.id}
           >
             <img
               src={bannerData.def_img}
-              className="img-fluid rounded-3"
+              className="img-fluid rounded-3 img-flip"
               alt={bannerData.name}
             />
             <div className="small-banner-content">
@@ -58,7 +58,7 @@ const SmallHandiCrafts = () => {
               <p>
                 From {bannerData.org_price}
                 <br />
-                to $ {bannerData.new_price}.
+                to<span className="to-price"> {bannerData.new_price} $ </span>.
               </p>
             </div>
           </div>

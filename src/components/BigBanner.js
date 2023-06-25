@@ -32,7 +32,7 @@ const BigBanner = () => {
 
   return (
     <div onClick={Openhandicraft}>
-      <div className="main-banner position-relative p-3">
+      <div className="main-banner position-relative mt-3 ">
         <img
           src={bannerData.sec_img}
           className="img-fluid rounded-3 image-width"

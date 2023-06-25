@@ -147,7 +147,7 @@ const Header = ({ username }) => {
               </div>
             </div>
             <div
-              className="col-5 collapse navbar-collapse align-items-center "
+              className="col-5 collapsed-nav-response collapse navbar-collapse align-items-center "
               id="navbarFirst"
             >
               <div className="header-upper-links d-flex  align-items-center justify-content-between flex-xl-row flex-sm-column align-items-sm-start gap-sm-2 mt-sm-2">
@@ -165,7 +165,7 @@ const Header = ({ username }) => {
                 <div>
                   <Link
                     to="/Wishlists"
-                    className="d-flex align-items-center gap-10 text-white"
+                    className="d-flex img-small-collapse align-items-center gap-10 text-white"
                   >
                     <img src="/images/wishlist.svg" alt="wishlist" />
                     <p className="mb-0">

@@ -25,7 +25,7 @@ const Home = () => {
     originator: "+985000125475",
     recipient: phoneNumber,
     values: {
-      "test": "",
+      test: "",
     },
   });
 
@@ -102,7 +102,7 @@ const Home = () => {
     <>
       <Meta title={"AtashinShop."} />
       <section className="home-wrapper-1 py-5">
-        <div>
+        <div className="home-wrapper container-sm">
           <button onClick={handleOpenModal}>Recieve Message</button>
           <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
             <div className="modal-container">
@@ -156,41 +156,42 @@ const Home = () => {
           <div className="row">
             <div className="col-sm-12 ">
               <div className="services d-flex align-items-center justify-content-between">
-                <div className="d-flex align-items-center flex-sm-column2 justify-content-start ">
-                  <img src="/images/service.png" alt="services" />
+                <div className="d-flex align-items-center flex-sm-column2 justify-content-between ">
+                  <img src="/images/service.png" className="m-3 services-width" alt="services" />
                   <div>
                     <h6>Free Shipping</h6>
                     <p className="mb-0 displaynone">from all orders over $5</p>
                   </div>
                 </div>
-                <div className="d-flex align-items-center flex-sm-column2 justify-content-start">
-                  <img src="/images/service-03.png" alt="services" />
+                <div className="d-flex align-items-center flex-sm-column2 justify-content-between">
+                  <img src="/images/service-03.png" className="m-3 services-width" alt="services" />
                   <div>
-                    <h6>Daily Surprise Offers</h6>
-                    <p className="mb-0 displaynone">Save upto 25% off</p>
-                  </div>
-                </div>
-                <div className="d-flex align-items-center flex-sm-column2 justify-content-center">
-                  <img src="/images/service-04.png" alt="services" />
-                  <div>
-                    <h6>Support 24/7</h6>
+                    <h6>Support 24/7 </h6>
                     <p className="mb-0 displaynone">Shop with an expert</p>
                   </div>
                 </div>
-                <div className="d-flex align-items-center flex-sm-column2 justify-content-center">
-                  <img src="/images/service-05.png" alt="services" />
+                <div className="d-flex align-items-center flex-sm-column2 justify-content-between">
+                  <img src="/images/service-04.png" className="m-3 services-width" alt="services" />
                   <div>
-                    <h6>Afrodable Prices</h6>
+                    <h6>Daily Offers</h6>
+                    <p className="mb-0 displaynone">Save upto 25% off</p>
+                  </div>
+                </div>
+                <div className="d-flex align-items-center flex-sm-column2 justify-content-between">
+                  <img src="/images/service-05.png" className="m-3 services-width" alt="services" />
+                  <div>
+                    <h6>Secure Payments</h6>
                     <p className="mb-0 displaynone">
-                      Get Factoru Default Price
+                    100% Protected Payments
+                      
                     </p>
                   </div>
                 </div>
-                <div className="d-flex align-items-center flex-sm-column2 justify-content-center">
-                  <img src="/images/service-02.png" alt="services" />
+                <div className="d-flex align-items-center flex-sm-column2 justify-content-between">
+                  <img src="/images/service-02.png" className="m-3 services-width" alt="services" />
                   <div>
-                    <h6>Secure Payments</h6>
-                    <p className="mb-0 displaynone">100% Protected Payments</p>
+                    <h6>Afrodable Prices</h6>
+                    <p className="mb-0 displaynone">Get Factoru Default Price</p>
                   </div>
                 </div>
               </div>

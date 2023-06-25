@@ -1317,6 +1317,25 @@ width: 100%;
   margin: 15px;
 }
 
+
+.modal-label {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.modal-span {
+  text-align: center;
+  font-size: small;
+  color: var(--discount-color);
+  visibility: hidden;
+
+}
+
+.modal-container:hover > .modal-label > .modal-span {
+  visibility: visible;
+}
+
 .modal-container {
   display: flex;
   flex-direction: column;

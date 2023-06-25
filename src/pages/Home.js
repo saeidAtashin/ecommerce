@@ -16,16 +16,16 @@ const Home = () => {
   var myHeaders = new Headers();
   myHeaders.append(
     "Authorization",
-    "AccessKey b46ttaaqVQ1DoO8aPOQyy5_chwmoZwcz9Oz6iZgzzLM="
+    "AccessKey g1Kk8mw70X2LoPjApu8v-kk4ez0fk5AqrjnE6jZC8DM="
   );
   myHeaders.append("Content-Type", "application/json");
 
   var raw = JSON.stringify({
-    pattern_code: "p2hoyk9bkj",
+    pattern_code: "pzasny0splmcw4i",
     originator: "+985000125475",
     recipient: phoneNumber,
     values: {
-      "verification-code": "تست ستتس",
+      "test": "",
     },
   });
 
@@ -108,7 +108,15 @@ const Home = () => {
             <div className="modal-container">
               {thanksShow == false ? (
                 <>
-                  <label htmlFor="phoneNumber">Welcome Message</label>
+                  <label className="modal-label" htmlFor="phoneNumber">
+                    Welcome Message
+                    <br />
+                    <span className="modal-span">
+                      Because of filtering,
+                      <br />
+                      it only works locally
+                    </span>
+                  </label>
                   <input
                     className="modal-input"
                     type="text"
@@ -135,15 +143,10 @@ const Home = () => {
         <div className="container-sm">
           <div className="row">
             <div className="col-lg-6 col-sm-12">
-
-                <BigBanner />
+              <BigBanner />
             </div>
             <div className="col-lg-6 col-sm-12">
-
-                  <SmallHandiCrafts />
-
-
-
+              <SmallHandiCrafts />
             </div>
           </div>
         </div>

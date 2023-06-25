@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Meta from "../components/Meta";
 import BreadCrumb from "../components/BreadCrumb";
-import ProductCard from "../components/ProductCard";
 import ReactStars from "react-rating-stars-component";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useGetProductsByIdQuery } from "../toolkit/features/productApi";
+import { useGetAllProducts2Query } from "../toolkit/features/productApi";
 import { addToCart } from "../toolkit/features/cartSlice";
 
 const SingleProduct = ({ userType }) => {
   const { id } = useParams();
-  const { data, error, isLoading } = useGetProductsByIdQuery(id);
+  const { data, error, isLoading } = useGetAllProducts2Query(id);
   const dispatch = useDispatch();
 
   const [orderdProduct, setOrderdProduct] = useState(true);
@@ -19,7 +18,7 @@ const SingleProduct = ({ userType }) => {
 
   const DeleteProduct = (id) => {
     if (window.confirm("delete_product")) {
-      fetch("https://apitest-lovat.vercel.app/products/" + id, {
+      fetch("https://apitest-lovat.vercel.app/handicrafts/" + id, {
         method: "DELETE",
       })
         .then((res) => {
@@ -34,7 +33,7 @@ const SingleProduct = ({ userType }) => {
   };
 
   const handleAddToCart = (id) => {
-    console.log(id);
+    console.log(id[0]);
     dispatch(addToCart(id));
     navigate("/cart");
   };
@@ -320,7 +319,7 @@ const SingleProduct = ({ userType }) => {
                   </div>
                 </div>
                 <div className="row">
-                  <ProductCard />
+                  {/* <Handi1 /> */}
                 </div>
               </div>
             </section>

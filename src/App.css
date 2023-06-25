@@ -23,7 +23,11 @@
   font-weight: 500;
   margin-bottom: 30px;
 }
-
+.image-width{
+  /* width: 600px; */
+  /* height: 400px; */
+  object-fit: cover;
+}
 .card-wrapper {
   background-color: white;
   box-shadow: 0 0 10px #0000001a ;
@@ -194,6 +198,11 @@ line-height: 20px;
 
 }
 
+.main-banner-content h6 {
+  font-weight: 600;
+  
+}
+
 .main-banner-content {
   top:15%;
   left: 8%;
@@ -211,10 +220,12 @@ line-height: 20px;
 .main-banner-content p , Link {
   font-size: 16px;
   letter-spacing: 0.4px;
-  color: var(--downheader-color);
-  font-weight: 500;
+  color: #bf4900;
+  font-weight: 700;
   padding: 0;
   text-transform: none;
+  /* background-color: #bf49005c; */
+  margin-right: 50px;
 }
 
 /* small banner */
@@ -227,14 +238,23 @@ line-height: 20px;
   margin: 0 0 12px;
   letter-spacing: 0.3px;
   text-transform: uppercase;
-
+  background-color: #ffffff7b;
+  border-radius: 8px;
+  position: absolute;
+  top: 200%;
 }
 
 .small-banner-content {
-  top:50%;
+  position: absolute;
+  top: 30%;
   transform: translateY(-50%);
   left: 10%;
   font-size: 1.3vw;
+
+}
+
+.small-banner:hover > .small-banner-content{
+  opacity: 0.4;
 }
 
 .small-banner-content h5 {
@@ -243,20 +263,29 @@ line-height: 20px;
   font-weight: 500;
   padding: 0;
   text-transform: none;
+  background-color: #ffffff7b;
+  border-radius: 8px;
 }
+
+
+
 
 .small-banner-content p {
   font-size: 14px;
   letter-spacing: 0.4px;
   color: var(--downheader-color);
   font-weight: 500;
-  padding: 0;
-  text-transform: none;
+  padding: 0 !important;
+  /* text-transform: none; */
+  background-color: #ffffff7b;
+  border-radius: 8px;
 }
 
 .small-banner {
   width: 49%;
 }
+
+
 
 /* home wrapper2 */
 

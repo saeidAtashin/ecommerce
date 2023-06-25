@@ -3,25 +3,13 @@ import ReactStars from "react-rating-stars-component";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
 import { useDispatch } from "react-redux";
-import {
-  useGetAllProductsQuery,
-  useGetAllProducts2Query,
-  useGethandcraftproductsQuery,
-} from "../toolkit/features/productApi";
+import { useGetAllProductsQuery } from "../toolkit/features/productApi";
 import { addToCart } from "../toolkit/features/cartSlice";
-const ProductCard = ({
-  grid,
-  productPerPage,
-  userType,
-  selectedValue,
-  onSelectedValueChange,
-}) => {
+
+const ProductCard = ({ grid, productPerPage, userType, id }) => {
   const { data, error, isLoading } = useGetAllProductsQuery();
-  const { dataHandicraft, errorHandicraft, isLoadingHandicraft } =
-    useGetAllProducts2Query();
 
   console.log(data);
-  console.log(dataHandicraft);
 
   const dispatch = useDispatch();
 
@@ -36,8 +24,6 @@ const ProductCard = ({
       })
         .then((res) => {
           alert("REMOVED");
-
-          // fetch("http://ippanel.com:8080/?apikey=g1Kk8mw70X2LoPjApu8v-kk4ez0fk5AqrjnE6jZC8DM=&pid=pzasny0splmcw4i&fnum=3000505&tnum=09368165125&p1=test&v1=2121")
 
           window.location.reload();
         })

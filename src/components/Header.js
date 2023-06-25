@@ -134,8 +134,8 @@ const Header = ({ username }) => {
               <div className="input-group mb-0000 widthquery">
                 <input
                   type="text"
-                  // onChange={(e) => dispatch(setFilter(e.target.value))}
-                  // value={filter}
+
+                  
                   className="form-control py-2"
                   placeholder="Search Product Here"
                   aria-label="Search Product Here"

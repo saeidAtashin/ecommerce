@@ -6,8 +6,13 @@ import ProductCard from "../components/ProductCard";
 import SpecialProduct from "../components/SpecialProduct";
 import Meta from "../components/Meta";
 import Modal from "../components/Modal";
+import HandCraftProducts from "../components/HandCraftProducts";
+import SmallHandiCrafts from "../components/SmallHandiCrafts";
+import BigBanner from "../components/BigBanner";
 
 const Home = () => {
+  const [phoneNumber, setPhoneNumber] = useState("");
+
   var myHeaders = new Headers();
   myHeaders.append(
     "Authorization",
@@ -18,7 +23,7 @@ const Home = () => {
   var raw = JSON.stringify({
     pattern_code: "p2hoyk9bkj",
     originator: "+985000125475",
-    recipient: "+989368165125",
+    recipient: phoneNumber,
     values: {
       "verification-code": "تست ستتس",
     },
@@ -39,7 +44,6 @@ const Home = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-  const [phoneNumber, setPhoneNumber] = useState("");
   const [thanksShow, setThanksShow] = useState(false);
   const [noMessage, setNoMessage] = useState(false);
   const handleInputChange = (e) => {
@@ -84,7 +88,7 @@ const Home = () => {
   useEffect(() => {
     const myData = localStorage.getItem("myData");
     if (myData == "true") {
-      console.log("kooj");
+      // console.log("test");
     } else {
       handleOpenModal();
     }
@@ -131,79 +135,15 @@ const Home = () => {
         <div className="container-sm">
           <div className="row">
             <div className="col-lg-6 col-sm-12">
-              <div className="main-banner position-relative p-3">
-                <img
-                  src="../images/main-banner-1.jpg"
-                  className="img-fluid rounded-3"
-                  alt="main-banner"
-                />
-                <div className="main-banner-content position-absolute">
-                  <h4>SUPERCHARGED FOR PROS.</h4>
-                  <h5>ipad s13+ Pro.</h5>
-                  <p>From $999.00 or $41.62/mo. </p>
-                  <Link className="button buttonsmall">BUY NOW</Link>
-                </div>
-              </div>
+
+                <BigBanner />
             </div>
             <div className="col-lg-6 col-sm-12">
-              <div className="d-flex gap-10 flex-wrap justify-content-between align-items-center">
-                <div className="small-banner position-relative p-3">
-                  <img
-                    src="../images/catbanner-01.jpg"
-                    className="img-fluid rounded-3"
-                    alt="main banner"
-                  />
-                  <div className="small-banner-content position-absolute">
-                    <h4>best sales</h4>
-                    <h5>Laptops Max</h5>
-                    <p>
-                      From $999.00 <br /> or $41.62/mo.{" "}
-                    </p>
-                  </div>
-                </div>
-                <div className="small-banner position-relative p-3">
-                  <img
-                    src="../images/catbanner-02.jpg"
-                    className="img-fluid rounded-3"
-                    alt="main banner"
-                  />
-                  <div className="small-banner-content position-absolute">
-                    <h4>New arrival</h4>
-                    <h5>Buy IPad Air</h5>
-                    <p>
-                      From $99.00 <br /> or $41.62/mo.{" "}
-                    </p>
-                  </div>
-                </div>
-                <div className="small-banner position-relative p-3">
-                  <img
-                    src="../images/catbanner-03.jpg"
-                    className="img-fluid rounded-3"
-                    alt="main banner"
-                  />
-                  <div className="small-banner-content position-absolute">
-                    <h4>best sales</h4>
-                    <h5>ipad s13+ Pro.</h5>
-                    <p>
-                      From $999.00 <br /> or $41.62/mo.{" "}
-                    </p>
-                  </div>
-                </div>
-                <div className="small-banner position-relative p-3">
-                  <img
-                    src="../images/catbanner-04.jpg"
-                    className="img-fluid rounded-3"
-                    alt="main banner"
-                  />
-                  <div className="small-banner-content position-absolute">
-                    <h4>SUPERCHARGED FOR PROS.</h4>
-                    <h5>ipad s13+ Pro.</h5>
-                    <p>
-                      From $999.00 <br /> or $41.62/mo.{" "}
-                    </p>
-                  </div>
-                </div>
-              </div>
+
+                  <SmallHandiCrafts />
+
+
+
             </div>
           </div>
         </div>

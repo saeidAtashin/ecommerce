@@ -7,8 +7,9 @@ import Color from "../components/Color";
 import { useTranslation } from "react-i18next";
 import { Accordion, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import HOCSearch from "../components/HOCSearch";
 
-const OurStore = ({ userType }) => {
+const OurStore = ({ userType, data,id }) => {
   const [grid, setGrid] = useState(4);
   const { t } = useTranslation();
   const [productPerPage, setProductPerPage] = useState(9);
@@ -25,18 +26,7 @@ const OurStore = ({ userType }) => {
 
 
 
-  useEffect(() => {
-    fetch("https://apitest-lovat.vercel.app/products/")
-      .then((res) => {
-        return res.json();
-      })
-      .then((resp) => {
-        setProdData(resp);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
+ 
 
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -320,7 +310,7 @@ const OurStore = ({ userType }) => {
 
                   <div className="d-flex align-items-center gap-10 ">
                     <p className="totalproducts mb-0">
-                      {prodData.length} Products
+                      {data.length} Products
                     </p>
                     <div
                       className={`d-flex gap-10 align-items-center grid  ${
@@ -392,6 +382,7 @@ const OurStore = ({ userType }) => {
                     productPerPage={productPerPage}
                     userType={userType}
                     onSelectedValueChange={handleSelectChange}
+                    id={id}
                   />
                 </div>
 
@@ -404,4 +395,6 @@ const OurStore = ({ userType }) => {
   );
 };
 
-export default OurStore;
+const NewOurStore = HOCSearch(OurStore, "users")
+
+export default NewOurStore;

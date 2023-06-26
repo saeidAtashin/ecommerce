@@ -5,28 +5,19 @@ import ReactStars from "react-rating-stars-component";
 import ProductCard from "../components/ProductCard";
 import Color from "../components/Color";
 import { useTranslation } from "react-i18next";
-import { Accordion, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import HOCSearch from "../components/HOCSearch";
 
-const OurStore = ({ userType, data,id }) => {
+const OurStore = ({ userType, data, id }) => {
   const [grid, setGrid] = useState(4);
   const { t } = useTranslation();
   const [productPerPage, setProductPerPage] = useState(9);
   const [selectedValue, setSelectedValue] = useState("numberOfSell");
-
-  const [prodData, setProdData] = useState([]);
+  const filterItem = "brand";
 
   // const handleSelectChange = (event) => {
   //   setSelectedValue(event.target.value);
-  // 
+  //
   // };
-
-
-
-
-
- 
 
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -78,14 +69,12 @@ const OurStore = ({ userType, data,id }) => {
     }
   };
 
+  const unique = [
+    ...new Map(data.map((item) => [item[filterItem], item])).values(),
+  ];
+
   return (
     <>
-      {/* <Link
-        to="admin/addproduct"
-        className="text-dark mb-0 container-sm col-3 d-flex align-items-center justify-content-center btn btn-warning d-none d-none-off"
-      >
-        <p className="mb-0">ADMIN</p>
-      </Link> */}
       <Meta title={t("our_store")} />
       <BreadCrumb title={t("our_store")} />
       <div className="store-wrapper home-wrapper-2 py-5">
@@ -100,10 +89,19 @@ const OurStore = ({ userType, data,id }) => {
                 <h3 className="filter-title"> Shop By Categories </h3>
                 <div>
                   <ul className="ps-0">
-                    <li> Watch </li>
-                    <li> Tv </li>
-                    <li> Camera </li>
-                    <li> Laptop </li>
+                    {unique?.map((bannerData) => {
+                      const filteredData = data.filter(
+                        (item) => item[filterItem] === bannerData[filterItem]
+                      );
+                      return (
+                        <>
+                          <li>
+                            {bannerData[filterItem]}
+                            <span className="shop-categories">{filteredData.length}</span>
+                          </li>
+                        </>
+                      );
+                    })}
                   </ul>
                 </div>
               </div>
@@ -302,16 +300,12 @@ const OurStore = ({ userType, data,id }) => {
                       <option value="price-descending">Price, high-low</option>
 
                       <option value="created-ascending">Date, old-new</option>
-                      <option value="created-descending">
-                        Date, new-old
-                      </option>
+                      <option value="created-descending">Date, new-old</option>
                     </select>
                   </div>
 
                   <div className="d-flex align-items-center gap-10 ">
-                    <p className="totalproducts mb-0">
-                      {data.length} Products
-                    </p>
+                    <p className="totalproducts mb-0">{data.length} Products</p>
                     <div
                       className={`d-flex gap-10 align-items-center grid  ${
                         windowSize.width < 1205 ? "d-none" : ""
@@ -385,7 +379,6 @@ const OurStore = ({ userType, data,id }) => {
                     id={id}
                   />
                 </div>
-
               </div>
             </div>
           </div>
@@ -395,6 +388,6 @@ const OurStore = ({ userType, data,id }) => {
   );
 };
 
-const NewOurStore = HOCSearch(OurStore, "users")
+const NewOurStore = HOCSearch(OurStore, "users");
 
 export default NewOurStore;

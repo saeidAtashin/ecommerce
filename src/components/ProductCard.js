@@ -78,7 +78,9 @@ const ProductCard = ({ grid, productPerPage, userType, id }) => {
               <div
                 className={`product-card position-relative ${
                   grid === 12
-                    ? "d-flex align-items-center justify-content-around "
+                    ? "height-force-small d-flex align-items-center justify-content-around "
+                    : grid === 3
+                    ? "height-force-big d-block"
                     : "d-block"
                 } `}
               >
@@ -109,7 +111,7 @@ const ProductCard = ({ grid, productPerPage, userType, id }) => {
                   />
                 </div>
                 <div className="product-details ">
-                  <h5 className="brand">{item.name}</h5>
+                  <h5 className="brand">{truncateString(item.name, 23)}</h5>
                   <h6 className="brand">{item.brand}</h6>
                   <h5
                     className="product-title"
@@ -129,7 +131,7 @@ const ProductCard = ({ grid, productPerPage, userType, id }) => {
                   />
                   <p
                     className={`description ${
-                      grid === 12 ? "d-block" : "d-none"
+                      grid === 12 ? "d-block " : "d-none"
                     }`}
                   >
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.

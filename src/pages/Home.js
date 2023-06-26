@@ -10,6 +10,10 @@ import Brands from "../components/Brands";
 
 const Home = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [thanksShow, setThanksShow] = useState(false);
+  const [noMessage, setNoMessage] = useState(false);
+
 
   var myHeaders = new Headers();
   myHeaders.append(
@@ -34,7 +38,6 @@ const Home = () => {
     redirect: "follow",
   };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -42,8 +45,7 @@ const Home = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-  const [thanksShow, setThanksShow] = useState(false);
-  const [noMessage, setNoMessage] = useState(false);
+
   const handleInputChange = (e) => {
     setPhoneNumber(e.target.value);
     localStorage.setItem("myData", true);
@@ -86,16 +88,12 @@ const Home = () => {
   useEffect(() => {
     const myData = localStorage.getItem("myData");
     if (myData === "true") {
-      // console.log("test");
     } else {
       handleOpenModal();
     }
   }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem('myData', false);
-  // }, []);
-
+ 
   return (
     <>
       <Meta title={"AtashinShop."} />
@@ -155,41 +153,60 @@ const Home = () => {
             <div className="col-sm-12 ">
               <div className="services d-flex align-items-center justify-content-between">
                 <div className="d-flex align-items-center flex-sm-column2 justify-content-between ">
-                  <img src="/images/service.png" className="m-3 services-width" alt="services" />
+                  <img
+                    src="/images/service.png"
+                    className="m-3 services-width"
+                    alt="services"
+                  />
                   <div>
                     <h6>Free Shipping</h6>
                     <p className="mb-0 displaynone">from all orders over $5</p>
                   </div>
                 </div>
                 <div className="d-flex align-items-center flex-sm-column2 justify-content-between">
-                  <img src="/images/service-03.png" className="m-3 services-width" alt="services" />
+                  <img
+                    src="/images/service-03.png"
+                    className="m-3 services-width"
+                    alt="services"
+                  />
                   <div>
                     <h6>Support 24/7 </h6>
                     <p className="mb-0 displaynone">Shop with an expert</p>
                   </div>
                 </div>
                 <div className="d-flex align-items-center flex-sm-column2 justify-content-between">
-                  <img src="/images/service-04.png" className="m-3 services-width" alt="services" />
+                  <img
+                    src="/images/service-04.png"
+                    className="m-3 services-width"
+                    alt="services"
+                  />
                   <div>
                     <h6>Daily Offers</h6>
                     <p className="mb-0 displaynone">Save upto 25% off</p>
                   </div>
                 </div>
                 <div className="d-flex align-items-center flex-sm-column2 justify-content-between">
-                  <img src="/images/service-05.png" className="m-3 services-width" alt="services" />
+                  <img
+                    src="/images/service-05.png"
+                    className="m-3 services-width"
+                    alt="services"
+                  />
                   <div>
                     <h6>Secure Payments</h6>
-                    <p className="mb-0 displaynone">
-                    100% Protected Payments
-                      
-                    </p>
+                    <p className="mb-0 displaynone">100% Protected Payments</p>
                   </div>
                 </div>
                 <div className="d-flex align-items-center flex-sm-column2 justify-content-between">
-                  <img src="/images/service-02.png" className="m-3 services-width" alt="services" />
+                  <img
+                    src="/images/service-02.png"
+                    className="m-3 services-width"
+                    alt="services"
+                  />
                   <div>
                     <h6>Afrodable Prices</h6>
-                    <p className="mb-0 displaynone">Get Factoru Default Price</p>
+                    <p className="mb-0 displaynone">
+                      Get Factoru Default Price
+                    </p>
                   </div>
                 </div>
               </div>
@@ -201,7 +218,7 @@ const Home = () => {
         <div className="container-sm">
           <div className="row">
             <div className="col-sm-12">
-<Brands />
+              <Brands />
             </div>
           </div>
         </div>
@@ -284,8 +301,7 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-
-              <SpecialProduct />
+            <SpecialProduct />
           </div>
         </div>
       </section>

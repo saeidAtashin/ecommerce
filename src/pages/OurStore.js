@@ -230,11 +230,14 @@ const OurStore = ({ userType, data, id }) => {
               >
                 <h3 className="filter-title"> Random Product </h3>
                 <div>
-                    {randomProduct?.map((item) => {
-                      return (
-                        <>
-                        <div className="random-products mb-0 d-flex align-items-center">
-                          <div className="w-50"  key={item.id} >
+                  {randomProduct?.map((item) => {
+                    return (
+                      <>
+                        <div
+                          key={item.id}
+                          className="random-products mb-0 d-flex align-items-center"
+                        >
+                          <div className="w-50">
                             <img
                               src={item.def_img}
                               alt={item.name}
@@ -255,33 +258,10 @@ const OurStore = ({ userType, data, id }) => {
                             </h5>
                             <p> $ {item.org_price} </p>
                           </div>
-                  </div>
-                        </>
-                      );
-                    })}
-                  <div className="random-products d-flex">
-                    <div className="w-50 ">
-                      <img
-                        src="images/watch.jpg"
-                        alt="watch"
-                        className="img-fluid"
-                      />
-                    </div>
-                    <div className="w-50 ">
-                      <h5>
-                        Kids headphones bulk 10 pack multi colored for students
-                        <ReactStars
-                          classNames="ReactStars"
-                          count={5}
-                          value={3}
-                          edit={false}
-                          size={24}
-                          activeColor="#ffd700"
-                        />
-                      </h5>
-                      <p> $ 300 </p>
-                    </div>
-                  </div>
+                        </div>
+                      </>
+                    );
+                  })}
                 </div>
               </div>
             </div>

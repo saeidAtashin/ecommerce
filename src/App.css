@@ -301,7 +301,9 @@ font-weight: 500;
 .img-flip {
   transform: scaleX(-1)
 }
-
+/* .img-product-card-size {
+  width: ;
+} */
 
 .small-banner-content p {
   font-size: 14px;

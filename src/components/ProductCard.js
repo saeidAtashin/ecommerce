@@ -39,6 +39,13 @@ const ProductCard = ({ grid, productPerPage, userType, id }) => {
     navigate("/editproduct/" + id);
   };
 
+  const truncateString = (str, maxLength) => {
+    if (str.length > maxLength) {
+      return str.substring(0, maxLength) + "...";
+    }
+    return str;
+  };
+
   const handleAddToCart = (item) => {
     console.log(item);
     dispatch(addToCart(item));
@@ -91,7 +98,7 @@ const ProductCard = ({ grid, productPerPage, userType, id }) => {
                     src={item.def_img}
                     alt={item.name}
                     style={{ scale: "0.8", height: "275px" }}
-                    className="img-fluid "
+                    className="img-fluid img-product-card-size "
                   />
 
                   <img
@@ -110,7 +117,7 @@ const ProductCard = ({ grid, productPerPage, userType, id }) => {
                       DetailProduct(item.id);
                     }}
                   >
-                    {item.product_title}
+                    {truncateString(item.product_title, 40)}
                   </h5>
                   <ReactStars
                     classNames="ReactStars"

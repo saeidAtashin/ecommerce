@@ -83,7 +83,7 @@ const SpecialProduct = () => {
                       />
                     </div>
                     <div className="pro-count my-4 position-relative">
-                      <p>Products: 5</p>
+                      <p>Number Of Sell: {item.numberOfSell}</p>
                       <div className="progress">
                         <div
                           className="progress-bar"

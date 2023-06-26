@@ -309,7 +309,8 @@ font-weight: 500;
   color: var(--downheader-color);
   font-weight: 500;
   padding: 0 !important;
-  /* text-transform: none; */
+  padding-left: 10px !important;
+
   background-color: #ffffff7b;
   border-radius: 8px;
 }

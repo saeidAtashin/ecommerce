@@ -268,9 +268,9 @@ const OurStore = ({ userType, data, id }) => {
 
             <div className={` ${windowSize.width < 1560 ? "col-12" : "col-9"}`}>
               <div className="filter-sort-grid MB-4">
-                <div className="d-flex justify-content-between align-items-center">
-                  <div className="d-flex align-items-center gap-10">
-                    <p className="mb-0" style={{ width: "100px" }}>
+                <div className="d-flex justify-content-between align-items-center ">
+                  <div className="d-flex align-items-center gap-10 sorter">
+                    <p className="mb-0 sort-style" style={{ width: "100px" }}>
                       Sort By:
                     </p>
                     <select

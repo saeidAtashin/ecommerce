@@ -154,7 +154,7 @@ const ProductCard = ({ grid, productPerPage, userType, id }) => {
                         </p>
                       )}
                     </div>
-                    <div className="d-flex align-items-center gap-10 ">
+                    <div className="d-flex align-items-center gap-10 sorter">
                       <button
                         onClick={() => handleAddToCart(item)}
                         className="btn btn-info line-height-btn p-0 px-2 fs-6"

@@ -1464,6 +1464,29 @@ width: 100%;
 
 @media (max-width: 575px){
 
+
+  .product-card {
+    flex-direction: column;
+    height: auto !important;
+  }
+
+
+.sort-style {
+  display: none;
+}
+  .totalproducts  {
+    font-size: 12px;
+  }
+.form-control {
+  width: 150px;
+  font-size: 12px;
+}
+
+.sorter{
+gap: 0 !important;
+font-size: 12px;
+}
+
   .small-banner-content h5 {
     font-size: 16px !important;
   }

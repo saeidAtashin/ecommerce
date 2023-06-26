@@ -24,13 +24,6 @@ const HOCSearch = (WrappedComponenet, entity) => {
       });
       return (
         <>
-          <input
-            type="text"
-            value={term}
-            onChange={(e) =>
-              this.setState({ ...this.state, term: e.target.value })
-            }
-          />
           <WrappedComponenet data={filteredData}></WrappedComponenet>
         </>
       );

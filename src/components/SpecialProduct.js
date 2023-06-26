@@ -48,7 +48,7 @@ const SpecialProduct = () => {
           <div className="col-sm-12 col-lg-6 " key={item.id}>
             <div className="col-lg-12 col-sm-12 mb-3">
               <div className="special-product-card">
-                <div className="d-flex justify-content-between align-items-center">
+                <div className=" special-product-response d-flex justify-content-between align-items-center">
                   <img
                     src={item.def_img}
                     alt={item.name}
@@ -56,11 +56,11 @@ const SpecialProduct = () => {
                     onClick={() => OpenSpecial(item.id)}
                   />
                   <div
-                    className="special-product-content cursor-pointer"
+                    className="special-product-content-size special-product-content cursor-pointer"
                     onClick={() => OpenSpecial(item.id)}
                   >
                     <h5 className="brand">{item.name}</h5>
-                    <h6 className="title">
+                    <h6 className="title title-special">
                       {truncateString(item.product_title, 60)}
                     </h6>
                     <ReactStars
@@ -83,12 +83,16 @@ const SpecialProduct = () => {
                       />
                     </div>
                     <div className="pro-count my-4 position-relative">
-                      <p>Number Of Sell: {item.numberOfSell}</p>
+                      <p className="pro-count-resp">
+                        Number Of Sell: {item.numberOfSell}
+                      </p>
                       <div className="progress">
                         <div
                           className="progress-bar"
                           role="progressbar"
-                          style={{ width: "25%" }}
+                          style={{
+                            width: `${(item.numberOfSell / 12) * 100}%`,
+                          }}
                           aria-valuenow="25"
                           aria-valuemin="0"
                           aria-valuemax="100"

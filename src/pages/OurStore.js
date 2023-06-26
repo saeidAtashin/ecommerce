@@ -139,12 +139,7 @@ const OurStore = ({ userType, data, id }) => {
                       </label>
                     </div>
                     <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id=""
-                      />
+
                       <label className="form-check-label" htmlFor="">
                         Out of Stock {0}
                       </label>

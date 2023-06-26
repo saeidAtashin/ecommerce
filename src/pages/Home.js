@@ -226,9 +226,9 @@ const Home = () => {
 
       <section className="famous-wrapper py-5 home-wrapper-2">
         <div className="container-sm">
-          <div className="row">
+          <div className="row d-flex featured-collection-wrap-center">
             <div className="col-12">
-              <h3 className="section-heading mb-2">Featured Collection</h3>
+              <h3 className="section-heading mb-2 text-center">Featured Collection</h3>
             </div>
             <div className="col-lg-3 col-sm-12 mb-5 famous-card-t">
               <div className="position-relative first-famous-card">
@@ -246,7 +246,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-sm-12 mb-5 ">
+            <div className="col-lg-3 col-sm-12 mb-5 famous-card-t">
               <div className="famous-card  other-famous-card position-relative">
                 <img
                   src="images/sam.png"
@@ -263,7 +263,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-sm-12 mb-5">
+            <div className="col-lg-3 col-sm-12 mb-5 famous-card-t">
               <div className="famous-card other-famous-card position-relative">
                 <img src="images/jbl.webp" alt="jbl" className=" img-fluid" />
                 <div className="famous-content position-absolute">
@@ -276,7 +276,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-sm-12 mb-5">
+            <div className="col-lg-3 col-sm-12 mb-5 famous-card-t">
               <div className="famous-card other-famous-card position-relative">
                 <img
                   src="images/laptop01.png"

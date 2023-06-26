@@ -31,11 +31,11 @@ const Brands = () => {
             );
             return (
               <div
-                className="d-flex gap-30 align-items-center justify-content-center"
+                className="d-flex gap-30 change-brand-direction align-items-center justify-content-center"
                 key={bannerData.id}
               >
-                <div className="d-flex flex-column align-items-center justify-content-between">
-                  <h6>{bannerData[filterItem]}</h6>
+                <div className="change-brand-size d-flex flex-column align-items-center justify-content-between">
+                  <h6 className="change-brand-size">{bannerData[filterItem]}</h6>
                   <p>{filteredData.length} Items</p>
                 </div>
                 <img

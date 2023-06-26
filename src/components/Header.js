@@ -134,8 +134,6 @@ const Header = ({ username }) => {
               <div className="input-group mb-0000 widthquery">
                 <input
                   type="text"
-
-                  
                   className="form-control py-2"
                   placeholder="Search Product Here"
                   aria-label="Search Product Here"
@@ -215,7 +213,7 @@ const Header = ({ username }) => {
           </div>
         </div>
       </header>
-      <header className="header-botton py-3">
+      <header className="header-botton  py-3">
         <div className="container-sm">
           <div className="row">
             <div className="col-12">
@@ -254,11 +252,11 @@ const Header = ({ username }) => {
                   </div>
                 </div>
                 <div className="menu-links">
-                  <div className="d-flex align-items-center gap-15">
-                    <Link to="/">Home</Link>
-                    <Link to="/product">Our Store</Link>
-                    <Link to="/blogs">Blogs</Link>
-                    <Link to="/contact">Contact</Link>
+                  <div className="d-flex align-items-center gap-15 ">
+                    <Link className="header-botton-font" to="/">Home</Link>
+                    <Link className="header-botton-font" to="/product">Our Store</Link>
+                    <Link className="header-botton-font" to="/blogs">Blogs</Link>
+                    <Link className="header-botton-font" to="/contact">Contact</Link>
                   </div>
                 </div>
               </div>

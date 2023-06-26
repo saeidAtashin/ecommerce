@@ -111,7 +111,7 @@ const ProductCard = ({ grid, productPerPage, userType, id }) => {
                   />
                 </div>
                 <div className="product-details ">
-                  <h5 className="brand">{truncateString(item.name, 23)}</h5>
+                  <h5 className="brand">{truncateString(item.name, 24)}</h5>
                   <h6 className="brand">{item.brand}</h6>
                   <h5
                     className="product-title"
@@ -134,8 +134,7 @@ const ProductCard = ({ grid, productPerPage, userType, id }) => {
                       grid === 12 ? "d-block " : "d-none"
                     }`}
                   >
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Sapiente nostrum nesciunt, qui nihil impedt minima{" "}
+                    {truncateString(item.description, 150)}
                   </p>
                   <div className="d-flex justify-content-between">
                     <div className="d-flex align-items-center gap-05">

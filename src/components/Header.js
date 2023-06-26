@@ -174,7 +174,7 @@ const Header = ({ username }) => {
                   </Link>
                 </div>
                 <div>
-                  <Link className="d-flex align-items-center gap-10 text-white">
+                  <div className="d-flex align-items-center gap-10 text-white">
                     <img src="/images/user.svg" alt="user" />
                     <p className="mb-0">
                       {username ? (
@@ -194,7 +194,7 @@ const Header = ({ username }) => {
                         </Link>
                       )}
                     </p>
-                  </Link>
+                  </div>
                 </div>
                 <div>
                   <Link

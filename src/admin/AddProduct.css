@@ -332,7 +332,9 @@
     border-radius: 50%;
     background: #57b846;
   }
-  
+  .price {
+    margin-bottom: 2px !important;
+  }
   .checkmark {
     position: absolute;
     top: 50%;
@@ -485,7 +487,7 @@
     font-size: 24px;
     color: #525252;
     font-weight: 400;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
   }
   
   /* ==========================================================================

@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import BlogCard from "../components/BlogCard";
-import ProductCard from "../components/ProductCard";
 import SpecialProduct from "../components/SpecialProduct";
 import Meta from "../components/Meta";
 import Modal from "../components/Modal";
-import HandCraftProducts from "../components/HandCraftProducts";
 import SmallHandiCrafts from "../components/SmallHandiCrafts";
 import BigBanner from "../components/BigBanner";
+import Brands from "../components/Brands";
 
 const Home = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -50,7 +48,7 @@ const Home = () => {
     setPhoneNumber(e.target.value);
     localStorage.setItem("myData", true);
 
-    if (e.target.value == !null) {
+    if (e.target.value === !null) {
       setNoMessage(true);
     } else {
       setNoMessage(false);
@@ -87,7 +85,7 @@ const Home = () => {
 
   useEffect(() => {
     const myData = localStorage.getItem("myData");
-    if (myData == "true") {
+    if (myData === "true") {
       // console.log("test");
     } else {
       handleOpenModal();
@@ -106,7 +104,7 @@ const Home = () => {
           <button onClick={handleOpenModal}>Recieve Message</button>
           <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
             <div className="modal-container">
-              {thanksShow == false ? (
+              {thanksShow === false ? (
                 <>
                   <label className="modal-label" htmlFor="phoneNumber">
                     Welcome Message
@@ -203,65 +201,7 @@ const Home = () => {
         <div className="container-sm">
           <div className="row">
             <div className="col-sm-12">
-              <div className="categories d-flex justify-content-between flex-wrap align-items-center">
-                <div className="d-flex gap-30 align-items-center">
-                  <div className="ms-2">
-                    <h6>Cameras</h6>
-                    <p>10 Items</p>
-                  </div>
-                  <img src="images/camera.jpg" alt="Cameras" />
-                </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div className="ms-2">
-                    <h6>Smart TV</h6>
-                    <p>10 Items</p>
-                  </div>
-                  <img src="images/tv.jpg" alt="TV" />
-                </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div className="ms-2">
-                    <h6>Smart Watches</h6>
-                    <p>10 Items</p>
-                  </div>
-                  <img src="images/headphone.jpg" alt="Watches" />
-                </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div className="ms-2">
-                    <h6>Music & Gaming</h6>
-                    <p>10 Items</p>
-                  </div>
-                  <img src="images/headphone.jpg" alt="Music & Gaming" />
-                </div>
-
-                <div className="d-flex gap-30 align-items-center">
-                  <div className="ms-2">
-                    <h6>Cameras</h6>
-                    <p>10 Items</p>
-                  </div>
-                  <img src="images/camera.jpg" alt="Cameras" />
-                </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div className="ms-2">
-                    <h6>Smart TV</h6>
-                    <p>10 Items</p>
-                  </div>
-                  <img src="images/tv.jpg" alt="TV" />
-                </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div className="ms-2">
-                    <h6>Smart Watches</h6>
-                    <p>10 Items</p>
-                  </div>
-                  <img src="images/headphone.jpg" alt="Watches" />
-                </div>
-                <div className="d-flex gap-30 align-items-center">
-                  <div className="ms-2">
-                    <h6>Music & Gaming</h6>
-                    <p>10 Items</p>
-                  </div>
-                  <img src="images/headphone.jpg" alt="Music & Gaming" />
-                </div>
-              </div>
+<Brands />
             </div>
           </div>
         </div>
@@ -344,18 +284,8 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-12 col-lg-6 ">
+
               <SpecialProduct />
-            </div>
-            <div className="col-sm-12 col-lg-6 ">
-              <SpecialProduct />
-            </div>
-            <div className="col-sm-12 col-lg-6 ">
-              <SpecialProduct />
-            </div>
-            <div className="col-sm-12 col-lg-6 ">
-              <SpecialProduct />
-            </div>
           </div>
         </div>
       </section>

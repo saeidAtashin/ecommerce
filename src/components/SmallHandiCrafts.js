@@ -47,7 +47,7 @@ const SmallHandiCrafts = () => {
 
   return (
     <div className="d-flex gap-10 flex-wrap justify-content-between align-items-center">
-      {console.log(data)}
+    
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (

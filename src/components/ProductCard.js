@@ -9,8 +9,6 @@ import { addToCart } from "../toolkit/features/cartSlice";
 const ProductCard = ({ grid, productPerPage, userType, id }) => {
   const { data, error, isLoading } = useGetAllProductsQuery();
 
-  console.log(data);
-
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);

@@ -14,10 +14,20 @@ const OurStore = ({ userType, data, id }) => {
   const [selectedValue, setSelectedValue] = useState("numberOfSell");
   const filterItem = "brand";
 
+  // const randomProduct = data?.filter((item) => item.id).slice(0, 2);
+  const randomProduct = data?.sort(() => Math.random() - 0.5).slice(0, 2);
+
   // const handleSelectChange = (event) => {
   //   setSelectedValue(event.target.value);
   //
   // };
+
+  const truncateString = (str, maxLength) => {
+    if (str.length > maxLength) {
+      return str.substring(0, maxLength) + "...";
+    }
+    return str;
+  };
 
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -207,7 +217,7 @@ const OurStore = ({ userType, data, id }) => {
                         <span className="badge bg-light text-secondary rounded-3 py-3 px-3">
                           {bannerData[filterItem]}
                         </span>
-                      )
+                      );
                     })}
                   </div>
                 </div>
@@ -220,29 +230,35 @@ const OurStore = ({ userType, data, id }) => {
               >
                 <h3 className="filter-title"> Random Product </h3>
                 <div>
-                  <div className="random-products mb-0 d-flex align-items-center">
-                    <div className="w-50">
-                      <img
-                        src="images/watch.jpg"
-                        alt="watch"
-                        className="img-fluid"
-                      />
-                    </div>
-                    <div className="w-50">
-                      <h5>
-                        Kids headphones bulk 10 pack multi colored for students
-                        <ReactStars
-                          classNames="ReactStars"
-                          count={5}
-                          value={3}
-                          edit={false}
-                          size={24}
-                          activeColor="#ffd700"
-                        />
-                      </h5>
-                      <p> $ 300 </p>
-                    </div>
+                    {randomProduct?.map((item) => {
+                      return (
+                        <>
+                        <div className="random-products mb-0 d-flex align-items-center">
+                          <div className="w-50"  key={item.id} >
+                            <img
+                              src={item.def_img}
+                              alt={item.name}
+                              className="img-fluid mx-2"
+                            />
+                          </div>
+                          <div className="w-50">
+                            <h5>
+                              {truncateString(item.product_title, 40)}
+                              <ReactStars
+                                classNames="ReactStars"
+                                count={5}
+                                value={3}
+                                edit={false}
+                                size={24}
+                                activeColor="#ffd700"
+                              />
+                            </h5>
+                            <p> $ {item.org_price} </p>
+                          </div>
                   </div>
+                        </>
+                      );
+                    })}
                   <div className="random-products d-flex">
                     <div className="w-50 ">
                       <img

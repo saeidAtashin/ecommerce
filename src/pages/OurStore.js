@@ -97,7 +97,9 @@ const OurStore = ({ userType, data, id }) => {
                         <>
                           <li>
                             {bannerData[filterItem]}
-                            <span className="shop-categories">{filteredData.length}</span>
+                            <span className="shop-categories">
+                              {filteredData.length}
+                            </span>
                           </li>
                         </>
                       );
@@ -200,18 +202,13 @@ const OurStore = ({ userType, data, id }) => {
                 <h3 className="filter-title"> Product Tags </h3>
                 <div>
                   <div className="product-tags d-flex flex-wrap align-items-center gap-10">
-                    <span className="badge bg-light text-secondary rounded-3 py-3 px-3">
-                      Headphone
-                    </span>
-                    <span className="badge bg-light text-secondary rounded-3 py-3 px-3">
-                      Lsptop
-                    </span>
-                    <span className="badge bg-light text-secondary rounded-3 py-3 px-3">
-                      Mobile
-                    </span>
-                    <span className="badge bg-light text-secondary rounded-3 py-3 px-3">
-                      Wire
-                    </span>
+                    {unique?.map((bannerData) => {
+                      return (
+                        <span className="badge bg-light text-secondary rounded-3 py-3 px-3">
+                          {bannerData[filterItem]}
+                        </span>
+                      )
+                    })}
                   </div>
                 </div>
               </div>

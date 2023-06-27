@@ -76,3 +76,9 @@ root.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register();
+
+// npm run build
+
+// npm i serve -g
+
+// server -s build

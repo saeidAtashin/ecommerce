@@ -44,6 +44,8 @@ const Home = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    localStorage.setItem("myData", true);
+
   };
 
   const handleInputChange = (e) => {

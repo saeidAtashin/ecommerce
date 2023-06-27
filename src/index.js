@@ -1,6 +1,8 @@
 import React, { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
 
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
@@ -55,7 +57,7 @@ const root = createRoot(container);
 const loadingMarkup = (
   <>
     <div className="container-sm">
-      <div className="row align-items-center justify-content-center">
+      <div className="row align-items-center justify-content-center middle-page">
         <img className="col-3 " src="/images/Infinity-1.svg" />
       </div>
     </div>
@@ -69,3 +71,8 @@ root.render(
     </Suspense>
   </Provider>
 );
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://cra.link/PWA
+serviceWorkerRegistration.register();

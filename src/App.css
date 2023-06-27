@@ -253,6 +253,19 @@ line-height: 20px;
   opacity: 0.8;
 }
 
+
+.middle-page{
+  position: absolute;
+  top: 45vh;
+  /* bottom: 50vh; */
+  /* left: 50vh; */
+  right: 45vw;
+  /* transform: translate(-50%, -50%); */
+
+  scale: 10;
+
+}
+
 .small-banner-content {
   position: absolute;
   top: 30%;

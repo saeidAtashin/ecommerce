@@ -1,8 +1,7 @@
 import React, { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
@@ -20,6 +19,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import productReducer, { productFetch } from "./toolkit/features/productsSlice";
 import { productApi } from "./toolkit/features/productApi";
 import cartSlice, { getTotals } from "./toolkit/features/cartSlice";
+import { ChangeTableProvider } from "./context/ChangeTableProvider";
 
 i18n
   .use(initReactI18next)
@@ -65,11 +65,13 @@ const loadingMarkup = (
 );
 
 root.render(
-  <Provider store={store}>
-    <Suspense fallback={loadingMarkup}>
-      <App />
-    </Suspense>
-  </Provider>
+  <ChangeTableProvider>
+    <Provider store={store}>
+      <Suspense fallback={loadingMarkup}>
+        <App />
+      </Suspense>
+    </Provider>
+  </ChangeTableProvider>
 );
 
 // If you want your app to work offline and load faster, you can change

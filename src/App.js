@@ -27,6 +27,7 @@ import EditProduct from "./admin/EditProduct";
 import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 import Handi1 from "./pages/Handi1";
+import ChangeTable from "./components/ChangeTable";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -81,6 +82,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      <ChangeTable /> {/* Render the ChangeTable component */}
     </>
   );
 }

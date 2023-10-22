@@ -7,8 +7,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useGetProductsByIdQuery } from "../toolkit/features/productApi";
 import { addToCart } from "../toolkit/features/cartSlice";
+import { useChangeTableLogger } from "../context/useChangeTableLogger";
 
 const SingleProduct = ({ userType }) => {
+  const { logAddToCart } = useChangeTableLogger();
+
   const { id } = useParams();
   const { data, error, isLoading } = useGetProductsByIdQuery(id);
   const dispatch = useDispatch();
@@ -33,10 +36,17 @@ const SingleProduct = ({ userType }) => {
     }
   };
 
-  const handleAddToCart = (id) => {
-    console.log(id);
+  const handleAddToCart = (id, elementName) => {
+    logAddToCart(userType, id.name, elementName);
+    console.log(id.name);
+    console.log(userType);
+    console.log(elementName);
     dispatch(addToCart(id));
-    navigate("/cart");
+    // navigate("/cart");
+  };
+
+  const handleEdit = (id, elementName) => {
+    logAddToCart(userType, id.name, elementName);
   };
 
   return (
@@ -119,7 +129,12 @@ const SingleProduct = ({ userType }) => {
                         <div className="d-flex align-items-center justify-content-between">
                           <div className="">
                             <button
-                              onClick={() => handleAddToCart(data)}
+                              onClick={() =>
+                                handleAddToCart(
+                                  data,
+                                  "Add to Cart Button that clicked"
+                                )
+                              }
                               className="btn btn-info add-to-card"
                             >
                               Add To Card
@@ -130,7 +145,10 @@ const SingleProduct = ({ userType }) => {
                           </div>
                           <div>
                             <Link
-                              to={`/editproduct/${id}`}
+                              // to={`/editproduct/${id}`}
+                              onClick={() =>
+                                handleEdit(data, "Edit Button that clicked")
+                              }
                               className={`btn add-to-card  ${
                                 userType === "admin"
                                   ? "btn-warning"
@@ -165,7 +183,7 @@ const SingleProduct = ({ userType }) => {
                 </div>
               </div>
             </div>
-            <div className="description-wrapper py-5 home-wrapper-2">
+            {/* <div className="description-wrapper py-5 home-wrapper-2">
               <div className="container-sm">
                 <div className="row">
                   <div className="col-12">
@@ -176,8 +194,8 @@ const SingleProduct = ({ userType }) => {
                   </div>
                 </div>
               </div>
-            </div>
-            <section className="reviews-wrapper home-wrapper-2">
+            </div> */}
+            {/* <section className="reviews-wrapper home-wrapper-2">
               <div className="container-sm">
                 <div className="row">
                   <div className="col-12">
@@ -311,8 +329,8 @@ const SingleProduct = ({ userType }) => {
                   </div>
                 </div>
               </div>
-            </section>
-            <section className="popular-wrapper py-5 home-wrapper-2">
+            </section> */}
+            {/* <section className="popular-wrapper py-5 home-wrapper-2">
               <div className="container-sm">
                 <div className="row">
                   <div className="col-12">
@@ -323,7 +341,7 @@ const SingleProduct = ({ userType }) => {
                   <ProductCard />
                 </div>
               </div>
-            </section>
+            </section> */}
           </>
         )
       )}

@@ -117,7 +117,6 @@ const SingleProduct = ({ userType }) => {
                                   : "fs-2 text-danger"
                               }`}
                             >
-                              
                               ${data.org_price}
                             </p>
                             {data.isOffer === "true" && (
@@ -184,7 +183,7 @@ const SingleProduct = ({ userType }) => {
                 </div>
               </div>
             </div>
-            {/* <div className="description-wrapper py-5 home-wrapper-2">
+            <div className="description-wrapper py-5 home-wrapper-2">
               <div className="container-sm">
                 <div className="row">
                   <div className="col-12">
@@ -195,8 +194,8 @@ const SingleProduct = ({ userType }) => {
                   </div>
                 </div>
               </div>
-            </div> */}
-            {/* <section className="reviews-wrapper home-wrapper-2">
+            </div>
+            <section className="reviews-wrapper home-wrapper-2">
               <div className="container-sm">
                 <div className="row">
                   <div className="col-12">
@@ -330,8 +329,8 @@ const SingleProduct = ({ userType }) => {
                   </div>
                 </div>
               </div>
-            </section> */}
-            {/* <section className="popular-wrapper py-5 home-wrapper-2">
+            </section>
+            <section className="popular-wrapper py-5 home-wrapper-2">
               <div className="container-sm">
                 <div className="row">
                   <div className="col-12">
@@ -342,7 +341,7 @@ const SingleProduct = ({ userType }) => {
                   <ProductCard />
                 </div>
               </div>
-            </section> */}
+            </section>
           </>
         )
       )}

@@ -117,6 +117,7 @@ const SingleProduct = ({ userType }) => {
                                   : "fs-2 text-danger"
                               }`}
                             >
+                              
                               ${data.org_price}
                             </p>
                             {data.isOffer === "true" && (

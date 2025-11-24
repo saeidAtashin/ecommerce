@@ -1084,31 +1084,28 @@ const SingleProduct = ({ userType }) => {
                     position: "absolute",
                     top: "20px",
                     right: "20px",
-                    background: "rgba(255, 255, 255, 0.1)",
-                    border: "2px solid rgba(255, 255, 255, 0.3)",
+                    background: "#667eea",
+                    border: "3px solid #fff",
                     borderRadius: "50%",
                     width: "50px",
                     height: "50px",
                     color: "#fff",
-                    fontSize: "24px",
+                    fontSize: "28px",
+                    fontWeight: "bold",
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     transition: "all 0.3s ease",
                     zIndex: 10000,
-                    backdropFilter: "blur(10px)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background =
-                      "rgba(255, 255, 255, 0.2)";
-                    e.currentTarget.style.transform =
-                      "rotate(90deg) scale(1.1)";
+                    e.currentTarget.style.background = "#fff";
+                    e.currentTarget.style.color = "#667eea";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background =
-                      "rgba(255, 255, 255, 0.1)";
-                    e.currentTarget.style.transform = "rotate(0deg) scale(1)";
+                    e.currentTarget.style.background = "#667eea";
+                    e.currentTarget.style.color = "#fff";
                   }}
                 >
                   ×
@@ -1124,11 +1121,10 @@ const SingleProduct = ({ userType }) => {
                     display: "flex",
                     gap: "15px",
                     alignItems: "center",
-                    background: "rgba(255, 255, 255, 0.1)",
-                    backdropFilter: "blur(10px)",
+                    background: "#fff",
                     padding: "15px 25px",
-                    borderRadius: "50px",
-                    border: "1px solid rgba(255, 255, 255, 0.2)",
+                    borderRadius: "30px",
+                    border: "3px solid #667eea",
                     zIndex: 10000,
                   }}
                   onClick={(e) => e.stopPropagation()}
@@ -1137,14 +1133,14 @@ const SingleProduct = ({ userType }) => {
                     onClick={handleZoomOut}
                     disabled={zoomLevel <= 0.5}
                     style={{
-                      background:
-                        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                      border: "none",
+                      background: zoomLevel <= 0.5 ? "#fff" : "#667eea",
+                      border: "3px solid #667eea",
                       borderRadius: "50%",
-                      width: "40px",
-                      height: "40px",
-                      color: "#fff",
-                      fontSize: "20px",
+                      width: "45px",
+                      height: "45px",
+                      color: zoomLevel <= 0.5 ? "#667eea" : "#fff",
+                      fontSize: "24px",
+                      fontWeight: "bold",
                       cursor: zoomLevel <= 0.5 ? "not-allowed" : "pointer",
                       opacity: zoomLevel <= 0.5 ? 0.5 : 1,
                       transition: "all 0.3s ease",
@@ -1154,11 +1150,15 @@ const SingleProduct = ({ userType }) => {
                     }}
                     onMouseEnter={(e) => {
                       if (zoomLevel > 0.5) {
-                        e.currentTarget.style.transform = "scale(1.1)";
+                        e.currentTarget.style.background = "#fff";
+                        e.currentTarget.style.color = "#667eea";
                       }
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = "scale(1)";
+                      if (zoomLevel > 0.5) {
+                        e.currentTarget.style.background = "#667eea";
+                        e.currentTarget.style.color = "#fff";
+                      }
                     }}
                   >
                     −
@@ -1166,10 +1166,14 @@ const SingleProduct = ({ userType }) => {
                   <span
                     style={{
                       color: "#fff",
-                      fontSize: "16px",
-                      fontWeight: "600",
-                      minWidth: "60px",
+                      fontSize: "18px",
+                      fontWeight: "700",
+                      minWidth: "70px",
                       textAlign: "center",
+                      background: "#667eea",
+                      padding: "8px 15px",
+                      borderRadius: "20px",
+                      border: "2px solid #667eea",
                     }}
                   >
                     {Math.round(zoomLevel * 100)}%
@@ -1178,14 +1182,14 @@ const SingleProduct = ({ userType }) => {
                     onClick={handleZoomIn}
                     disabled={zoomLevel >= 3}
                     style={{
-                      background:
-                        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                      border: "none",
+                      background: zoomLevel >= 3 ? "#fff" : "#667eea",
+                      border: "3px solid #667eea",
                       borderRadius: "50%",
-                      width: "40px",
-                      height: "40px",
-                      color: "#fff",
-                      fontSize: "20px",
+                      width: "45px",
+                      height: "45px",
+                      color: zoomLevel >= 3 ? "#667eea" : "#fff",
+                      fontSize: "24px",
+                      fontWeight: "bold",
                       cursor: zoomLevel >= 3 ? "not-allowed" : "pointer",
                       opacity: zoomLevel >= 3 ? 0.5 : 1,
                       transition: "all 0.3s ease",
@@ -1195,11 +1199,15 @@ const SingleProduct = ({ userType }) => {
                     }}
                     onMouseEnter={(e) => {
                       if (zoomLevel < 3) {
-                        e.currentTarget.style.transform = "scale(1.1)";
+                        e.currentTarget.style.background = "#fff";
+                        e.currentTarget.style.color = "#667eea";
                       }
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = "scale(1)";
+                      if (zoomLevel < 3) {
+                        e.currentTarget.style.background = "#667eea";
+                        e.currentTarget.style.color = "#fff";
+                      }
                     }}
                   >
                     +
@@ -1207,23 +1215,24 @@ const SingleProduct = ({ userType }) => {
                   <button
                     onClick={handleResetZoom}
                     style={{
-                      background: "rgba(255, 255, 255, 0.2)",
-                      border: "1px solid rgba(255, 255, 255, 0.3)",
-                      borderRadius: "20px",
-                      padding: "8px 20px",
-                      color: "#fff",
+                      background: "#fff",
+                      border: "3px solid #667eea",
+                      borderRadius: "25px",
+                      padding: "10px 25px",
+                      color: "#667eea",
                       fontSize: "14px",
+                      fontWeight: "700",
                       cursor: "pointer",
                       transition: "all 0.3s ease",
                       marginLeft: "10px",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background =
-                        "rgba(255, 255, 255, 0.3)";
+                      e.currentTarget.style.background = "#667eea";
+                      e.currentTarget.style.color = "#fff";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background =
-                        "rgba(255, 255, 255, 0.2)";
+                      e.currentTarget.style.background = "#fff";
+                      e.currentTarget.style.color = "#667eea";
                     }}
                   >
                     Reset
@@ -1274,24 +1283,31 @@ const SingleProduct = ({ userType }) => {
                     <button
                       onClick={() => setShowImage(data.def_img)}
                       style={{
-                        width: "60px",
-                        height: "60px",
+                        width: "70px",
+                        height: "70px",
                         borderRadius: "10px",
                         border:
                           showImage === data.def_img || !showImage
                             ? "3px solid #667eea"
-                            : "2px solid rgba(255, 255, 255, 0.3)",
+                            : "3px solid #fff",
                         overflow: "hidden",
                         cursor: "pointer",
-                        background: "rgba(255, 255, 255, 0.1)",
+                        background:
+                          showImage === data.def_img || !showImage
+                            ? "#fff"
+                            : "#667eea",
                         transition: "all 0.3s ease",
+                        padding: "3px",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = "scale(1.1)";
                         e.currentTarget.style.borderColor = "#667eea";
+                        e.currentTarget.style.background = "#fff";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = "scale(1)";
+                        if (showImage !== data.def_img && showImage) {
+                          e.currentTarget.style.borderColor = "#fff";
+                          e.currentTarget.style.background = "#667eea";
+                        }
                       }}
                     >
                       <img
@@ -1301,30 +1317,36 @@ const SingleProduct = ({ userType }) => {
                           width: "100%",
                           height: "100%",
                           objectFit: "cover",
+                          borderRadius: "7px",
                         }}
                       />
                     </button>
                     <button
                       onClick={() => setShowImage(data.sec_img)}
                       style={{
-                        width: "60px",
-                        height: "60px",
+                        width: "70px",
+                        height: "70px",
                         borderRadius: "10px",
                         border:
                           showImage === data.sec_img
                             ? "3px solid #667eea"
-                            : "2px solid rgba(255, 255, 255, 0.3)",
+                            : "3px solid #fff",
                         overflow: "hidden",
                         cursor: "pointer",
-                        background: "rgba(255, 255, 255, 0.1)",
+                        background:
+                          showImage === data.sec_img ? "#fff" : "#667eea",
                         transition: "all 0.3s ease",
+                        padding: "3px",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = "scale(1.1)";
                         e.currentTarget.style.borderColor = "#667eea";
+                        e.currentTarget.style.background = "#fff";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = "scale(1)";
+                        if (showImage !== data.sec_img) {
+                          e.currentTarget.style.borderColor = "#fff";
+                          e.currentTarget.style.background = "#667eea";
+                        }
                       }}
                     >
                       <img
@@ -1334,6 +1356,7 @@ const SingleProduct = ({ userType }) => {
                           width: "100%",
                           height: "100%",
                           objectFit: "cover",
+                          borderRadius: "7px",
                         }}
                       />
                     </button>

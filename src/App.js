@@ -13,7 +13,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const OurStore = lazy(() => import("./pages/OurStore"));
 const Blog = lazy(() => import("./pages/Blog"));
 const CompareProduct = lazy(() => import("./pages/CompareProduct"));
-const Wishlist = lazy(() => import("./pages/Wishlist"));=
+const Wishlist = lazy(() => import("./pages/Wishlist"));
 const Login = lazy(() => import("./pages/Login"));
 const Forgotpassword = lazy(() => import("./pages/Forgotpassword"));
 const Signup = lazy(() => import("./pages/Signup"));

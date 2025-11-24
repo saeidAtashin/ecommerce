@@ -531,32 +531,29 @@ const SingleProduct = ({ userType }) => {
                                 )
                               }
                               style={{
-                                background:
-                                  "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                                border: "none",
+                                background: "#27ae60",
+                                border: "3px solid #fff",
                                 borderRadius: "25px",
                                 padding: "12px 30px",
                                 color: "#fff",
                                 fontWeight: "600",
                                 fontSize: "1.1rem",
                                 cursor: "pointer",
-                                boxShadow:
-                                  "0 5px 20px rgba(102, 126, 234, 0.4)",
                                 transition: "all 0.3s ease",
                                 textTransform: "uppercase",
                                 letterSpacing: "1px",
                               }}
                               onMouseEnter={(e) => {
+                                e.currentTarget.style.background = "#fff";
+                                e.currentTarget.style.color = "#27ae60";
                                 e.currentTarget.style.transform =
                                   "scale(1.05) translateY(-2px)";
-                                e.currentTarget.style.boxShadow =
-                                  "0 8px 25px rgba(102, 126, 234, 0.6)";
                               }}
                               onMouseLeave={(e) => {
+                                e.currentTarget.style.background = "#27ae60";
+                                e.currentTarget.style.color = "#fff";
                                 e.currentTarget.style.transform =
                                   "scale(1) translateY(0)";
-                                e.currentTarget.style.boxShadow =
-                                  "0 5px 20px rgba(102, 126, 234, 0.4)";
                               }}
                             >
                               Add To Cart
@@ -565,13 +562,13 @@ const SingleProduct = ({ userType }) => {
                               className="badge"
                               style={{
                                 marginLeft: "10px",
-                                background:
-                                  "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+                                background: "#667eea",
                                 color: "#fff",
                                 padding: "8px 15px",
                                 borderRadius: "20px",
                                 fontSize: "1rem",
                                 fontWeight: "600",
+                                border: "2px solid #fff",
                               }}
                             >
                               10
@@ -587,10 +584,8 @@ const SingleProduct = ({ userType }) => {
                               }`}
                               style={{
                                 background:
-                                  userType === "admin"
-                                    ? "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
-                                    : "#ccc",
-                                border: "none",
+                                  userType === "admin" ? "#f39c12" : "#ccc",
+                                border: "3px solid #fff",
                                 borderRadius: "25px",
                                 padding: "12px 30px",
                                 color: "#fff",
@@ -600,27 +595,23 @@ const SingleProduct = ({ userType }) => {
                                   userType === "admin"
                                     ? "pointer"
                                     : "not-allowed",
-                                boxShadow:
-                                  userType === "admin"
-                                    ? "0 5px 20px rgba(245, 87, 108, 0.4)"
-                                    : "none",
                                 transition: "all 0.3s ease",
                                 textDecoration: "none",
                               }}
                               onMouseEnter={(e) => {
                                 if (userType === "admin") {
+                                  e.currentTarget.style.background = "#fff";
+                                  e.currentTarget.style.color = "#f39c12";
                                   e.currentTarget.style.transform =
                                     "scale(1.05) translateY(-2px)";
-                                  e.currentTarget.style.boxShadow =
-                                    "0 8px 25px rgba(245, 87, 108, 0.6)";
                                 }
                               }}
                               onMouseLeave={(e) => {
                                 if (userType === "admin") {
+                                  e.currentTarget.style.background = "#f39c12";
+                                  e.currentTarget.style.color = "#fff";
                                   e.currentTarget.style.transform =
                                     "scale(1) translateY(0)";
-                                  e.currentTarget.style.boxShadow =
-                                    "0 5px 20px rgba(245, 87, 108, 0.4)";
                                 }
                               }}
                             >
@@ -637,10 +628,8 @@ const SingleProduct = ({ userType }) => {
                               }}
                               style={{
                                 background:
-                                  userType === "admin"
-                                    ? "linear-gradient(135deg, #fa709a 0%, #fee140 100%)"
-                                    : "#ccc",
-                                border: "none",
+                                  userType === "admin" ? "#e74c3c" : "#ccc",
+                                border: "3px solid #fff",
                                 borderRadius: "25px",
                                 padding: "12px 30px",
                                 color: "#fff",
@@ -650,26 +639,22 @@ const SingleProduct = ({ userType }) => {
                                   userType === "admin"
                                     ? "pointer"
                                     : "not-allowed",
-                                boxShadow:
-                                  userType === "admin"
-                                    ? "0 5px 20px rgba(250, 112, 154, 0.4)"
-                                    : "none",
                                 transition: "all 0.3s ease",
                               }}
                               onMouseEnter={(e) => {
                                 if (userType === "admin") {
+                                  e.currentTarget.style.background = "#fff";
+                                  e.currentTarget.style.color = "#e74c3c";
                                   e.currentTarget.style.transform =
                                     "scale(1.05) translateY(-2px)";
-                                  e.currentTarget.style.boxShadow =
-                                    "0 8px 25px rgba(250, 112, 154, 0.6)";
                                 }
                               }}
                               onMouseLeave={(e) => {
                                 if (userType === "admin") {
+                                  e.currentTarget.style.background = "#e74c3c";
+                                  e.currentTarget.style.color = "#fff";
                                   e.currentTarget.style.transform =
                                     "scale(1) translateY(0)";
-                                  e.currentTarget.style.boxShadow =
-                                    "0 5px 20px rgba(250, 112, 154, 0.4)";
                                 }
                               }}
                             >
@@ -914,29 +899,27 @@ const SingleProduct = ({ userType }) => {
                             <button
                               className="button border-0"
                               style={{
-                                background:
-                                  "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                                background: "#667eea",
+                                border: "3px solid #fff",
                                 color: "#fff",
                                 padding: "12px 30px",
                                 borderRadius: "25px",
                                 fontWeight: "600",
                                 fontSize: "1rem",
                                 cursor: "pointer",
-                                boxShadow:
-                                  "0 5px 20px rgba(102, 126, 234, 0.4)",
                                 transition: "all 0.3s ease",
                               }}
                               onMouseEnter={(e) => {
+                                e.currentTarget.style.background = "#fff";
+                                e.currentTarget.style.color = "#667eea";
                                 e.currentTarget.style.transform =
                                   "scale(1.05) translateY(-2px)";
-                                e.currentTarget.style.boxShadow =
-                                  "0 8px 25px rgba(102, 126, 234, 0.6)";
                               }}
                               onMouseLeave={(e) => {
+                                e.currentTarget.style.background = "#667eea";
+                                e.currentTarget.style.color = "#fff";
                                 e.currentTarget.style.transform =
                                   "scale(1) translateY(0)";
-                                e.currentTarget.style.boxShadow =
-                                  "0 5px 20px rgba(102, 126, 234, 0.4)";
                               }}
                             >
                               Submit Review

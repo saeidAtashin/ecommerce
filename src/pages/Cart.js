@@ -37,20 +37,12 @@ const Cart = () => {
         minHeight: "100vh",
         position: "relative",
         overflow: "hidden",
-        background:
-          "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)",
-        backgroundSize: "400% 400%",
-        animation: "gradientShift 15s ease infinite",
+        background: "#f5f5f5",
         padding: "40px 20px",
       }}
     >
       <style>
         {`
-          @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
           @keyframes fadeInUp {
             from {
               opacity: 0;
@@ -85,46 +77,19 @@ const Cart = () => {
         `}
       </style>
 
-      {/* Decorative floating elements */}
       <div
-        style={{
-          position: "absolute",
-          top: "10%",
-          right: "10%",
-          width: "200px",
-          height: "200px",
-          borderRadius: "50%",
-          background: "rgba(255, 255, 255, 0.1)",
-          filter: "blur(40px)",
-          animation: "float 6s ease-in-out infinite",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "10%",
-          left: "10%",
-          width: "150px",
-          height: "150px",
-          borderRadius: "50%",
-          background: "rgba(255, 255, 255, 0.08)",
-          filter: "blur(30px)",
-          animation: "float 8s ease-in-out infinite",
-          pointerEvents: "none",
-        }}
-      />
-
-      <div className="container-sm" style={{ position: "relative", zIndex: 1 }}>
+        className="container-sm"
+        style={{ position: "relative", zIndex: 1, maxWidth: "1200px" }}
+      >
         <h2
           style={{
             textAlign: "center",
-            color: "#fff",
+            color: "#1a1a1a",
             fontSize: "clamp(2rem, 5vw, 3rem)",
             fontWeight: "700",
             marginBottom: "3rem",
-            textShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
             animation: "fadeInUp 0.8s ease",
+            letterSpacing: "-1px",
           }}
         >
           Shopping Cart
@@ -137,19 +102,18 @@ const Cart = () => {
               alignItems: "center",
               justifyContent: "center",
               minHeight: "60vh",
-              background: "rgba(255, 255, 255, 0.1)",
-              backdropFilter: "blur(20px)",
-              borderRadius: "30px",
+              background: "#fff",
+              borderRadius: "20px",
               padding: "60px 40px",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
-              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+              border: "1px solid #e0e0e0",
+              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
               animation: "fadeInUp 0.8s ease",
             }}
           >
             <p
               style={{
                 fontSize: "clamp(1.2rem, 3vw, 1.8rem)",
-                color: "#fff",
+                color: "#333",
                 marginBottom: "2rem",
                 fontWeight: "500",
                 textAlign: "center",
@@ -172,29 +136,27 @@ const Cart = () => {
                 display: "flex",
                 alignItems: "center",
                 gap: "10px",
-                background: "rgba(255, 255, 255, 0.2)",
-                backdropFilter: "blur(10px)",
+                background: "#667eea",
                 padding: "15px 30px",
                 borderRadius: "25px",
                 color: "#fff",
                 textDecoration: "none",
                 fontWeight: "600",
                 fontSize: "1.1rem",
-                border: "2px solid rgba(255, 255, 255, 0.3)",
                 transition: "all 0.3s ease",
-                boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)",
+                boxShadow: "0 4px 15px rgba(102, 126, 234, 0.3)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(255, 255, 255, 0.3)";
+                e.currentTarget.style.background = "#764ba2";
                 e.currentTarget.style.transform = "translateY(-3px)";
                 e.currentTarget.style.boxShadow =
-                  "0 6px 20px rgba(0, 0, 0, 0.3)";
+                  "0 6px 20px rgba(102, 126, 234, 0.4)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "rgba(255, 255, 255, 0.2)";
+                e.currentTarget.style.background = "#667eea";
                 e.currentTarget.style.transform = "translateY(0)";
                 e.currentTarget.style.boxShadow =
-                  "0 4px 15px rgba(0, 0, 0, 0.2)";
+                  "0 4px 15px rgba(102, 126, 234, 0.3)";
               }}
             >
               <svg
@@ -221,17 +183,17 @@ const Cart = () => {
                 gridTemplateColumns: "3fr 1fr 1fr 1fr",
                 gap: "1rem",
                 padding: "20px",
-                background: "rgba(255, 255, 255, 0.15)",
-                backdropFilter: "blur(10px)",
-                borderRadius: "20px",
+                background: "#fff",
+                borderRadius: "15px",
                 marginBottom: "1.5rem",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
+                border: "1px solid #e0e0e0",
+                boxShadow: "0 2px 10px rgba(0, 0, 0, 0.05)",
                 animation: "fadeInUp 0.6s ease",
               }}
             >
               <h3
                 style={{
-                  color: "#fff",
+                  color: "#333",
                   fontWeight: "600",
                   fontSize: "14px",
                   textTransform: "uppercase",
@@ -242,7 +204,7 @@ const Cart = () => {
               </h3>
               <h3
                 style={{
-                  color: "#fff",
+                  color: "#333",
                   fontWeight: "600",
                   fontSize: "14px",
                   textTransform: "uppercase",
@@ -253,7 +215,7 @@ const Cart = () => {
               </h3>
               <h3
                 style={{
-                  color: "#fff",
+                  color: "#333",
                   fontWeight: "600",
                   fontSize: "14px",
                   textTransform: "uppercase",
@@ -264,7 +226,7 @@ const Cart = () => {
               </h3>
               <h3
                 style={{
-                  color: "#fff",
+                  color: "#333",
                   fontWeight: "600",
                   fontSize: "14px",
                   textTransform: "uppercase",
@@ -291,28 +253,25 @@ const Cart = () => {
                     gridTemplateColumns: "3fr 1fr 1fr 1fr",
                     gap: "1rem",
                     alignItems: "center",
-                    background: "rgba(255, 255, 255, 0.1)",
-                    backdropFilter: "blur(20px)",
-                    borderRadius: "20px",
+                    background: "#fff",
+                    borderRadius: "15px",
                     padding: "25px",
-                    border: "1px solid rgba(255, 255, 255, 0.2)",
-                    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                    border: "1px solid #e0e0e0",
+                    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.05)",
                     transition: "all 0.3s ease",
                     animationDelay: `${index * 0.1}s`,
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-5px)";
                     e.currentTarget.style.boxShadow =
-                      "0 12px 40px rgba(0, 0, 0, 0.15)";
-                    e.currentTarget.style.background =
-                      "rgba(255, 255, 255, 0.15)";
+                      "0 8px 25px rgba(0, 0, 0, 0.1)";
+                    e.currentTarget.style.borderColor = "#667eea";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateY(0)";
                     e.currentTarget.style.boxShadow =
-                      "0 8px 32px rgba(0, 0, 0, 0.1)";
-                    e.currentTarget.style.background =
-                      "rgba(255, 255, 255, 0.1)";
+                      "0 2px 10px rgba(0, 0, 0, 0.05)";
+                    e.currentTarget.style.borderColor = "#e0e0e0";
                   }}
                 >
                   <div
@@ -343,7 +302,7 @@ const Cart = () => {
                     <div>
                       <h3
                         style={{
-                          color: "#fff",
+                          color: "#333",
                           fontWeight: "600",
                           fontSize: "1.2rem",
                           marginBottom: "8px",
@@ -353,7 +312,7 @@ const Cart = () => {
                       </h3>
                       <p
                         style={{
-                          color: "rgba(255, 255, 255, 0.8)",
+                          color: "#666",
                           fontSize: "0.9rem",
                           marginBottom: "12px",
                         }}
@@ -363,9 +322,9 @@ const Cart = () => {
                       <button
                         onClick={() => handleRemoveFromCart(cartItem)}
                         style={{
-                          background: "rgba(231, 76, 60, 0.2)",
-                          border: "2px solid rgba(231, 76, 60, 0.5)",
-                          color: "#fff",
+                          background: "transparent",
+                          border: "2px solid #e74c3c",
+                          color: "#e74c3c",
                           padding: "8px 20px",
                           borderRadius: "20px",
                           cursor: "pointer",
@@ -374,13 +333,13 @@ const Cart = () => {
                           transition: "all 0.3s ease",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background =
-                            "rgba(231, 76, 60, 0.4)";
+                          e.currentTarget.style.background = "#e74c3c";
+                          e.currentTarget.style.color = "#fff";
                           e.currentTarget.style.transform = "scale(1.05)";
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.background =
-                            "rgba(231, 76, 60, 0.2)";
+                          e.currentTarget.style.background = "transparent";
+                          e.currentTarget.style.color = "#e74c3c";
                           e.currentTarget.style.transform = "scale(1)";
                         }}
                       >
@@ -390,7 +349,7 @@ const Cart = () => {
                   </div>
                   <div
                     style={{
-                      color: "#fff",
+                      color: "#333",
                       fontWeight: "600",
                       fontSize: "1.1rem",
                     }}
@@ -404,18 +363,18 @@ const Cart = () => {
                       alignItems: "center",
                       justifyContent: "center",
                       gap: "15px",
-                      background: "rgba(255, 255, 255, 0.15)",
+                      background: "#f8f8f8",
                       borderRadius: "15px",
                       padding: "10px",
-                      border: "2px solid rgba(255, 255, 255, 0.2)",
+                      border: "1px solid #e0e0e0",
                     }}
                   >
                     <button
                       onClick={() => handleRemoveQuantity(cartItem)}
                       style={{
-                        background: "rgba(255, 255, 255, 0.2)",
-                        border: "none",
-                        color: "#fff",
+                        background: "#fff",
+                        border: "1px solid #e0e0e0",
+                        color: "#333",
                         width: "35px",
                         height: "35px",
                         borderRadius: "50%",
@@ -428,13 +387,15 @@ const Cart = () => {
                         transition: "all 0.3s ease",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background =
-                          "rgba(255, 255, 255, 0.3)";
+                        e.currentTarget.style.background = "#667eea";
+                        e.currentTarget.style.borderColor = "#667eea";
+                        e.currentTarget.style.color = "#fff";
                         e.currentTarget.style.transform = "scale(1.1)";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.background =
-                          "rgba(255, 255, 255, 0.2)";
+                        e.currentTarget.style.background = "#fff";
+                        e.currentTarget.style.borderColor = "#e0e0e0";
+                        e.currentTarget.style.color = "#333";
                         e.currentTarget.style.transform = "scale(1)";
                       }}
                     >
@@ -442,7 +403,7 @@ const Cart = () => {
                     </button>
                     <div
                       style={{
-                        color: "#fff",
+                        color: "#333",
                         fontWeight: "700",
                         fontSize: "1.2rem",
                         minWidth: "30px",
@@ -454,9 +415,9 @@ const Cart = () => {
                     <button
                       onClick={() => handleAddQuantity(cartItem)}
                       style={{
-                        background: "rgba(255, 255, 255, 0.2)",
-                        border: "none",
-                        color: "#fff",
+                        background: "#fff",
+                        border: "1px solid #e0e0e0",
+                        color: "#333",
                         width: "35px",
                         height: "35px",
                         borderRadius: "50%",
@@ -469,13 +430,15 @@ const Cart = () => {
                         transition: "all 0.3s ease",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background =
-                          "rgba(255, 255, 255, 0.3)";
+                        e.currentTarget.style.background = "#667eea";
+                        e.currentTarget.style.borderColor = "#667eea";
+                        e.currentTarget.style.color = "#fff";
                         e.currentTarget.style.transform = "scale(1.1)";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.background =
-                          "rgba(255, 255, 255, 0.2)";
+                        e.currentTarget.style.background = "#fff";
+                        e.currentTarget.style.borderColor = "#e0e0e0";
+                        e.currentTarget.style.color = "#333";
                         e.currentTarget.style.transform = "scale(1)";
                       }}
                     >
@@ -484,7 +447,7 @@ const Cart = () => {
                   </div>
                   <div
                     style={{
-                      color: "#fff",
+                      color: "#333",
                       fontWeight: "700",
                       fontSize: "1.3rem",
                       textAlign: "right",
@@ -512,41 +475,42 @@ const Cart = () => {
               <button
                 onClick={() => handleClearCart()}
                 style={{
-                  background: "rgba(231, 76, 60, 0.2)",
-                  border: "2px solid rgba(231, 76, 60, 0.5)",
-                  color: "#fff",
+                  background: "transparent",
+                  border: "2px solid #e74c3c",
+                  color: "#e74c3c",
                   padding: "15px 30px",
                   borderRadius: "25px",
                   cursor: "pointer",
                   fontWeight: "600",
                   fontSize: "1rem",
                   transition: "all 0.3s ease",
-                  boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)",
+                  boxShadow: "0 2px 10px rgba(231, 76, 60, 0.2)",
                   animation: "fadeInUp 0.8s ease",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(231, 76, 60, 0.4)";
+                  e.currentTarget.style.background = "#e74c3c";
+                  e.currentTarget.style.color = "#fff";
                   e.currentTarget.style.transform = "translateY(-3px)";
                   e.currentTarget.style.boxShadow =
-                    "0 6px 20px rgba(231, 76, 60, 0.4)";
+                    "0 4px 15px rgba(231, 76, 60, 0.4)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(231, 76, 60, 0.2)";
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.color = "#e74c3c";
                   e.currentTarget.style.transform = "translateY(0)";
                   e.currentTarget.style.boxShadow =
-                    "0 4px 15px rgba(0, 0, 0, 0.2)";
+                    "0 2px 10px rgba(231, 76, 60, 0.2)";
                 }}
               >
                 Clear Cart
               </button>
               <div
                 style={{
-                  background: "rgba(255, 255, 255, 0.15)",
-                  backdropFilter: "blur(20px)",
-                  borderRadius: "25px",
+                  background: "#fff",
+                  borderRadius: "20px",
                   padding: "30px",
-                  border: "1px solid rgba(255, 255, 255, 0.2)",
-                  boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                  border: "1px solid #e0e0e0",
+                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
                   minWidth: "300px",
                   animation: "fadeInUp 0.8s ease",
                 }}
@@ -558,12 +522,12 @@ const Cart = () => {
                     alignItems: "center",
                     marginBottom: "15px",
                     paddingBottom: "15px",
-                    borderBottom: "2px solid rgba(255, 255, 255, 0.2)",
+                    borderBottom: "2px solid #f0f0f0",
                   }}
                 >
                   <span
                     style={{
-                      color: "#fff",
+                      color: "#333",
                       fontSize: "1.3rem",
                       fontWeight: "500",
                     }}
@@ -572,7 +536,7 @@ const Cart = () => {
                   </span>
                   <span
                     style={{
-                      color: "#fff",
+                      color: "#667eea",
                       fontSize: "1.8rem",
                       fontWeight: "700",
                     }}
@@ -582,7 +546,7 @@ const Cart = () => {
                 </div>
                 <p
                   style={{
-                    color: "rgba(255, 255, 255, 0.8)",
+                    color: "#666",
                     fontSize: "0.9rem",
                     marginBottom: "20px",
                     textAlign: "center",
@@ -594,8 +558,8 @@ const Cart = () => {
                   className="btn btn-info checkout-width"
                   style={{
                     width: "100%",
-                    background: "rgba(255, 255, 255, 0.25)",
-                    border: "2px solid rgba(255, 255, 255, 0.4)",
+                    background: "#667eea",
+                    border: "none",
                     color: "#fff",
                     padding: "15px 30px",
                     borderRadius: "25px",
@@ -604,21 +568,19 @@ const Cart = () => {
                     fontSize: "1.1rem",
                     transition: "all 0.3s ease",
                     marginBottom: "20px",
-                    boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)",
+                    boxShadow: "0 4px 15px rgba(102, 126, 234, 0.3)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background =
-                      "rgba(255, 255, 255, 0.35)";
+                    e.currentTarget.style.background = "#764ba2";
                     e.currentTarget.style.transform = "translateY(-3px)";
                     e.currentTarget.style.boxShadow =
-                      "0 6px 20px rgba(0, 0, 0, 0.3)";
+                      "0 6px 20px rgba(102, 126, 234, 0.4)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background =
-                      "rgba(255, 255, 255, 0.25)";
+                    e.currentTarget.style.background = "#667eea";
                     e.currentTarget.style.transform = "translateY(0)";
                     e.currentTarget.style.boxShadow =
-                      "0 4px 15px rgba(0, 0, 0, 0.2)";
+                      "0 4px 15px rgba(102, 126, 234, 0.3)";
                   }}
                 >
                   Check Out
@@ -630,7 +592,7 @@ const Cart = () => {
                     alignItems: "center",
                     justifyContent: "center",
                     gap: "10px",
-                    color: "#fff",
+                    color: "#667eea",
                     textDecoration: "none",
                     fontWeight: "600",
                     fontSize: "1rem",
@@ -638,9 +600,11 @@ const Cart = () => {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateX(-5px)";
+                    e.currentTarget.style.color = "#764ba2";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = "translateX(0)";
+                    e.currentTarget.style.color = "#667eea";
                   }}
                 >
                   <svg

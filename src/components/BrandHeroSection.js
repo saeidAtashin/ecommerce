@@ -95,11 +95,47 @@ const BrandHeroSection = () => {
                   className="img-fluid rounded-3 image-width"
                   alt={featuredProduct.name}
                 />
-                <div className="main-banner-content position-absolute">
-                  <h6>Featured from {selectedBrand}</h6>
-                  <h4>{featuredProduct.brand}</h4>
-                  <h5>{featuredProduct.name}</h5>
-                  <p className="dis-none-small">
+                <div
+                  className="main-banner-content position-absolute"
+                  style={{
+                    background: "rgba(0, 0, 0, 0.5)",
+                    padding: "20px",
+                    borderRadius: "10px",
+                    backdropFilter: "blur(5px)",
+                    maxWidth: "80%",
+                  }}
+                >
+                  <h6
+                    style={{
+                      color: "#fff",
+                      textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
+                    }}
+                  >
+                    Featured from {selectedBrand}
+                  </h6>
+                  <h4
+                    style={{
+                      color: "#fff",
+                      textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
+                    }}
+                  >
+                    {featuredProduct.brand}
+                  </h4>
+                  <h5
+                    style={{
+                      color: "#fff",
+                      textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
+                    }}
+                  >
+                    {featuredProduct.name}
+                  </h5>
+                  <p
+                    className="dis-none-small"
+                    style={{
+                      color: "#fff",
+                      textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
+                    }}
+                  >
                     {featuredProduct.product_title}
                   </p>
                   <Link className="button buttonsmall change-buttom-place">
@@ -125,14 +161,48 @@ const BrandHeroSection = () => {
                       className="img-fluid rounded-3 img-flip"
                       alt={product.name}
                     />
-                    <div className="small-banner-content">
-                      <h5>{product.name}</h5>
-                      <h4>{product.brand}</h4>
-                      <p>
+                    <div
+                      className="small-banner-content"
+                      style={{
+                        background: "rgba(0, 0, 0, 0.6)",
+                        padding: "15px",
+                        borderRadius: "10px",
+                        backdropFilter: "blur(5px)",
+                        maxWidth: "90%",
+                      }}
+                    >
+                      <h5
+                        style={{
+                          color: "#fff",
+                          textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
+                        }}
+                      >
+                        {product.name}
+                      </h5>
+                      <h4
+                        style={{
+                          color: "#fff",
+                          textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
+                        }}
+                      >
+                        {product.brand}
+                      </h4>
+                      <p
+                        style={{
+                          color: "#fff",
+                          textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
+                        }}
+                      >
                         From {product.org_price}
                         <br />
                         to{" "}
-                        <span className="to-price">
+                        <span
+                          className="to-price"
+                          style={{
+                            color: "#ffd700",
+                            textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
+                          }}
+                        >
                           {" "}
                           {product.new_price} ${" "}
                         </span>

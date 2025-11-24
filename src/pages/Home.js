@@ -5,6 +5,7 @@ import SpecialProduct from "../components/SpecialProduct";
 import Meta from "../components/Meta";
 import HeroSection from "../components/HeroSection";
 import Brands from "../components/Brands";
+import BrandHeroSection from "../components/BrandHeroSection";
 
 const Home = () => {
   return (
@@ -87,6 +88,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <BrandHeroSection />
 
       <section className="famous-wrapper py-5 home-wrapper-2">
         <div className="container-sm">

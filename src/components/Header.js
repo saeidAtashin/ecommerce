@@ -44,6 +44,38 @@ const Header = ({ username }) => {
 
   return (
     <>
+      <style>
+        {`
+          .mobile-menu-sidebar {
+            direction: rtl;
+          }
+          .mobile-menu-sidebar > * {
+            direction: ltr;
+          }
+          .mobile-menu-sidebar::-webkit-scrollbar {
+            width: 6px;
+          }
+          .mobile-menu-sidebar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+          }
+          .mobile-menu-sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+          }
+          .mobile-menu-sidebar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.6);
+          }
+          .mobile-menu-sidebar {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.4) rgba(255, 255, 255, 0.1);
+          }
+          .rotate {
+            transform: rotate(180deg);
+            transition: transform 0.3s ease;
+          }
+        `}
+      </style>
       <header
         className="header-top-strip py-2 py-md-3 d-none d-xl-block"
         style={{
@@ -276,26 +308,30 @@ const Header = ({ username }) => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle navigation"
             style={{
-              background: "#667eea",
-              color: "#fff",
+              background: "transparent",
+              color: "#000",
               borderRadius: "12px",
-              padding: "10px 12px",
+              padding: "12px 14px",
               transition: "all 0.3s ease",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              boxShadow: "0 4px 12px rgba(102, 126, 234, 0.3)",
+              boxShadow: "none",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#764ba2";
+              e.currentTarget.style.background = "rgba(0, 0, 0, 0.1)";
               e.currentTarget.style.transform = "scale(1.1)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#667eea";
+              e.currentTarget.style.background = "transparent";
               e.currentTarget.style.transform = "scale(1)";
             }}
           >
-            {isMobileMenuOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
+            {isMobileMenuOpen ? (
+              <HiX size={32} />
+            ) : (
+              <HiMenuAlt3 className="rotate" size={32} />
+            )}
           </button>
 
           {/* Mobile Logo */}
@@ -700,7 +736,7 @@ const Header = ({ username }) => {
 
       {/* Mobile Menu Sidebar */}
       <div
-        className="d-xl-none"
+        className="d-xl-none mobile-menu-sidebar"
         style={{
           position: "fixed",
           top: 0,
@@ -713,7 +749,9 @@ const Header = ({ username }) => {
           transform: isMobileMenuOpen ? "translateX(0)" : "translateX(-100%)",
           transition: "transform 0.3s ease",
           overflowY: "auto",
+          overflowX: "hidden",
           boxShadow: "4px 0 20px rgba(0, 0, 0, 0.3)",
+          direction: "rtl",
         }}
       >
         {/* Mobile Menu Header */}

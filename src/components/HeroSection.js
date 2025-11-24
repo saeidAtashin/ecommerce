@@ -89,9 +89,90 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="home-wrapper-1 py-5">
-      <div className="home-wrapper container-sm">
-        <button onClick={handleOpenModal}>Recieve Message</button>
+    <section
+      className="home-wrapper-1 py-5"
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        background:
+          "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 50%, #f5f7fa 100%)",
+        backgroundSize: "400% 400%",
+        animation: "gradientShift 15s ease infinite",
+      }}
+    >
+      {/* Animated background decorative elements */}
+      <div
+        style={{
+          position: "absolute",
+          top: "-50%",
+          right: "-10%",
+          width: "500px",
+          height: "500px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(255, 182, 193, 0.15) 0%, transparent 70%)",
+          animation: "float 20s ease-in-out infinite",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-30%",
+          left: "-5%",
+          width: "400px",
+          height: "400px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(173, 216, 230, 0.15) 0%, transparent 70%)",
+          animation: "float 25s ease-in-out infinite reverse",
+          pointerEvents: "none",
+        }}
+      />
+
+      <style>{`
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        @keyframes float {
+          0%, 100% { transform: translate(0, 0) rotate(0deg); }
+          33% { transform: translate(30px, -30px) rotate(120deg); }
+          66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+      `}</style>
+
+      <div
+        className="home-wrapper container-sm"
+        style={{ position: "relative", zIndex: 1 }}
+      >
+        <button
+          onClick={handleOpenModal}
+          style={{
+            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            border: "none",
+            borderRadius: "25px",
+            padding: "10px 20px",
+            color: "#fff",
+            fontWeight: "600",
+            cursor: "pointer",
+            boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
+            transition: "all 0.3s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.05)";
+            e.currentTarget.style.boxShadow =
+              "0 6px 20px rgba(102, 126, 234, 0.6)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+            e.currentTarget.style.boxShadow =
+              "0 4px 15px rgba(102, 126, 234, 0.4)";
+          }}
+        >
+          Recieve Message
+        </button>
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
           <div className="modal-container">
             {thanksShow === false ? (
@@ -128,13 +209,86 @@ const HeroSection = () => {
         </Modal>
       </div>
 
-      <div className="container-sm">
+      <div
+        className="container-sm"
+        style={{
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
         <div className="row">
-          <div className="col-lg-6 col-sm-12">
-            <BigBanner />
+          <div
+            className="col-lg-6 col-sm-12"
+            style={{
+              padding: "15px",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                transform: "perspective(1000px) rotateY(-2deg)",
+                transition: "transform 0.4s ease",
+                borderRadius: "25px",
+                overflow: "hidden",
+                boxShadow:
+                  "0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1)",
+                background:
+                  "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)",
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform =
+                  "perspective(1000px) rotateY(0deg) scale(1.02)";
+                e.currentTarget.style.boxShadow =
+                  "0 20px 40px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.15)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform =
+                  "perspective(1000px) rotateY(-2deg) scale(1)";
+                e.currentTarget.style.boxShadow =
+                  "0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1)";
+              }}
+            >
+              <BigBanner />
+            </div>
           </div>
-          <div className="col-lg-6 col-sm-12">
-            <SmallHandiCrafts />
+          <div
+            className="col-lg-6 col-sm-12"
+            style={{
+              padding: "15px",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                transform: "perspective(1000px) rotateY(2deg)",
+                transition: "transform 0.4s ease",
+                borderRadius: "25px",
+                overflow: "hidden",
+                boxShadow:
+                  "0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1)",
+                background:
+                  "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)",
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+                minHeight: "100%",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform =
+                  "perspective(1000px) rotateY(0deg) scale(1.02)";
+                e.currentTarget.style.boxShadow =
+                  "0 20px 40px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.15)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform =
+                  "perspective(1000px) rotateY(2deg) scale(1)";
+                e.currentTarget.style.boxShadow =
+                  "0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1)";
+              }}
+            >
+              <SmallHandiCrafts />
+            </div>
           </div>
         </div>
       </div>

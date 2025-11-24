@@ -165,13 +165,23 @@ const BrandHeroSection = () => {
                 style={{
                   display: "grid",
                   gridTemplateColumns: "repeat(2, 1fr)",
-                  gridTemplateRows: "repeat(2, 1fr)",
+                  gridTemplateRows:
+                    additionalProducts.length === 1
+                      ? "1fr"
+                      : additionalProducts.length === 3
+                      ? "auto auto"
+                      : "repeat(2, 1fr)",
                   gap: "15px",
                   height: "100%",
                   minHeight: "500px",
                 }}
               >
                 {additionalProducts.map((product, index) => {
+                  // Determine if item should span full width
+                  const isFullWidth =
+                    additionalProducts.length === 1 ||
+                    (additionalProducts.length === 3 && index === 0);
+
                   // Artistic rotation angles for each position
                   const rotations = [-2, 2, 1.5, -1.5];
                   const rotation = rotations[index] || 0;
@@ -199,6 +209,7 @@ const BrandHeroSection = () => {
                         boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
                         background: gradient,
                         padding: "8px",
+                        gridColumn: isFullWidth ? "span 2" : "span 1",
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.transform = `rotate(0deg) scale(1.05)`;
@@ -218,7 +229,7 @@ const BrandHeroSection = () => {
                           position: "relative",
                           width: "100%",
                           height: "100%",
-                          minHeight: "240px",
+                          minHeight: isFullWidth ? "300px" : "240px",
                           borderRadius: "15px",
                           overflow: "hidden",
                           background:
@@ -276,7 +287,7 @@ const BrandHeroSection = () => {
                               color: "#fff",
                               textShadow: "2px 2px 8px rgba(0,0,0,0.9)",
                               textAlign: "center",
-                              fontSize: "16px",
+                              fontSize: isFullWidth ? "22px" : "16px",
                               fontWeight: "700",
                               marginBottom: "5px",
                               letterSpacing: "0.5px",
@@ -289,7 +300,7 @@ const BrandHeroSection = () => {
                               color: "#ffd700",
                               textShadow: "2px 2px 8px rgba(0,0,0,0.9)",
                               textAlign: "center",
-                              fontSize: "12px",
+                              fontSize: isFullWidth ? "16px" : "12px",
                               fontWeight: "600",
                               marginBottom: "8px",
                               textTransform: "uppercase",
@@ -303,7 +314,7 @@ const BrandHeroSection = () => {
                               color: "#fff",
                               textShadow: "2px 2px 8px rgba(0,0,0,0.9)",
                               textAlign: "center",
-                              fontSize: "13px",
+                              fontSize: isFullWidth ? "16px" : "13px",
                               marginBottom: "10px",
                               fontWeight: "500",
                             }}
@@ -320,7 +331,7 @@ const BrandHeroSection = () => {
                               style={{
                                 color: "#ffd700",
                                 fontWeight: "700",
-                                fontSize: "16px",
+                                fontSize: isFullWidth ? "20px" : "16px",
                                 marginLeft: "8px",
                               }}
                             >
@@ -334,8 +345,8 @@ const BrandHeroSection = () => {
                               display: "block",
                               margin: "0 auto",
                               width: "fit-content",
-                              fontSize: "11px",
-                              padding: "8px 20px",
+                              fontSize: isFullWidth ? "13px" : "11px",
+                              padding: isFullWidth ? "10px 25px" : "8px 20px",
                               background:
                                 "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                               border: "none",

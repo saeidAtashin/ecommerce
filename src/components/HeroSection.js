@@ -2,16 +2,12 @@ import React, { useEffect, useState } from "react";
 import Modal from "./Modal";
 import BigBanner from "./BigBanner";
 import SmallHandiCrafts from "./SmallHandiCrafts";
-import { useGetAllProductsQuery } from "../toolkit/features/productApi";
 
 const HeroSection = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [thanksShow, setThanksShow] = useState(false);
   const [noMessage, setNoMessage] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("");
-
-  const { data: products } = useGetAllProductsQuery();
 
   var myHeaders = new Headers();
   myHeaders.append(
@@ -92,11 +88,6 @@ const HeroSection = () => {
     }
   }, []);
 
-  // Get unique categories from products
-  const categories = products
-    ? [...new Set(products.map((product) => product.category).filter(Boolean))]
-    : [];
-
   return (
     <section className="home-wrapper-1 py-5">
       <div className="home-wrapper container-sm">
@@ -138,37 +129,12 @@ const HeroSection = () => {
       </div>
 
       <div className="container-sm">
-        {/* Category Filter */}
-        <div className="row mb-4">
-          <div className="col-12">
-            <div className="d-flex align-items-center gap-3 flex-wrap">
-              <label htmlFor="categoryFilter" className="mb-0 fw-bold">
-                Filter by Category:
-              </label>
-              <select
-                id="categoryFilter"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="form-select"
-                style={{ maxWidth: "300px" }}
-              >
-                <option value="">All Categories</option>
-                {categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category.charAt(0).toUpperCase() + category.slice(1)}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-
         <div className="row">
           <div className="col-lg-6 col-sm-12">
-            <BigBanner category={selectedCategory} />
+            <BigBanner />
           </div>
           <div className="col-lg-6 col-sm-12">
-            <SmallHandiCrafts category={selectedCategory} />
+            <SmallHandiCrafts />
           </div>
         </div>
       </div>

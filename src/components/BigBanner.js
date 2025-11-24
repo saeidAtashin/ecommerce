@@ -2,7 +2,7 @@ import React from "react";
 import { useGetAllProductsQuery } from "../toolkit/features/productApi";
 import { Link, useNavigate } from "react-router-dom";
 
-const BigBanner = ({ category = "" }) => {
+const BigBanner = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
   const navigate = useNavigate();
   if (isLoading) {
@@ -17,12 +17,7 @@ const BigBanner = ({ category = "" }) => {
     return <p>No data available.</p>;
   }
 
-  let filteredData = data.filter((item) => item.isBigBanner);
-
-  // Filter by category if provided
-  if (category) {
-    filteredData = filteredData.filter((item) => item.category === category);
-  }
+  const filteredData = data.filter((item) => item.isBigBanner);
 
   if (filteredData.length === 0) {
     return <p>No big banners available.</p>;

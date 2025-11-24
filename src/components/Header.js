@@ -24,6 +24,9 @@ const lang = [
 const Header = ({ username }) => {
   const dispatch = useDispatch();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isTopHeaderVisible, setIsTopHeaderVisible] = useState(true);
+  const [isBottomHeaderVisible, setIsBottomHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const { cartTotalQuantity } = useSelector((state) => state.cart);
   const currentLanguageCode = cookies.get("i18next") || "en";
@@ -41,6 +44,37 @@ const Header = ({ username }) => {
   useEffect(() => {
     document.body.dir = currentLanguage.dir || "ltr";
   }, [currentLanguage]);
+
+  // Scroll detection for hide/show header
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // At the very top - show all headers
+      if (currentScrollY < 10) {
+        setIsTopHeaderVisible(true);
+        setIsBottomHeaderVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down - hide both headers
+        setIsTopHeaderVisible(false);
+        setIsBottomHeaderVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up - show bottom navigation first, keep top hidden
+        setIsBottomHeaderVisible(true);
+        // Only show top sections if we're near the top
+        if (currentScrollY < 200) {
+          setIsTopHeaderVisible(true);
+        } else {
+          setIsTopHeaderVisible(false);
+        }
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   return (
     <>
@@ -77,13 +111,15 @@ const Header = ({ username }) => {
         `}
       </style>
       <header
-        className="header-top-strip py-2 py-md-3 d-none d-xl-block"
+        className={`header-top-strip py-2 py-md-3 d-none d-xl-block ${!isTopHeaderVisible ? "header-hidden" : ""}`}
         style={{
-          position: "relative",
+          position: "sticky",
+          top: 0,
           overflow: "hidden",
           background: "#667eea",
           borderBottom: "2px solid rgba(255, 255, 255, 0.1)",
-          zIndex: 100,
+          zIndex: 1000,
+          transition: "transform 0.3s ease-in-out",
         }}
       >
         {/* Decorative background elements */}
@@ -418,14 +454,16 @@ const Header = ({ username }) => {
       </div>
 
       <header
-        className="header-upper py-3 py-md-4 d-none d-xl-block"
+        className={`header-upper py-3 py-md-4 d-none d-xl-block ${!isTopHeaderVisible ? "header-hidden" : ""}`}
         style={{
-          position: "relative",
+          position: "sticky",
+          top: 0,
           background: "rgba(255, 255, 255, 0.95)",
           backdropFilter: "blur(20px)",
           borderBottom: "1px solid rgba(102, 126, 234, 0.1)",
           boxShadow: "0 2px 20px rgba(0, 0, 0, 0.05)",
-          zIndex: 100,
+          zIndex: 999,
+          transition: "transform 0.3s ease-in-out",
         }}
       >
         <div className="container-sm">
@@ -1161,12 +1199,14 @@ const Header = ({ username }) => {
         </div>
       </div>
       <header
-        className="header-botton py-2 py-md-3 d-none d-md-block"
+        className={`header-botton py-2 py-md-3 d-none d-md-block ${!isBottomHeaderVisible ? "header-hidden" : ""}`}
         style={{
           background: "#667eea",
-          position: "relative",
+          position: "sticky",
+          top: 0,
           overflow: "hidden",
-          zIndex: 100,
+          zIndex: 998,
+          transition: "transform 0.3s ease-in-out",
         }}
       >
         {/* Decorative elements */}

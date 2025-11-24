@@ -105,6 +105,19 @@ Link img {
 
 /* Header Part */
 
+/* Header Scroll Hide/Show Animation */
+.header-top-strip.header-hidden {
+  transform: translateY(-100%);
+}
+
+.header-upper.header-hidden {
+  transform: translateY(-100%);
+}
+
+.header-botton.header-hidden {
+  transform: translateY(-100%);
+}
+
 .header-top-strip {
   border-bottom: 1px solid var(--downheader-color);
   background-color: var(--header-color);

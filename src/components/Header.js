@@ -260,6 +260,13 @@ const Header = ({ username }) => {
           alignItems: "center",
           justifyContent: "space-between",
           gap: "10px",
+          background: "rgba(255, 255, 255, 0.25)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          borderRadius: "20px",
+          padding: "10px 15px",
+          border: "1px solid rgba(255, 255, 255, 0.3)",
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>

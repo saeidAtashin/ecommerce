@@ -35,9 +35,7 @@ const BrandHeroSection = () => {
   }
 
   // Filter products by selected brand
-  const brandProducts = data.filter(
-    (item) => item.brand === selectedBrand
-  );
+  const brandProducts = data.filter((item) => item.brand === selectedBrand);
 
   // Get featured product for the brand (first product or one marked as featured)
   const featuredProduct =
@@ -84,7 +82,14 @@ const BrandHeroSection = () => {
               onClick={() => openProduct(featuredProduct.id)}
               className="cursor-pointer"
             >
-              <div className="main-banner position-relative mt-3">
+              <div
+                className="main-banner position-relative mt-3"
+                style={{
+                  background: "#00000020",
+                  borderRadius: "0.5rem",
+                  padding: "10px",
+                }}
+              >
                 <img
                   src={featuredProduct.sec_img || featuredProduct.def_img}
                   className="img-fluid rounded-3 image-width"
@@ -94,7 +99,9 @@ const BrandHeroSection = () => {
                   <h6>Featured from {selectedBrand}</h6>
                   <h4>{featuredProduct.brand}</h4>
                   <h5>{featuredProduct.name}</h5>
-                  <p className="dis-none-small">{featuredProduct.product_title}</p>
+                  <p className="dis-none-small">
+                    {featuredProduct.product_title}
+                  </p>
                   <Link className="button buttonsmall change-buttom-place">
                     More Details
                   </Link>
@@ -146,4 +153,3 @@ const BrandHeroSection = () => {
 };
 
 export default BrandHeroSection;
-

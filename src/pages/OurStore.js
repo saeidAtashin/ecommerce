@@ -109,7 +109,7 @@ const OurStore = ({ userType, data, id }) => {
                     grid={grid}
                     productPerPage={productPerPage}
                     userType={userType}
-                    onSelectedValueChange={handleSortChange}
+                    selectedValue={selectedValue}
                     id={id}
                   />
                 </div>

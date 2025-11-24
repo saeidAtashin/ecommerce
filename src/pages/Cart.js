@@ -38,7 +38,7 @@ const Cart = () => {
         position: "relative",
         overflow: "hidden",
         background: "#f5f5f5",
-        padding: "40px 20px",
+        padding: "clamp(20px, 4vw, 40px) clamp(10px, 2vw, 20px)",
       }}
     >
       <style>
@@ -74,12 +74,74 @@ const Cart = () => {
           .cart-item-animated {
             animation: fadeInUp 0.5s ease forwards;
           }
+          @media (max-width: 768px) {
+            .cart-header-grid {
+              display: none !important;
+            }
+            .cart-item-grid {
+              grid-template-columns: 1fr !important;
+              gap: 1rem !important;
+            }
+            .cart-item-product {
+              flex-direction: column !important;
+              align-items: flex-start !important;
+            }
+            .cart-item-image {
+              width: 100% !important;
+              height: auto !important;
+              max-height: 250px !important;
+            }
+            .cart-item-details {
+              width: 100% !important;
+            }
+            .cart-item-price,
+            .cart-item-quantity,
+            .cart-item-total {
+              display: flex !important;
+              justify-content: space-between !important;
+              align-items: center !important;
+              padding: 10px 0 !important;
+              border-top: 1px solid #e0e0e0 !important;
+            }
+            .cart-item-price::before {
+              content: "Price: ";
+              font-weight: 600;
+            }
+            .cart-item-quantity::before {
+              content: "Quantity: ";
+              font-weight: 600;
+            }
+            .cart-item-total::before {
+              content: "Total: ";
+              font-weight: 600;
+            }
+            .cart-summary-container {
+              flex-direction: column !important;
+            }
+            .cart-summary-checkout {
+              width: 100% !important;
+              margin-top: 1.5rem !important;
+            }
+          }
+          @media (max-width: 576px) {
+            .cart-container {
+              padding: 20px 10px !important;
+            }
+            .cart-item-padding {
+              padding: 15px !important;
+            }
+          }
         `}
       </style>
 
       <div
-        className="container-sm"
-        style={{ position: "relative", zIndex: 1, maxWidth: "1200px" }}
+        className="container-sm cart-container"
+        style={{
+          position: "relative",
+          zIndex: 1,
+          maxWidth: "1200px",
+          padding: "20px",
+        }}
       >
         <h2
           style={{
@@ -178,6 +240,7 @@ const Cart = () => {
         ) : (
           <div>
             <div
+              className="cart-header-grid"
               style={{
                 display: "grid",
                 gridTemplateColumns: "3fr 1fr 1fr 1fr",
@@ -247,7 +310,7 @@ const Cart = () => {
               {cart.cartItems?.map((cartItem, index) => (
                 <div
                   key={cartItem.id}
-                  className="cart-item-animated"
+                  className="cart-item-animated cart-item-grid"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "3fr 1fr 1fr 1fr",
@@ -255,7 +318,7 @@ const Cart = () => {
                     alignItems: "center",
                     background: "#fff",
                     borderRadius: "15px",
-                    padding: "25px",
+                    padding: "clamp(15px, 3vw, 25px)",
                     border: "1px solid #e0e0e0",
                     boxShadow: "0 2px 10px rgba(0, 0, 0, 0.05)",
                     transition: "all 0.3s ease",
@@ -275,22 +338,25 @@ const Cart = () => {
                   }}
                 >
                   <div
+                    className="cart-item-product"
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      gap: "20px",
+                      gap: "clamp(10px, 2vw, 20px)",
                     }}
                   >
                     <img
                       src={cartItem.def_img}
                       alt={cartItem.name}
+                      className="cart-item-image"
                       style={{
-                        width: "120px",
-                        height: "120px",
+                        width: "clamp(80px, 15vw, 120px)",
+                        height: "clamp(80px, 15vw, 120px)",
                         objectFit: "cover",
                         borderRadius: "15px",
                         boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)",
                         transition: "transform 0.3s ease",
+                        flexShrink: 0,
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.transform = "scale(1.05)";
@@ -299,12 +365,12 @@ const Cart = () => {
                         e.currentTarget.style.transform = "scale(1)";
                       }}
                     />
-                    <div>
+                    <div className="cart-item-details" style={{ flex: 1 }}>
                       <h3
                         style={{
                           color: "#333",
                           fontWeight: "600",
-                          fontSize: "1.2rem",
+                          fontSize: "clamp(1rem, 2.5vw, 1.2rem)",
                           marginBottom: "8px",
                         }}
                       >
@@ -313,7 +379,7 @@ const Cart = () => {
                       <p
                         style={{
                           color: "#666",
-                          fontSize: "0.9rem",
+                          fontSize: "clamp(0.85rem, 2vw, 0.9rem)",
                           marginBottom: "12px",
                         }}
                       >
@@ -348,16 +414,18 @@ const Cart = () => {
                     </div>
                   </div>
                   <div
+                    className="cart-item-price"
                     style={{
                       color: "#333",
                       fontWeight: "600",
-                      fontSize: "1.1rem",
+                      fontSize: "clamp(1rem, 2.5vw, 1.1rem)",
                     }}
                   >
                     $
                     {cartItem.isOffer ? cartItem.new_price : cartItem.org_price}
                   </div>
                   <div
+                    className="cart-item-quantity"
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -446,10 +514,11 @@ const Cart = () => {
                     </button>
                   </div>
                   <div
+                    className="cart-item-total"
                     style={{
                       color: "#333",
                       fontWeight: "700",
-                      fontSize: "1.3rem",
+                      fontSize: "clamp(1.1rem, 3vw, 1.3rem)",
                       textAlign: "right",
                     }}
                   >
@@ -463,6 +532,7 @@ const Cart = () => {
             </div>
 
             <div
+              className="cart-summary-container"
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -478,11 +548,11 @@ const Cart = () => {
                   background: "transparent",
                   border: "2px solid #e74c3c",
                   color: "#e74c3c",
-                  padding: "15px 30px",
+                  padding: "clamp(12px, 2.5vw, 15px) clamp(20px, 4vw, 30px)",
                   borderRadius: "25px",
                   cursor: "pointer",
                   fontWeight: "600",
-                  fontSize: "1rem",
+                  fontSize: "clamp(0.9rem, 2vw, 1rem)",
                   transition: "all 0.3s ease",
                   boxShadow: "0 2px 10px rgba(231, 76, 60, 0.2)",
                   animation: "fadeInUp 0.8s ease",
@@ -505,6 +575,7 @@ const Cart = () => {
                 Clear Cart
               </button>
               <div
+                className="cart-summary-checkout"
                 style={{
                   background: "#fff",
                   borderRadius: "20px",
@@ -512,6 +583,8 @@ const Cart = () => {
                   border: "1px solid #e0e0e0",
                   boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
                   minWidth: "300px",
+                  width: "100%",
+                  maxWidth: "100%",
                   animation: "fadeInUp 0.8s ease",
                 }}
               >

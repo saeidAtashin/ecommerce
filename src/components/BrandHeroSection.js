@@ -138,7 +138,16 @@ const BrandHeroSection = () => {
                   >
                     {featuredProduct.product_title}
                   </p>
-                  <Link className="button buttonsmall change-buttom-place">
+                  <Link
+                    className="button buttonsmall change-buttom-place"
+                    style={{
+                      position: "relative",
+                      display: "inline-block",
+                      marginTop: "15px",
+                      left: "auto",
+                      bottom: "auto",
+                    }}
+                  >
                     More Details
                   </Link>
                 </div>
@@ -169,12 +178,17 @@ const BrandHeroSection = () => {
                         borderRadius: "10px",
                         backdropFilter: "blur(5px)",
                         maxWidth: "90%",
+                        left: "50%",
+                        top: "50%",
+                        transform: "translate(-50%, -50%)",
+                        textAlign: "center",
                       }}
                     >
                       <h5
                         style={{
                           color: "#fff",
                           textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
+                          textAlign: "center",
                         }}
                       >
                         {product.name}
@@ -183,6 +197,7 @@ const BrandHeroSection = () => {
                         style={{
                           color: "#fff",
                           textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
+                          textAlign: "center",
                         }}
                       >
                         {product.brand}
@@ -191,6 +206,7 @@ const BrandHeroSection = () => {
                         style={{
                           color: "#fff",
                           textShadow: "2px 2px 4px rgba(0,0,0,0.8)",
+                          textAlign: "center",
                         }}
                       >
                         From {product.org_price}
@@ -208,7 +224,19 @@ const BrandHeroSection = () => {
                         </span>
                         .
                       </p>
-                      <Link className="button buttonsmall chane-gbuttom-place change-buttom-opacity">
+                      <Link
+                        className="button buttonsmall chane-gbuttom-place change-buttom-opacity"
+                        style={{
+                          position: "relative",
+                          display: "block",
+                          marginTop: "15px",
+                          marginLeft: "auto",
+                          marginRight: "auto",
+                          left: "auto",
+                          top: "auto",
+                          width: "fit-content",
+                        }}
+                      >
                         More Details
                       </Link>
                     </div>

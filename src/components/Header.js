@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import cookies from "js-cookie";
@@ -22,6 +23,7 @@ const lang = [
 
 const Header = ({ username }) => {
   const dispatch = useDispatch();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const { cartTotalQuantity } = useSelector((state) => state.cart);
   const currentLanguageCode = cookies.get("i18next") || "en";
@@ -43,12 +45,13 @@ const Header = ({ username }) => {
   return (
     <>
       <header
-        className="header-top-strip py-3"
+        className="header-top-strip py-2 py-md-3 d-none d-xl-block"
         style={{
           position: "relative",
           overflow: "hidden",
           background: "#667eea",
           borderBottom: "2px solid rgba(255, 255, 255, 0.1)",
+          zIndex: 100,
         }}
       >
         {/* Decorative background elements */}
@@ -79,7 +82,10 @@ const Header = ({ username }) => {
           }}
         />
 
-        <div className="container-sm" style={{ position: "relative", zIndex: 1 }}>
+        <div
+          className="container-sm"
+          style={{ position: "relative", zIndex: 1 }}
+        >
           <div className="row align-items-center justify-content-center">
             <div className="col-3">
               <p
@@ -93,7 +99,7 @@ const Header = ({ username }) => {
                 {t("free_sipping")}
               </p>
             </div>
-            <div className="dropdown col-2 d-flex align-items-center justify-content-center">
+            <div className="dropdown col-2 d-none d-xl-flex align-items-center justify-content-center">
               <button
                 className="btn btn-link dropdown-toggle p-0 px-2"
                 type="button"
@@ -107,11 +113,13 @@ const Header = ({ username }) => {
                   transition: "all 0.3s ease",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)";
+                  e.currentTarget.style.background =
+                    "rgba(255, 255, 255, 0.25)";
                   e.currentTarget.style.transform = "scale(1.05)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.15)";
+                  e.currentTarget.style.background =
+                    "rgba(255, 255, 255, 0.15)";
                   e.currentTarget.style.transform = "scale(1)";
                 }}
               >
@@ -149,7 +157,10 @@ const Header = ({ username }) => {
                         borderRadius: "10px",
                         padding: "10px 15px",
                         transition: "all 0.3s ease",
-                        background: code === currentLanguageCode ? "#667eea" : "transparent",
+                        background:
+                          code === currentLanguageCode
+                            ? "#667eea"
+                            : "transparent",
                         color: code === currentLanguageCode ? "#fff" : "#333",
                         opacity: code === currentLanguageCode ? 1 : 0.8,
                       }}
@@ -180,7 +191,7 @@ const Header = ({ username }) => {
             </div>
             <Link
               to="admin/addproduct"
-              className="text-white mb-0 col-3 d-flex align-items-center justify-content-center"
+              className="text-white mb-0 col-3 d-none d-xl-flex align-items-center justify-content-center"
               style={{
                 background: "rgba(255, 255, 255, 0.15)",
                 border: "2px solid rgba(255, 255, 255, 0.3)",
@@ -236,57 +247,158 @@ const Header = ({ username }) => {
           </div>
         </div>
       </header>
+      {/* Floating Mobile Buttons */}
+      <div
+        className="d-xl-none"
+        style={{
+          position: "fixed",
+          top: "15px",
+          left: "15px",
+          right: "15px",
+          zIndex: 9999,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "10px",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <button
+            type="button"
+            className="border-0 bg-transparent"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle navigation"
+            style={{
+              background: "#667eea",
+              color: "#fff",
+              borderRadius: "12px",
+              padding: "10px 12px",
+              transition: "all 0.3s ease",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 4px 12px rgba(102, 126, 234, 0.3)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "#764ba2";
+              e.currentTarget.style.transform = "scale(1.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "#667eea";
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
+            {isMobileMenuOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
+          </button>
+
+          {/* Mobile Logo */}
+          <Link
+            className="text-decoration-none"
+            to="/"
+            style={{
+              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              fontSize: "1.2rem",
+              fontWeight: "700",
+              letterSpacing: "-1px",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
+            Atashin Shop.
+          </Link>
+        </div>
+
+        {/* Mobile Cart Button */}
+        <Link
+          to="/cart"
+          className="position-relative text-decoration-none"
+          style={{
+            background: "#667eea",
+            color: "#fff",
+            borderRadius: "12px",
+            padding: "10px 12px",
+            transition: "all 0.3s ease",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 4px 12px rgba(102, 126, 234, 0.3)",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "#764ba2";
+            e.currentTarget.style.transform = "scale(1.1)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "#667eea";
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
+          <img
+            src="/images/cart.svg"
+            alt="cart"
+            style={{
+              width: "20px",
+              height: "20px",
+              filter: "brightness(0) invert(1)",
+            }}
+          />
+          {cartTotalQuantity > 0 && (
+            <span
+              className="badge"
+              style={{
+                position: "absolute",
+                top: "-5px",
+                right: "-5px",
+                background: "#e74c3c",
+                color: "#fff",
+                borderRadius: "50%",
+                width: "20px",
+                height: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "10px",
+                fontWeight: "700",
+                border: "2px solid #fff",
+              }}
+            >
+              {cartTotalQuantity}
+            </span>
+          )}
+        </Link>
+      </div>
+
       <header
-        className="header-upper py-4"
+        className="header-upper py-3 py-md-4 d-none d-xl-block"
         style={{
           position: "relative",
           background: "rgba(255, 255, 255, 0.95)",
           backdropFilter: "blur(20px)",
           borderBottom: "1px solid rgba(102, 126, 234, 0.1)",
           boxShadow: "0 2px 20px rgba(0, 0, 0, 0.05)",
+          zIndex: 100,
         }}
       >
         <div className="container-sm">
-          <div className="navbar navbar-expand-xl d-flex row align-items-center justify-content-center">
-            <button
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarFirst"
-              className="navbar-toggler border-0"
-              aria-controls="navbarFirst"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-              style={{
-                background: "#667eea",
-                color: "#fff",
-                borderRadius: "10px",
-                padding: "8px 15px",
-                fontWeight: "600",
-                transition: "all 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#fff";
-                e.currentTarget.style.color = "#667eea";
-                e.currentTarget.style.border = "2px solid #667eea";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "#667eea";
-                e.currentTarget.style.color = "#fff";
-                e.currentTarget.style.border = "none";
-              }}
-            >
-              Menu
-            </button>
-            <div className="col-2 collapse navbar-collapse" id="navbarFirst">
+          <div className="navbar navbar-expand-xl d-flex row align-items-center justify-content-between">
+            {/* Logo */}
+            <div className="col-6 col-md-3 col-xl-2 d-flex align-items-center justify-content-center justify-content-md-start">
               <h4 style={{ margin: 0 }}>
                 <Link
                   className="text-decoration-none"
                   to="/"
                   style={{
-                    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                    background:
+                      "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
-                    fontSize: "1.8rem",
+                    fontSize: "clamp(1.2rem, 4vw, 1.8rem)",
                     fontWeight: "700",
                     letterSpacing: "-1px",
                     transition: "all 0.3s ease",
@@ -302,11 +414,10 @@ const Header = ({ username }) => {
                 </Link>
               </h4>
             </div>
-            <div
-              className="col-5 collapse navbar-collapse mb-0000"
-              id="navbarFirst"
-            >
-              <div className="input-group mb-0000 widthquery">
+
+            {/* Search Bar - Desktop */}
+            <div className="col-12 col-md-6 col-xl-5 d-none d-md-flex mb-3 mb-md-0">
+              <div className="input-group w-100">
                 <input
                   type="text"
                   className="form-control py-2"
@@ -322,7 +433,8 @@ const Header = ({ username }) => {
                   }}
                   onFocus={(e) => {
                     e.currentTarget.style.borderColor = "#667eea";
-                    e.currentTarget.style.boxShadow = "0 0 0 3px rgba(102, 126, 234, 0.1)";
+                    e.currentTarget.style.boxShadow =
+                      "0 0 0 3px rgba(102, 126, 234, 0.1)";
                   }}
                   onBlur={(e) => {
                     e.currentTarget.style.borderColor = "#e0e0e0";
@@ -353,11 +465,9 @@ const Header = ({ username }) => {
                 </span>
               </div>
             </div>
-            <div
-              className="col-5 collapsed-nav-response collapse navbar-collapse align-items-center"
-              id="navbarFirst"
-            >
-              <div className="header-upper-links d-flex align-items-center justify-content-between flex-xl-row flex-sm-column align-items-sm-start gap-sm-2 mt-sm-2">
+            {/* Desktop Navigation Links */}
+            <div className="col-12 col-xl-5 d-none d-xl-flex align-items-center justify-content-end">
+              <div className="header-upper-links d-flex align-items-center justify-content-between gap-3">
                 <div>
                   <Link
                     to="/compare-product"
@@ -369,7 +479,8 @@ const Header = ({ username }) => {
                       transition: "all 0.3s ease",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "rgba(102, 126, 234, 0.1)";
+                      e.currentTarget.style.background =
+                        "rgba(102, 126, 234, 0.1)";
                       e.currentTarget.style.transform = "translateY(-3px)";
                     }}
                     onMouseLeave={(e) => {
@@ -407,7 +518,8 @@ const Header = ({ username }) => {
                       transition: "all 0.3s ease",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "rgba(102, 126, 234, 0.1)";
+                      e.currentTarget.style.background =
+                        "rgba(102, 126, 234, 0.1)";
                       e.currentTarget.style.transform = "translateY(-3px)";
                     }}
                     onMouseLeave={(e) => {
@@ -444,7 +556,8 @@ const Header = ({ username }) => {
                       transition: "all 0.3s ease",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "rgba(102, 126, 234, 0.1)";
+                      e.currentTarget.style.background =
+                        "rgba(102, 126, 234, 0.1)";
                       e.currentTarget.style.transform = "translateY(-3px)";
                     }}
                     onMouseLeave={(e) => {
@@ -503,7 +616,8 @@ const Header = ({ username }) => {
                       transition: "all 0.3s ease",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "rgba(102, 126, 234, 0.1)";
+                      e.currentTarget.style.background =
+                        "rgba(102, 126, 234, 0.1)";
                       e.currentTarget.style.transform = "translateY(-3px)";
                     }}
                     onMouseLeave={(e) => {
@@ -556,12 +670,458 @@ const Header = ({ username }) => {
           </div>
         </div>
       </header>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className="d-xl-none"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: "rgba(0, 0, 0, 0.5)",
+          backdropFilter: "blur(5px)",
+          zIndex: 9998,
+          transform: isMobileMenuOpen ? "translateX(0)" : "translateX(-100%)",
+          opacity: isMobileMenuOpen ? 1 : 0,
+          transition: "all 0.3s ease",
+          pointerEvents: isMobileMenuOpen ? "auto" : "none",
+        }}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+
+      {/* Mobile Menu Sidebar */}
+      <div
+        className="d-xl-none"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "85%",
+          maxWidth: "350px",
+          height: "100vh",
+          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+          zIndex: 9999,
+          transform: isMobileMenuOpen ? "translateX(0)" : "translateX(-100%)",
+          transition: "transform 0.3s ease",
+          overflowY: "auto",
+          boxShadow: "4px 0 20px rgba(0, 0, 0, 0.3)",
+        }}
+      >
+        {/* Mobile Menu Header */}
+        <div
+          style={{
+            padding: "20px",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <h4 style={{ margin: 0, color: "#fff", fontSize: "1.5rem" }}>Menu</h4>
+          <button
+            onClick={() => setIsMobileMenuOpen(false)}
+            style={{
+              background: "rgba(255, 255, 255, 0.2)",
+              border: "none",
+              borderRadius: "8px",
+              padding: "8px",
+              color: "#fff",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.3)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.2)";
+            }}
+          >
+            <HiX size={24} />
+          </button>
+        </div>
+
+        {/* Mobile Search */}
+        <div
+          style={{
+            padding: "20px",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+          }}
+        >
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search Product Here"
+              style={{
+                border: "2px solid rgba(255, 255, 255, 0.3)",
+                borderRadius: "20px 0 0 20px",
+                padding: "12px 15px",
+                background: "rgba(255, 255, 255, 0.1)",
+                color: "#fff",
+                fontSize: "14px",
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.background = "rgba(255, 255, 255, 0.2)";
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
+              }}
+            />
+            <span
+              className="input-group-text"
+              style={{
+                background: "rgba(255, 255, 255, 0.2)",
+                border: "2px solid rgba(255, 255, 255, 0.3)",
+                borderRadius: "0 20px 20px 0",
+                color: "#fff",
+                cursor: "pointer",
+              }}
+            >
+              <BsSearch size={20} />
+            </span>
+          </div>
+        </div>
+
+        {/* Mobile Language Selector */}
+        <div
+          style={{
+            padding: "20px",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+          }}
+        >
+          <div
+            style={{
+              marginBottom: "10px",
+              color: "rgba(255, 255, 255, 0.9)",
+              fontSize: "14px",
+              fontWeight: "600",
+            }}
+          >
+            Select Language
+          </div>
+          <div className="d-flex flex-column gap-2">
+            {lang.map(({ code, name, country_code }) => (
+              <button
+                key={country_code}
+                onClick={() => {
+                  i18next.changeLanguage(code);
+                  setIsMobileMenuOpen(false);
+                }}
+                disabled={code === currentLanguageCode}
+                style={{
+                  background:
+                    code === currentLanguageCode
+                      ? "rgba(255, 255, 255, 0.3)"
+                      : "rgba(255, 255, 255, 0.1)",
+                  border: "2px solid rgba(255, 255, 255, 0.3)",
+                  borderRadius: "12px",
+                  padding: "12px 15px",
+                  color: "#fff",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  transition: "all 0.3s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  cursor: code === currentLanguageCode ? "default" : "pointer",
+                  opacity: code === currentLanguageCode ? 1 : 0.9,
+                }}
+                onMouseEnter={(e) => {
+                  if (code !== currentLanguageCode) {
+                    e.currentTarget.style.background =
+                      "rgba(255, 255, 255, 0.2)";
+                    e.currentTarget.style.opacity = "1";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (code !== currentLanguageCode) {
+                    e.currentTarget.style.background =
+                      "rgba(255, 255, 255, 0.1)";
+                    e.currentTarget.style.opacity = "0.9";
+                  }
+                }}
+              >
+                <span
+                  className={`fi fi-${country_code}`}
+                  style={{ fontSize: "20px" }}
+                ></span>
+                <span>{name}</span>
+                {code === currentLanguageCode && (
+                  <span style={{ marginLeft: "auto", fontSize: "12px" }}>
+                    ✓
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile Admin Button */}
+        <div
+          style={{
+            padding: "0 20px 20px",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+          }}
+        >
+          <Link
+            to="admin/addproduct"
+            className="text-decoration-none d-block"
+            onClick={() => setIsMobileMenuOpen(false)}
+            style={{
+              background: "rgba(255, 255, 255, 0.15)",
+              border: "2px solid rgba(255, 255, 255, 0.3)",
+              borderRadius: "12px",
+              padding: "12px 15px",
+              color: "#fff",
+              fontSize: "14px",
+              fontWeight: "600",
+              textAlign: "center",
+              letterSpacing: "1px",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)";
+              e.currentTarget.style.transform = "scale(1.02)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.15)";
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
+            ADMIN PANEL
+          </Link>
+        </div>
+
+        {/* Mobile Navigation Links */}
+        <div style={{ padding: "20px 0" }}>
+          <Link
+            to="/compare-product"
+            className="d-flex align-items-center gap-3 text-decoration-none"
+            onClick={() => setIsMobileMenuOpen(false)}
+            style={{
+              color: "#fff",
+              padding: "15px 20px",
+              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
+              e.currentTarget.style.paddingLeft = "25px";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.paddingLeft = "20px";
+            }}
+          >
+            <img
+              src="/images/compare.svg"
+              alt="compare"
+              style={{
+                width: "24px",
+                height: "24px",
+                filter: "brightness(0) invert(1)",
+              }}
+            />
+            <span style={{ fontSize: "16px", fontWeight: "500" }}>
+              Compare Products
+            </span>
+          </Link>
+
+          <Link
+            to="/Wishlists"
+            className="d-flex align-items-center gap-3 text-decoration-none"
+            onClick={() => setIsMobileMenuOpen(false)}
+            style={{
+              color: "#fff",
+              padding: "15px 20px",
+              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
+              e.currentTarget.style.paddingLeft = "25px";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.paddingLeft = "20px";
+            }}
+          >
+            <img
+              src="/images/wishlist.svg"
+              alt="wishlist"
+              style={{
+                width: "24px",
+                height: "24px",
+                filter: "brightness(0) invert(1)",
+              }}
+            />
+            <span style={{ fontSize: "16px", fontWeight: "500" }}>
+              Favourite Wishlist
+            </span>
+          </Link>
+
+          <div
+            className="d-flex align-items-center gap-3"
+            onClick={() => setIsMobileMenuOpen(false)}
+            style={{
+              color: "#fff",
+              padding: "15px 20px",
+              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+            }}
+          >
+            <img
+              src="/images/user.svg"
+              alt="user"
+              style={{
+                width: "24px",
+                height: "24px",
+                filter: "brightness(0) invert(1)",
+              }}
+            />
+            <div>
+              {username ? (
+                <Link
+                  className="text-decoration-none"
+                  onClick={() => {
+                    sessionStorage.clear();
+                    window.location.reload();
+                  }}
+                  style={{
+                    color: "#fff",
+                    fontSize: "16px",
+                    fontWeight: "500",
+                  }}
+                >
+                  Log Out {username}
+                </Link>
+              ) : (
+                <Link
+                  className="text-decoration-none"
+                  to="/login"
+                  style={{
+                    color: "#fff",
+                    fontSize: "16px",
+                    fontWeight: "500",
+                  }}
+                >
+                  Log In / My Account
+                </Link>
+              )}
+            </div>
+          </div>
+
+          <Link
+            to="/cart"
+            className="d-flex align-items-center gap-3 text-decoration-none position-relative"
+            onClick={() => setIsMobileMenuOpen(false)}
+            style={{
+              color: "#fff",
+              padding: "15px 20px",
+              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
+              e.currentTarget.style.paddingLeft = "25px";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.paddingLeft = "20px";
+            }}
+          >
+            <img
+              src="/images/cart.svg"
+              alt="cart"
+              style={{
+                width: "24px",
+                height: "24px",
+                filter: "brightness(0) invert(1)",
+              }}
+            />
+            <span style={{ fontSize: "16px", fontWeight: "500" }}>Cart</span>
+            <span
+              className="badge"
+              style={{
+                background: "#e74c3c",
+                color: "#fff",
+                borderRadius: "50%",
+                width: "24px",
+                height: "24px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "12px",
+                fontWeight: "700",
+                marginLeft: "auto",
+              }}
+            >
+              {cartTotalQuantity}
+            </span>
+          </Link>
+
+          {/* Mobile Bottom Navigation Links */}
+          <div
+            style={{
+              padding: "20px 0",
+              borderTop: "2px solid rgba(255, 255, 255, 0.2)",
+              marginTop: "20px",
+            }}
+          >
+            <div
+              style={{
+                padding: "0 20px 15px",
+                color: "rgba(255, 255, 255, 0.8)",
+                fontSize: "14px",
+                fontWeight: "600",
+                textTransform: "uppercase",
+                letterSpacing: "1px",
+              }}
+            >
+              Navigation
+            </div>
+            {[
+              { to: "/", label: "Home" },
+              { to: "/product", label: "Our Store" },
+              { to: "/blogs", label: "Blogs" },
+              { to: "/contact", label: "Contact" },
+            ].map((link) => (
+              <Link
+                key={link.to}
+                className="text-decoration-none d-block"
+                to={link.to}
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={{
+                  color: "#fff",
+                  padding: "15px 20px",
+                  borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+                  transition: "all 0.3s ease",
+                  fontSize: "16px",
+                  fontWeight: "500",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
+                  e.currentTarget.style.paddingLeft = "25px";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.paddingLeft = "20px";
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
       <header
-        className="header-botton py-3"
+        className="header-botton py-2 py-md-3 d-none d-md-block"
         style={{
           background: "#667eea",
           position: "relative",
           overflow: "hidden",
+          zIndex: 100,
         }}
       >
         {/* Decorative elements */}
@@ -572,15 +1132,19 @@ const Header = ({ username }) => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%)",
+            background:
+              "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%)",
             pointerEvents: "none",
           }}
         />
 
-        <div className="container-sm" style={{ position: "relative", zIndex: 1 }}>
+        <div
+          className="container-sm"
+          style={{ position: "relative", zIndex: 1 }}
+        >
           <div className="row">
             <div className="col-12">
-              <div className="menu-bottom d-flex align-items-center gap-4 flex-wrap">
+              <div className="menu-bottom d-flex align-items-center gap-3 gap-md-4 flex-wrap justify-content-center">
                 <div>
                   <div className="dropdown">
                     <button
@@ -600,7 +1164,8 @@ const Header = ({ username }) => {
                         transition: "all 0.3s ease",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "rgba(255, 255, 255, 0.9)";
+                        e.currentTarget.style.background =
+                          "rgba(255, 255, 255, 0.9)";
                         e.currentTarget.style.transform = "scale(1.05)";
                       }}
                       onMouseLeave={(e) => {
@@ -715,7 +1280,8 @@ const Header = ({ username }) => {
                           position: "relative",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = "rgba(255, 255, 255, 0.2)";
+                          e.currentTarget.style.background =
+                            "rgba(255, 255, 255, 0.2)";
                           e.currentTarget.style.transform = "translateY(-2px)";
                         }}
                         onMouseLeave={(e) => {

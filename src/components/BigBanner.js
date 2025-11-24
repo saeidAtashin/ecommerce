@@ -2,9 +2,9 @@ import React from "react";
 import { useGetAllProductsQuery } from "../toolkit/features/productApi";
 import { Link, useNavigate } from "react-router-dom";
 
-const BigBanner = () => {
+const BigBanner = ({ category = "" }) => {
   const { data, error, isLoading } = useGetAllProductsQuery();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -17,7 +17,12 @@ const BigBanner = () => {
     return <p>No data available.</p>;
   }
 
-  const filteredData = data.filter((item) => item.isBigBanner);
+  let filteredData = data.filter((item) => item.isBigBanner);
+
+  // Filter by category if provided
+  if (category) {
+    filteredData = filteredData.filter((item) => item.category === category);
+  }
 
   if (filteredData.length === 0) {
     return <p>No big banners available.</p>;
@@ -25,16 +30,13 @@ const BigBanner = () => {
 
   const bannerData = filteredData[0];
 
-
   const Openhandicraft = () => {
     console.log("object");
     navigate("/product/" + bannerData.id);
-
   };
 
-
   return (
-    <div onClick={Openhandicraft} className="cursor-pointer" >
+    <div onClick={Openhandicraft} className="cursor-pointer">
       <div className="main-banner position-relative mt-3 ">
         <img
           src={bannerData.sec_img}
@@ -46,7 +48,9 @@ const BigBanner = () => {
           <h4>{bannerData.brand}</h4>
           <h5>{bannerData.name}</h5>
           <p className="dis-none-small">{bannerData.product_title}</p>
-          <Link className="button buttonsmall change-buttom-place">More Details</Link>
+          <Link className="button buttonsmall change-buttom-place">
+            More Details
+          </Link>
         </div>
       </div>
     </div>

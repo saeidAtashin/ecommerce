@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGetAllProductsQuery } from "../toolkit/features/productApi";
 import { Link, useNavigate } from "react-router-dom";
 
-const SmallHandiCrafts = () => {
+const SmallHandiCrafts = ({ category = "" }) => {
   const { data, error, isLoading } = useGetAllProductsQuery();
 
   const [numberOfShow, setNumberOfShow] = useState(1);
@@ -28,13 +28,30 @@ const SmallHandiCrafts = () => {
     };
   }, []);
 
-  const filteredData = data
-    ?.filter((item) => item.isBanner)
-    .slice(0, numberOfShow);
-
-  if (filteredData?.length === 0) {
-    return <p>No banners available.</p>;
+  if (isLoading) {
+    return <p>Loading...</p>;
   }
+
+  if (error) {
+    return <p>An error occurred...</p>;
+  }
+
+  if (!data || data.length === 0) {
+    return <p>No data available.</p>;
+  }
+
+  let filteredData = data.filter((item) => item.isBanner);
+  
+  // Filter by category if provided
+  if (category) {
+    filteredData = filteredData.filter((item) => item.category === category);
+  }
+  
+  if (filteredData.length === 0) {
+    return <p>No banners available for this category.</p>;
+  }
+
+  filteredData = filteredData.slice(0, numberOfShow);
 
 
 
@@ -47,13 +64,7 @@ const SmallHandiCrafts = () => {
 
   return (
     <div className="d-flex gap-10 flex-wrap justify-content-between align-items-center">
-    
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>An error occurred...</p>
-      ) : (
-        filteredData.map((bannerData) => (
+      {filteredData.map((bannerData) => (
           <div
             className="small-banner position-relative mt-2"
             key={bannerData.id}
@@ -77,8 +88,7 @@ const SmallHandiCrafts = () => {
               </Link>
             </div>
           </div>
-        ))
-      )}
+        ))}
     </div>
   );
 };

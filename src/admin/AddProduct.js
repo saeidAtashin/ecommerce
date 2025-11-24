@@ -14,6 +14,7 @@ const AddProduct = () => {
   const [isActive, setisActive] = useState(true);
   // const [isOffer, setIsOffer] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
 
   const navigate = useNavigate();
 
@@ -31,6 +32,7 @@ const AddProduct = () => {
       isActive,
       isOffer,
       description,
+      category,
     };
     
     fetch("https://apitest-lovat.vercel.app/products", {
@@ -80,6 +82,27 @@ const AddProduct = () => {
                         type="text"
                         name="brand"
                       />
+                    </div>
+                  </div>
+                  <div className="col-2add">
+                    <div className="input-group">
+                      <label className="label">Category</label>
+                      <select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        className="input--style-4"
+                        name="category"
+                      >
+                        <option value="">Select Category</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="handicrafts">Handicrafts</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="home">Home & Living</option>
+                        <option value="sports">Sports</option>
+                        <option value="books">Books</option>
+                        <option value="toys">Toys</option>
+                        <option value="other">Other</option>
+                      </select>
                     </div>
                   </div>
                 </div>

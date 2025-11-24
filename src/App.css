@@ -1862,3 +1862,48 @@ background-color: var(--icon-color);
 
 }
 }
+
+/* Custom Toast Styles for better performance and appearance */
+.custom-toast {
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-height: 50px;
+  padding: 12px 16px;
+}
+
+.custom-toast-body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.custom-toast-progress {
+  background: var(--icon-color);
+}
+
+/* Optimize toast animations for better performance */
+.Toastify__toast-container {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.Toastify__toast {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .Toastify__toast {
+    animation: none;
+    transition: opacity 0.2s ease;
+  }
+  
+  .Toastify__progress-bar {
+    animation: none;
+  }
+}

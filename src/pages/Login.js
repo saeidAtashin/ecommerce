@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Meta from "../components/Meta";
 import BreadCrumb from "../components/BreadCrumb";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { toastTypes } from "../utils/toastConfig";
 
 const Login = () => {
   // const [password, setPassword] = useState("");
@@ -27,21 +29,21 @@ const Login = () => {
           console.log(resp);
 
           if (Object.keys(resp).length === 0) {
-            alert("enter valid username");
+            toast.error("Please enter a valid username", toastTypes.error);
           } else {
             if (resp.password === password) {
-              alert("every thing is fine");
+              toast.success("Login successful! Welcome back!", toastTypes.success);
               sessionStorage.setItem("username", resp.id);
               sessionStorage.setItem("userType", resp.userType);
               navigate("/");
               window.location.reload();
             } else {
-              alert("username and password dont match");
+              toast.error("Username and password don't match", toastTypes.error);
             }
           }
         })
         .catch((err) => {
-          alert("err.message");
+          toast.error("An error occurred. Please try again.", toastTypes.error);
         });
     }
   };
@@ -50,11 +52,11 @@ const Login = () => {
     let result = true;
     if (username === "" || username === null) {
       result = false;
-      alert("enter username");
+      toast.warning("Please enter your username", toastTypes.warning);
     }
     if (password === "" || password === null) {
       result = false;
-      alert("enter pass");
+      toast.warning("Please enter your password", toastTypes.warning);
     }
     return result;
   };

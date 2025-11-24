@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Meta from "../components/Meta";
 import BreadCrumb from "../components/BreadCrumb";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { toastTypes } from "../utils/toastConfig";
 const Signup = () => {
   const [id, setId] = useState("");
   const [email, setEmail] = useState("");
@@ -21,11 +23,15 @@ const Signup = () => {
       body: JSON.stringify(registerObj),
     })
       .then((res) => {
-        alert("success");
-        navigate("/login");
+        if (res.ok) {
+          toast.success("Account created successfully! Please login.", toastTypes.success);
+          navigate("/login");
+        } else {
+          toast.error("Registration failed. Please try again.", toastTypes.error);
+        }
       })
       .catch((err) => {
-        alert("failed");
+        toast.error("An error occurred. Please try again.", toastTypes.error);
       });
   };
   return (

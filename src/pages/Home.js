@@ -6,8 +6,11 @@ import Meta from "../components/Meta";
 import HeroSection from "../components/HeroSection";
 import Brands from "../components/Brands";
 import BrandHeroSection from "../components/BrandHeroSection";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Meta title={"AtashinShop."} />
@@ -24,8 +27,8 @@ const Home = () => {
                     alt="services"
                   />
                   <div>
-                    <h6>Free Shipping</h6>
-                    <p className="mb-0 displaynone">from all orders over $5</p>
+                    <h6>{t("free_shipping")}</h6>
+                    <p className="mb-0 displaynone">{t("from_orders_over")}</p>
                   </div>
                 </div>
                 <div className="d-flex align-items-center flex-sm-column2 justify-content-between">
@@ -35,8 +38,8 @@ const Home = () => {
                     alt="services"
                   />
                   <div>
-                    <h6>Support 24/7 </h6>
-                    <p className="mb-0 displaynone">Shop with an expert</p>
+                    <h6>{t("support_24_7")}</h6>
+                    <p className="mb-0 displaynone">{t("shop_with_expert")}</p>
                   </div>
                 </div>
                 <div className="d-flex align-items-center flex-sm-column2 justify-content-between">
@@ -46,8 +49,8 @@ const Home = () => {
                     alt="services"
                   />
                   <div>
-                    <h6>Daily Offers</h6>
-                    <p className="mb-0 displaynone">Save upto 25% off</p>
+                    <h6>{t("daily_offers")}</h6>
+                    <p className="mb-0 displaynone">{t("save_up_to")}</p>
                   </div>
                 </div>
                 <div className="d-flex align-items-center flex-sm-column2 justify-content-between">
@@ -57,8 +60,8 @@ const Home = () => {
                     alt="services"
                   />
                   <div>
-                    <h6>Secure Payments</h6>
-                    <p className="mb-0 displaynone">100% Protected Payments</p>
+                    <h6>{t("secure_payments")}</h6>
+                    <p className="mb-0 displaynone">{t("protected_payments")}</p>
                   </div>
                 </div>
                 <div className="d-flex align-items-center flex-sm-column2 justify-content-between">
@@ -68,9 +71,9 @@ const Home = () => {
                     alt="services"
                   />
                   <div>
-                    <h6>Afrodable Prices</h6>
+                    <h6>{t("affordable_prices")}</h6>
                     <p className="mb-0 displaynone">
-                      Get Factoru Default Price
+                      {t("factory_price")}
                     </p>
                   </div>
                 </div>
@@ -96,7 +99,7 @@ const Home = () => {
           <div className="row d-flex featured-collection-wrap-center">
             <div className="col-12">
               <h3 className="section-heading mb-2 text-center">
-                Featured Collection
+                {t("featured_collection")}
               </h3>
             </div>
             <div className="col-lg-3 col-sm-12 mb-5 famous-card-t">
@@ -105,12 +108,11 @@ const Home = () => {
                   src="images/famous01.webp"
                   alt="famouses"
                   className="my-0 img-fluid"
-                  // style={{scale:"0.7"}}
                 />
                 <div className="famous-content position-absolute">
-                  <h5>Big Screen</h5>
-                  <h6>Smart Watch Series 7</h6>
-                  <p>from $3900 or $16.92/mo. for 24 mo.*</p>
+                  <h5>{t("big_screen")}</h5>
+                  <h6>{t("smart_watch_series")}</h6>
+                  <p>{t("from_price")}</p>
                 </div>
               </div>
             </div>
@@ -123,10 +125,10 @@ const Home = () => {
                   className=" img-fluid"
                 />
                 <div className="famous-content position-absolute">
-                  <h5 className="text-dark">Smartphone Samsung</h5>
-                  <h6 className="text-dark">Now in Green </h6>
+                  <h5 className="text-dark">{t("smartphone_samsung")}</h5>
+                  <h6 className="text-dark">{t("now_in_green")}</h6>
                   <p className="text-dark">
-                    from $999.00 or $41.62/mo. for 24 Footnote*
+                    {t("samsung_price")}
                   </p>
                 </div>
               </div>
@@ -136,10 +138,10 @@ const Home = () => {
               <div className="famous-card other-famous-card position-relative">
                 <img src="images/jbl.webp" alt="jbl" className=" img-fluid" />
                 <div className="famous-content position-absolute">
-                  <h5 className="text-dark">Home Speakers</h5>
-                  <h6 className="text-dark">Room-filling sound.</h6>
+                  <h5 className="text-dark">{t("home_speakers")}</h5>
+                  <h6 className="text-dark">{t("room_filling_sound")}</h6>
                   <p className="text-dark">
-                    from $999.00 or $41.62/mo. for 24{" "}
+                    {t("speaker_price")}
                   </p>
                 </div>
               </div>
@@ -153,9 +155,9 @@ const Home = () => {
                   className=" img-fluid"
                 />
                 <div className="famous-content position-absolute">
-                  <h5 className="text-dark">Studio Display</h5>
-                  <h6 className="text-dark">600 nits of brightness</h6>
-                  <p className="text-dark">27-inch 5k Rating display</p>
+                  <h5 className="text-dark">{t("studio_display")}</h5>
+                  <h6 className="text-dark">{t("nits_brightness")}</h6>
+                  <p className="text-dark">{t("display_rating")}</p>
                 </div>
               </div>
             </div>
@@ -166,7 +168,7 @@ const Home = () => {
         <div className="container-sm">
           <div className="row">
             <div className="col-12">
-              <h3 className="section-heading">Special Products</h3>
+              <h3 className="section-heading">{t("special_products")}</h3>
             </div>
           </div>
           <div className="row">
@@ -216,7 +218,7 @@ const Home = () => {
         <div className="container-sm">
           <div className="row">
             <div className="col-12">
-              <h3 className="section-heading">Our Latest Blogs</h3>
+              <h3 className="section-heading">{t("our_latest_blogs")}</h3>
             </div>
           </div>
           <div className="row">

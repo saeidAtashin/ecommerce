@@ -280,7 +280,7 @@ const Header = ({ username }) => {
                 e.currentTarget.style.transform = "scale(1)";
               }}
             >
-              <p className="mb-0">ADMIN</p>
+              <p className="mb-0">{t("admin")}</p>
             </Link>
             <div className="col-3">
               <p
@@ -502,8 +502,8 @@ const Header = ({ username }) => {
                 <input
                   type="text"
                   className="form-control py-2"
-                  placeholder="Search Product Here"
-                  aria-label="Search Product Here"
+                  placeholder={t("search_product")}
+                  aria-label={t("search_product")}
                   aria-describedby="basic-addon2"
                   style={{
                     border: "2px solid #e0e0e0",
@@ -583,7 +583,7 @@ const Header = ({ username }) => {
                           lineHeight: "1.3",
                         }}
                       >
-                        Compare <br /> Products
+                        {t("compare_products")}
                       </p>
                     </div>
                   </Link>
@@ -622,7 +622,7 @@ const Header = ({ username }) => {
                           lineHeight: "1.3",
                         }}
                       >
-                        Favourite <br /> Wishlist
+                        {t("favourite_wishlist")}
                       </p>
                     </div>
                   </Link>
@@ -667,7 +667,7 @@ const Header = ({ username }) => {
                             lineHeight: "1.3",
                           }}
                         >
-                          Log Out <br /> {username}
+                          {t("log_out")} <br /> {username}
                         </Link>
                       ) : (
                         <Link
@@ -680,7 +680,7 @@ const Header = ({ username }) => {
                             lineHeight: "1.3",
                           }}
                         >
-                          Log In <br /> My Account
+                          {t("log_in")} <br /> {t("my_account")}
                         </Link>
                       )}
                     </div>
@@ -741,7 +741,7 @@ const Header = ({ username }) => {
                           lineHeight: "1.3",
                         }}
                       >
-                        Cart
+                        {t("cart")}
                       </p>
                     </div>
                   </Link>
@@ -802,7 +802,7 @@ const Header = ({ username }) => {
             justifyContent: "space-between",
           }}
         >
-          <h4 style={{ margin: 0, color: "#fff", fontSize: "1.5rem" }}>Menu</h4>
+          <h4 style={{ margin: 0, color: "#fff", fontSize: "1.5rem" }}>{t("menu")}</h4>
           <button
             onClick={() => setIsMobileMenuOpen(false)}
             style={{
@@ -836,7 +836,7 @@ const Header = ({ username }) => {
             <input
               type="text"
               className="form-control"
-              placeholder="Search Product Here"
+              placeholder={t("search_product")}
               style={{
                 border: "2px solid rgba(255, 255, 255, 0.3)",
                 borderRadius: "20px 0 0 20px",
@@ -882,7 +882,7 @@ const Header = ({ username }) => {
               fontWeight: "600",
             }}
           >
-            Select Language
+            {t("select_language")}
           </div>
           <div className="d-flex flex-column gap-2">
             {lang.map(({ code, name, country_code }) => (
@@ -973,7 +973,7 @@ const Header = ({ username }) => {
               e.currentTarget.style.transform = "scale(1)";
             }}
           >
-            ADMIN PANEL
+            {t("admin_panel")}
           </Link>
         </div>
 
@@ -1008,7 +1008,7 @@ const Header = ({ username }) => {
               }}
             />
             <span style={{ fontSize: "16px", fontWeight: "500" }}>
-              Compare Products
+              {t("compare_products")}
             </span>
           </Link>
 
@@ -1041,7 +1041,7 @@ const Header = ({ username }) => {
               }}
             />
             <span style={{ fontSize: "16px", fontWeight: "500" }}>
-              Favourite Wishlist
+              {t("favourite_wishlist")}
             </span>
           </Link>
 
@@ -1077,7 +1077,7 @@ const Header = ({ username }) => {
                     fontWeight: "500",
                   }}
                 >
-                  Log Out {username}
+                  {t("log_out")} {username}
                 </Link>
               ) : (
                 <Link
@@ -1089,7 +1089,7 @@ const Header = ({ username }) => {
                     fontWeight: "500",
                   }}
                 >
-                  Log In / My Account
+                  {t("log_in")} / {t("my_account")}
                 </Link>
               )}
             </div>
@@ -1123,7 +1123,7 @@ const Header = ({ username }) => {
                 filter: "brightness(0) invert(1)",
               }}
             />
-            <span style={{ fontSize: "16px", fontWeight: "500" }}>Cart</span>
+            <span style={{ fontSize: "16px", fontWeight: "500" }}>{t("cart")}</span>
             <span
               className="badge"
               style={{
@@ -1162,13 +1162,13 @@ const Header = ({ username }) => {
                 letterSpacing: "1px",
               }}
             >
-              Navigation
+              {t("navigation")}
             </div>
             {[
-              { to: "/", label: "Home" },
-              { to: "/product", label: "Our Store" },
-              { to: "/blogs", label: "Blogs" },
-              { to: "/contact", label: "Contact" },
+              { to: "/", label: t("home") },
+              { to: "/product", label: t("our_store") },
+              { to: "/blogs", label: t("blogs") },
+              { to: "/contact", label: t("contact") },
             ].map((link) => (
               <Link
                 key={link.to}
@@ -1258,7 +1258,7 @@ const Header = ({ username }) => {
                         e.currentTarget.style.transform = "scale(1)";
                       }}
                     >
-                      Shop Categories
+                      {t("shop_categories")}
                     </button>
                     <ul
                       className="dropdown-menu p-2"
@@ -1291,7 +1291,7 @@ const Header = ({ username }) => {
                             e.currentTarget.style.color = "#333";
                           }}
                         >
-                          Action
+                          {t("action")}
                         </Link>
                       </li>
                       <li>
@@ -1313,7 +1313,7 @@ const Header = ({ username }) => {
                             e.currentTarget.style.color = "#333";
                           }}
                         >
-                          Another action
+                          {t("another_action")}
                         </Link>
                       </li>
                       <li>
@@ -1335,7 +1335,7 @@ const Header = ({ username }) => {
                             e.currentTarget.style.color = "#333";
                           }}
                         >
-                          Something else here
+                          {t("something_else")}
                         </Link>
                       </li>
                     </ul>
@@ -1344,10 +1344,10 @@ const Header = ({ username }) => {
                 <div className="menu-links">
                   <div className="d-flex align-items-center gap-4 flex-wrap">
                     {[
-                      { to: "/", label: "Home" },
-                      { to: "/product", label: "Our Store" },
-                      { to: "/blogs", label: "Blogs" },
-                      { to: "/contact", label: "Contact" },
+                      { to: "/", label: t("home") },
+                      { to: "/product", label: t("our_store") },
+                      { to: "/blogs", label: t("blogs") },
+                      { to: "/contact", label: t("contact") },
                     ].map((link) => (
                       <Link
                         key={link.to}

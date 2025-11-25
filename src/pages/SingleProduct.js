@@ -8,8 +8,10 @@ import { useDispatch } from "react-redux";
 import { useGetProductsByIdQuery } from "../toolkit/features/productApi";
 import { addToCart } from "../toolkit/features/cartSlice";
 import { useChangeTableLogger } from "../context/useChangeTableLogger";
+import { useTranslation } from "react-i18next";
 
 const SingleProduct = ({ userType }) => {
+  const { t } = useTranslation();
   const { logAddToCart } = useChangeTableLogger();
 
   const { id } = useParams();
@@ -105,15 +107,15 @@ const SingleProduct = ({ userType }) => {
       {isLoading ? (
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            minHeight: "50vh",
-            fontSize: "24px",
-            color: "#667eea",
-          }}
-        >
-          Loading...
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "50vh",
+          fontSize: "24px",
+          color: "#667eea",
+        }}
+      >
+        {t("loading")}
         </div>
       ) : error ? (
         <div
@@ -123,10 +125,10 @@ const SingleProduct = ({ userType }) => {
             alignItems: "center",
             minHeight: "50vh",
             fontSize: "24px",
-            color: "#e74c3c",
-          }}
-        >
-          An error occurred...
+          color: "#e74c3c",
+        }}
+      >
+        {t("error_occurred")}
         </div>
       ) : (
         data && (
@@ -486,7 +488,7 @@ const SingleProduct = ({ userType }) => {
                             className="fs-4 mb-0"
                             style={{ fontWeight: "600", color: "#333" }}
                           >
-                            Price:
+                            {t("price")}:
                           </p>
                           <p
                             className={`mb-0 ${
@@ -556,7 +558,7 @@ const SingleProduct = ({ userType }) => {
                                   "scale(1) translateY(0)";
                               }}
                             >
-                              Add To Cart
+                              {t("add_to_cart")}
                             </button>
                             <span
                               className="badge"
@@ -615,7 +617,7 @@ const SingleProduct = ({ userType }) => {
                                 }
                               }}
                             >
-                              Edit Product
+                              {t("edit_product")}
                             </Link>
                           </div>
                           <div>
@@ -658,7 +660,7 @@ const SingleProduct = ({ userType }) => {
                                 }
                               }}
                             >
-                              Delete Product
+                              {t("delete_product")}
                             </button>
                           </div>
                         </div>
@@ -688,7 +690,7 @@ const SingleProduct = ({ userType }) => {
                         marginBottom: "25px",
                       }}
                     >
-                      Description
+                      {t("description")}
                     </h4>
                     <div
                       style={{
@@ -735,7 +737,7 @@ const SingleProduct = ({ userType }) => {
                         marginBottom: "30px",
                       }}
                     >
-                      Reviews
+                      {t("reviews")}
                     </h3>
                     <div className="review-inner-wrapper">
                       <div
@@ -759,7 +761,7 @@ const SingleProduct = ({ userType }) => {
                               color: "#333",
                             }}
                           >
-                            Customer Reviews
+                            {t("customer_reviews")}
                           </h4>
                           <div className="d-flex align-items-center gap-3">
                             <ReactStars
@@ -773,7 +775,7 @@ const SingleProduct = ({ userType }) => {
                               className="mb-0"
                               style={{ fontSize: "1rem", color: "#666" }}
                             >
-                              Based on 2 Reviews
+                              {t("based_on_reviews", { count: 2 })}
                             </p>
                           </div>
                         </div>
@@ -804,8 +806,8 @@ const SingleProduct = ({ userType }) => {
                                 e.currentTarget.style.borderBottomColor =
                                   "#667eea";
                               }}
-                            >
-                              Write a review
+                              >
+                                {t("write_review")}
                             </button>
                           </div>
                         )}
@@ -830,8 +832,8 @@ const SingleProduct = ({ userType }) => {
                             color: "#333",
                             marginBottom: "20px",
                           }}
-                        >
-                          Write a Review
+                          >
+                            {t("write_review_title")}
                         </h4>
                         <form action="" className="d-flex flex-column gap-3">
                           <div>
@@ -848,7 +850,7 @@ const SingleProduct = ({ userType }) => {
                             <input
                               type="text"
                               className="form-control"
-                              placeholder="Email"
+                              placeholder={t("email")}
                               style={{
                                 padding: "12px 20px",
                                 borderRadius: "12px",
@@ -875,7 +877,7 @@ const SingleProduct = ({ userType }) => {
                               className="w-100 form-control"
                               cols="30"
                               rows="4"
-                              placeholder="Comments"
+                              placeholder={t("comments")}
                               style={{
                                 padding: "12px 20px",
                                 borderRadius: "12px",
@@ -921,8 +923,8 @@ const SingleProduct = ({ userType }) => {
                                 e.currentTarget.style.transform =
                                   "scale(1) translateY(0)";
                               }}
-                            >
-                              Submit Review
+                              >
+                                {t("submit_review")}
                             </button>
                           </div>
                         </form>
@@ -1020,7 +1022,7 @@ const SingleProduct = ({ userType }) => {
                         textAlign: "center",
                       }}
                     >
-                      Our Popular Products
+                      {t("popular_products")}
                     </h3>
                   </div>
                 </div>
@@ -1218,7 +1220,7 @@ const SingleProduct = ({ userType }) => {
                       e.currentTarget.style.color = "#667eea";
                     }}
                   >
-                    Reset
+                    {t("reset")}
                   </button>
                 </div>
 

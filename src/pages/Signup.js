@@ -4,7 +4,10 @@ import BreadCrumb from "../components/BreadCrumb";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { toastTypes } from "../utils/toastConfig";
+import { useTranslation } from "react-i18next";
+
 const Signup = () => {
+  const { t } = useTranslation();
   const [id, setId] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,27 +27,27 @@ const Signup = () => {
     })
       .then((res) => {
         if (res.ok) {
-          toast.success("Account created successfully! Please login.", toastTypes.success);
+          toast.success(t("account_created"), toastTypes.success);
           navigate("/login");
         } else {
-          toast.error("Registration failed. Please try again.", toastTypes.error);
+          toast.error(t("registration_failed"), toastTypes.error);
         }
       })
       .catch((err) => {
-        toast.error("An error occurred. Please try again.", toastTypes.error);
+        toast.error(t("login_error"), toastTypes.error);
       });
   };
   return (
     <>
-      <Meta title={"Sign up"} /> <BreadCrumb title="Sign up" />
+      <Meta title={t("signup_title")} /> <BreadCrumb title={t("signup_title")} />
       <div className="login-wrapper me-wrapper-2 py-5">
         <div className="container-sm">
           <div className="row">
             <div className="col-12 d-flex align-items-center justify-content-center">
               <div className="login-card login-card2 login-card3 d-flex flex-column justify-content-around align-items-center">
                 <img src="images/assignment-outline.webp" />
-                <h2>Sign Up</h2>
-                <h3 className="mb-0">Create A New Account</h3>
+                <h2>{t("signup_title")}</h2>
+                <h3 className="mb-0">{t("create_account")}</h3>
                 <form
                   className="login-form  d-flex flex-column justify-content-center"
                   onSubmit={handlesubmit}
@@ -54,7 +57,7 @@ const Signup = () => {
                       autoComplete="off"
                       className="control"
                       type="text"
-                      placeholder="Username"
+                      placeholder={t("username")}
                       value={id}
                       onChange={(e) => setId(e.target.value)}
                       required
@@ -65,7 +68,7 @@ const Signup = () => {
                       autoComplete="off"
                       className="control"
                       type="email"
-                      placeholder="Email"
+                      placeholder={t("email")}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -76,7 +79,7 @@ const Signup = () => {
                       autoComplete="off"
                       className="control"
                       type="password"
-                      placeholder="Password"
+                      placeholder={t("password")}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
@@ -87,13 +90,13 @@ const Signup = () => {
                       autoComplete="off"
                       className="control"
                       type="mobile"
-                      placeholder="Mobile Number"
+                      placeholder={t("mobile_number")}
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                     />
                   </div>
                   <div className="username d-flex ">
-                    <label className="controladmin">Type of USER: </label>
+                    <label className="controladmin">{t("user_type")} </label>
                     <input
                       autoComplete="off"
                       className="controlchekbox"
@@ -104,7 +107,7 @@ const Signup = () => {
                       onChange={(e) => setUserType(e.target.value)}
                     />
 
-                    <label className="controladmin">User</label>
+                    <label className="controladmin">{t("user")}</label>
                     <input
                       autoComplete="off"
                       className="controlchekbox"
@@ -114,16 +117,16 @@ const Signup = () => {
                       checked={userType === "admin"}
                       onChange={(e) => setUserType(e.target.value)}
                     />
-                    <label className="controladmin">Admin</label>
+                    <label className="controladmin">{t("admin")}</label>
                   </div>
 
                   <div className="d-flex  justify-content-between  align-items-center gap-15">
-                    <a className="button back-btn border-0 px-5  mt-3">Back</a>
+                    <a className="button back-btn border-0 px-5  mt-3">{t("back")}</a>
                     <button
                       className="button border-0 px-5  mt-3"
                       type="submit"
                     >
-                      Sign Up
+                      {t("signup_title")}
                     </button>
                   </div>
                 </form>

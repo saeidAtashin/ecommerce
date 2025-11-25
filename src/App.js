@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "./components/Layout";
 import ChangeTable from "./components/ChangeTable";
+import cookies from "js-cookie";
 
 // Lazy load all page components for code splitting and better performance
 const Home = lazy(() => import("./pages/Home"));
@@ -43,6 +44,7 @@ const LoadingFallback = () => (
 function App() {
   const [username, setUsername] = useState("");
   const [userType, setUserType] = useState("");
+  const [isRtl, setIsRtl] = useState(false);
 
   // Optimize useEffect - only run once on mount
   useEffect(() => {
@@ -53,6 +55,19 @@ function App() {
     setUserType(storedUserType || "");
   }, []); // Empty dependency array - only run on mount
 
+  // Check for RTL language
+  useEffect(() => {
+    const checkRtl = () => {
+      const currentLanguage = cookies.get("i18next") || "en";
+      setIsRtl(currentLanguage === "fa");
+    };
+
+    checkRtl();
+    // Check periodically for language changes
+    const interval = setInterval(checkRtl, 500);
+    return () => clearInterval(interval);
+  }, []);
+
   // Memoize user props to prevent unnecessary re-renders
   const userTypeMemo = useMemo(() => userType, [userType]);
 
@@ -61,12 +76,12 @@ function App() {
       <BrowserRouter>
         {/* Optimized ToastContainer with performance settings */}
         <ToastContainer
-          position="bottom-left"
+          position={isRtl ? "bottom-right" : "bottom-left"}
           autoClose={3000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
-          rtl={false}
+          rtl={isRtl}
           pauseOnFocusLoss
           draggable
           pauseOnHover

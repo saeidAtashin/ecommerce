@@ -1,12 +1,15 @@
 import React from "react";
 import Meta from "../components/Meta";
 import BreadCrumb from "../components/BreadCrumb";
+import { useTranslation } from "react-i18next";
 
 const Whishlists = () => {
+  const { t } = useTranslation();
+
   return (
     <>
-      <Meta title={"Whishlists"} />
-      <BreadCrumb title="Whishlists" />
+      <Meta title={t("wishlists")} />
+      <BreadCrumb title={t("wishlists")} />
       <div className="whishlist-wrapper home-wrapper-2 py-5">
         <div className="container-sm">
           <div className="row">

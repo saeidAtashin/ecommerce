@@ -5,6 +5,7 @@ import Pagination from "./Pagination";
 import { useDispatch } from "react-redux";
 import { useGetAllProductsQuery } from "../toolkit/features/productApi";
 import { addToCart } from "../toolkit/features/cartSlice";
+import { useTranslation } from "react-i18next";
 import "./ProductCard.css";
 
 // Loading Skeleton Component
@@ -54,6 +55,7 @@ const SingleProductCard = ({
   onEditClick,
   onDeleteClick,
   location,
+  t,
 }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -148,7 +150,7 @@ const SingleProductCard = ({
         {/* Badge for offers */}
         {item.isOffer && (
           <div className="product-badge position-absolute">
-            <span className="badge-text">Sale</span>
+            <span className="badge-text">{t("sale")}</span>
           </div>
         )}
 
@@ -174,7 +176,7 @@ const SingleProductCard = ({
           )}
           {imageError ? (
             <div className="image-error">
-              <span>No Image</span>
+              <span>{t("no_image")}</span>
             </div>
           ) : (
             <>
@@ -270,7 +272,7 @@ const SingleProductCard = ({
               aria-label={`Add ${item.product_title || item.name} to cart`}
             >
               <span className="btn-text">
-                {isAddingToCart ? "Adding..." : "Buy Now"}
+                {isAddingToCart ? t("adding") : t("buy_now")}
               </span>
               <span className="btn-icon">→</span>
             </button>
@@ -373,6 +375,7 @@ const ProductCard = ({
   id,
   selectedValue = "best-selling",
 }) => {
+  const { t } = useTranslation();
   const { data, error, isLoading } = useGetAllProductsQuery();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -459,24 +462,24 @@ const ProductCard = ({
   );
 
   const handleDeleteClick = useCallback((productId) => {
-    if (window.confirm("Are you sure you want to delete this product?")) {
+    if (window.confirm(t("delete_confirm"))) {
       fetch(`https://apitest-lovat.vercel.app/products/${productId}`, {
         method: "DELETE",
       })
         .then((res) => {
           if (res.ok) {
-            alert("Product removed successfully");
+            alert(t("product_removed"));
             window.location.reload();
           } else {
-            alert("Failed to remove product");
+            alert(t("delete_failed"));
           }
         })
         .catch((err) => {
           console.error(err);
-          alert("An error occurred while deleting the product");
+          alert(t("delete_error"));
         });
     }
-  }, []);
+  }, [t]);
 
   // Loading State
   if (isLoading) {
@@ -495,13 +498,13 @@ const ProductCard = ({
       <div className="col-12">
         <div className="error-message">
           <div className="error-icon">⚠️</div>
-          <h3>Oops! Something went wrong</h3>
-          <p>We couldn't load the products. Please try again later.</p>
+          <h3>{t("oops_error")}</h3>
+          <p>{t("couldnt_load")}</p>
           <button
             className="btn-retry"
             onClick={() => window.location.reload()}
           >
-            Retry
+            {t("retry")}
           </button>
         </div>
       </div>
@@ -514,8 +517,8 @@ const ProductCard = ({
       <div className="col-12">
         <div className="empty-state">
           <div className="empty-icon">📦</div>
-          <h3>No products found</h3>
-          <p>Try adjusting your filters or check back later.</p>
+          <h3>{t("no_products")}</h3>
+          <p>{t("adjust_filters")}</p>
         </div>
       </div>
     );
@@ -535,6 +538,7 @@ const ProductCard = ({
           onEditClick={handleEditClick}
           onDeleteClick={handleDeleteClick}
           location={location}
+          t={t}
         />
       ))}
       <div className="col-12 d-flex align-items-center justify-content-center text-center mt-4">

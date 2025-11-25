@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const BlogCard = () => {
+  const { t } = useTranslation();
+
   return (
    
         <div className="blog-card">
@@ -10,15 +13,15 @@ const BlogCard = () => {
             </div>
             <div className="blog-content">
                 <p className='date'>
-1 Dec, 2022
+                  {t("blog_date")}
                 </p>
                 <h5 className='title'>
-A beautiful sunday morningrenaissance
+                  {t("blog_title")}
                 </h5>
                 <p className="desc">
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, 
+                  {t("blog_desc")}
                 </p>
-                <Link to="/blog/:id" className="button" >Read More</Link>
+                <Link to="/blog/:id" className="button" >{t("read_more")}</Link>
             </div>
         </div>
       

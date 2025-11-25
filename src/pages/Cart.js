@@ -8,8 +8,10 @@ import {
   increaseCart,
   removeFromCart,
 } from "../toolkit/features/cartSlice";
+import { useTranslation } from "react-i18next";
 
 const Cart = () => {
+  const { t } = useTranslation();
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const [showFloatingCheckout, setShowFloatingCheckout] = useState(false);
@@ -200,15 +202,15 @@ const Cart = () => {
               border-top: 1px solid #e0e0e0 !important;
             }
             .cart-item-price::before {
-              content: "Price: ";
+              content: "${t("price")}: ";
               font-weight: 600;
             }
             .cart-item-quantity::before {
-              content: "Quantity: ";
+              content: "${t("quantity")}: ";
               font-weight: 600;
             }
             .cart-item-total::before {
-              content: "Total: ";
+              content: "${t("total")}: ";
               font-weight: 600;
             }
             .cart-summary-container {
@@ -250,7 +252,7 @@ const Cart = () => {
             letterSpacing: "-1px",
           }}
         >
-          Shopping Cart
+          {t("shopping_cart")}
         </h2>
         {cart.cartItems.length === 0 ? (
           <div
@@ -277,7 +279,7 @@ const Cart = () => {
                 textAlign: "center",
               }}
             >
-              Your Cart is currently empty
+              {t("cart_empty")}
             </p>
             <img
               src="images/empty-box.gif"
@@ -330,7 +332,7 @@ const Cart = () => {
                   d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
                 />
               </svg>
-              <span>Start Shopping</span>
+              <span>{t("start_shopping")}</span>
             </Link>
           </div>
         ) : (
@@ -359,7 +361,7 @@ const Cart = () => {
                   letterSpacing: "1px",
                 }}
               >
-                Product
+                {t("product")}
               </h3>
               <h3
                 style={{
@@ -370,7 +372,7 @@ const Cart = () => {
                   letterSpacing: "1px",
                 }}
               >
-                Price
+                {t("price")}
               </h3>
               <h3
                 style={{
@@ -381,7 +383,7 @@ const Cart = () => {
                   letterSpacing: "1px",
                 }}
               >
-                Quantity
+                {t("quantity")}
               </h3>
               <h3
                 style={{
@@ -393,7 +395,7 @@ const Cart = () => {
                   textAlign: "right",
                 }}
               >
-                Total
+                {t("total")}
               </h3>
             </div>
             <div
@@ -505,7 +507,7 @@ const Cart = () => {
                           e.currentTarget.style.transform = "scale(1)";
                         }}
                       >
-                        Remove
+                        {t("remove")}
                       </button>
                     </div>
                   </div>
@@ -668,7 +670,7 @@ const Cart = () => {
                     "0 2px 10px rgba(231, 76, 60, 0.2)";
                 }}
               >
-                Clear Cart
+                {t("clear_cart")}
               </button>
               <div
                 ref={checkoutRef}
@@ -702,7 +704,7 @@ const Cart = () => {
                       fontWeight: "500",
                     }}
                   >
-                    Subtotal
+                    {t("subtotal")}
                   </span>
                   <span
                     style={{
@@ -722,7 +724,7 @@ const Cart = () => {
                     textAlign: "center",
                   }}
                 >
-                  Taxes and shipping calculated at checkout
+                  {t("taxes_shipping")}
                 </p>
                 <button
                   className="btn btn-info checkout-width"
@@ -753,7 +755,7 @@ const Cart = () => {
                       "0 4px 15px rgba(102, 126, 234, 0.3)";
                   }}
                 >
-                  Check Out
+                  {t("check_out")}
                 </button>
                 <Link
                   to="/product"
@@ -790,7 +792,7 @@ const Cart = () => {
                       d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
                     />
                   </svg>
-                  <span>Continue Shopping</span>
+                  <span>{t("continue_shopping")}</span>
                 </Link>
               </div>
             </div>
@@ -836,7 +838,7 @@ const Cart = () => {
                   fontWeight: "500",
                 }}
               >
-                Total Amount
+                {t("total_amount")}
               </div>
               <div
                 style={{
@@ -881,7 +883,7 @@ const Cart = () => {
                   "0 4px 20px rgba(102, 126, 234, 0.4)";
               }}
             >
-              Check Out
+              {t("check_out")}
             </button>
           </div>
         </div>

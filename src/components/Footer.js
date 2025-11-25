@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsGithub, BsInstagram, BsLinkedin, BsWhatsapp } from "react-icons/bs";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <footer
@@ -62,7 +65,7 @@ const Footer = () => {
                     letterSpacing: "-0.5px",
                   }}
                 >
-                  Sign Up for Newsletter
+                  {t("sign_up_newsletter")}
                 </h2>
               </div>
             </div>
@@ -71,8 +74,8 @@ const Footer = () => {
                 <input
                   type="text"
                   className="form-control py-3"
-                  placeholder="Your Email Address"
-                  aria-label="Your Email Address"
+                  placeholder={t("your_email")}
+                  aria-label={t("your_email")}
                   aria-describedby="basic-addon2"
                   style={{
                     border: "2px solid rgba(255, 255, 255, 0.3)",
@@ -113,7 +116,7 @@ const Footer = () => {
                     e.currentTarget.style.transform = "scale(1)";
                   }}
                 >
-                  Subscribe
+                  {t("subscribe")}
                 </span>
               </div>
             </div>
@@ -140,7 +143,7 @@ const Footer = () => {
                   paddingBottom: "15px",
                 }}
               >
-                Contact Us
+                {t("contact_us_title")}
                 <div
                   style={{
                     position: "absolute",
@@ -163,7 +166,7 @@ const Footer = () => {
                     marginBottom: "20px",
                   }}
                 >
-                  Hno : Somewhere in the <br /> World
+                  {t("address")}
                 </address>
                 <a
                   href="tel:+98 9368165125"
@@ -262,7 +265,7 @@ const Footer = () => {
                   paddingBottom: "15px",
                 }}
               >
-                Information
+                {t("information")}
                 <div
                   style={{
                     position: "absolute",
@@ -277,11 +280,11 @@ const Footer = () => {
               </h4>
               <div className="footer-links d-flex flex-column gap-2">
                 {[
-                  { to: "/privacy-policy", label: "Privacy Policy" },
-                  { to: "/refund-policy", label: "Refund Policy" },
-                  { to: "/shipping-policy", label: "Shipping Policy" },
-                  { to: "/term-conditions", label: "Term & Conditions" },
-                  { to: "/blogs", label: "Blogs" },
+                  { to: "/privacy-policy", label: t("privacy_policy") },
+                  { to: "/refund-policy", label: t("refund_policy") },
+                  { to: "/shipping-policy", label: t("shipping_policy") },
+                  { to: "/term-conditions", label: t("term_conditions") },
+                  { to: "/blogs", label: t("blogs") },
                 ].map((link) => (
                   <Link
                     key={link.to}
@@ -332,7 +335,7 @@ const Footer = () => {
                   paddingBottom: "15px",
                 }}
               >
-                Account
+                {t("account")}
                 <div
                   style={{
                     position: "absolute",
@@ -347,9 +350,9 @@ const Footer = () => {
               </h4>
               <div className="footer-links d-flex flex-column gap-2">
                 {[
-                  { to: "/about", label: "About Us" },
-                  { to: "/faq", label: "Faq" },
-                  { to: "/contact", label: "Contact" },
+                  { to: "/about", label: t("about_us") },
+                  { to: "/faq", label: t("faq") },
+                  { to: "/contact", label: t("contact") },
                 ].map((link) => (
                   <Link
                     key={link.to}
@@ -400,7 +403,7 @@ const Footer = () => {
                   paddingBottom: "15px",
                 }}
               >
-                Quick Links
+                {t("quick_links")}
                 <div
                   style={{
                     position: "absolute",
@@ -415,10 +418,10 @@ const Footer = () => {
               </h4>
               <div className="footer-links d-flex flex-column gap-2">
                 {[
-                  { to: "/laptops", label: "Laptops" },
-                  { to: "/headphones", label: "Headphones" },
-                  { to: "/tablets", label: "Tablets" },
-                  { to: "/watches", label: "Watches" },
+                  { to: "/laptops", label: t("laptops") },
+                  { to: "/headphones", label: t("headphones") },
+                  { to: "/tablets", label: t("tablets") },
+                  { to: "/watches", label: t("watches") },
                 ].map((link) => (
                   <Link
                     key={link.to}
@@ -479,7 +482,7 @@ const Footer = () => {
                   letterSpacing: "0.5px",
                 }}
               >
-                &copy; {new Date().getFullYear()}; Powered by{" "}
+                &copy; {new Date().getFullYear()}; {t("powered_by")}{" "}
                 <span
                   style={{
                     fontWeight: "700",

@@ -4,11 +4,10 @@ import BreadCrumb from "../components/BreadCrumb";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { toastTypes } from "../utils/toastConfig";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
-  // const [password, setPassword] = useState("");
-  // const [strength, setStrength] = useState("");
-
+  const { t } = useTranslation();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,21 +28,21 @@ const Login = () => {
           console.log(resp);
 
           if (Object.keys(resp).length === 0) {
-            toast.error("Please enter a valid username", toastTypes.error);
+            toast.error(t("invalid_username"), toastTypes.error);
           } else {
             if (resp.password === password) {
-              toast.success("Login successful! Welcome back!", toastTypes.success);
+              toast.success(t("login_success"), toastTypes.success);
               sessionStorage.setItem("username", resp.id);
               sessionStorage.setItem("userType", resp.userType);
               navigate("/");
               window.location.reload();
             } else {
-              toast.error("Username and password don't match", toastTypes.error);
+              toast.error(t("password_mismatch"), toastTypes.error);
             }
           }
         })
         .catch((err) => {
-          toast.error("An error occurred. Please try again.", toastTypes.error);
+          toast.error(t("login_error"), toastTypes.error);
         });
     }
   };
@@ -52,79 +51,33 @@ const Login = () => {
     let result = true;
     if (username === "" || username === null) {
       result = false;
-      toast.warning("Please enter your username", toastTypes.warning);
+      toast.warning(t("enter_username"), toastTypes.warning);
     }
     if (password === "" || password === null) {
       result = false;
-      toast.warning("Please enter your password", toastTypes.warning);
+      toast.warning(t("enter_password"), toastTypes.warning);
     }
     return result;
   };
 
-  // const ProceedLogin = (e) => {
-  //   e.preventDefault()
-  //   setPassword(e.target.value);
-  //   const strengthText = getStrength(e.target.value);
-  //   setStrength(strengthText);
-  // };
-
-  // const strengthMap = {
-  //   1: "weak",
-  //   2: "medium",
-  //   3: "strong",
-  // };
-
-  // const getIndicator = (password, strengthValue) => {
-  //   for (let index = 0; index < password.length; index++) {
-  //     let char = password.charCodeAt(index);
-  //     if (!strengthValue.upper && char >= 65 && char <= 90) {
-  //       strengthValue.upper = true;
-  //     } else if (!strengthValue.numbers && char >= 48 && char <= 57) {
-  //       strengthValue.numbers = true;
-  //     } else if (!strengthValue.lower && char >= 97 && char <= 122) {
-  //       strengthValue.lower = true;
-  //     }
-  //   }
-
-  //   let strengthIndicator = 0;
-
-  //   for (let metric in strengthValue) {
-  //     if (strengthValue[metric] === true) {
-  //       strengthIndicator++;
-  //     }
-  //   }
-
-  //   return strengthMap[strengthIndicator] ?? "";
-  // };
-
-  // const getStrength = (password) => {
-  //   let strengthValue = {
-  //     upper: false,
-  //     numbers: false,
-  //     lower: false,
-  //   };
-
-  //   return getIndicator(password, strengthValue);
-  // };
-
   return (
     <>
-      <Meta title={"Login"} /> <BreadCrumb title="Login" />
+      <Meta title={t("login_title")} /> <BreadCrumb title={t("login_title")} />
       <div className="login-wrapper me-wrapper-2 py-5">
         <div className="container-sm">
           <div className="row">
             <div className="col-12 d-flex align-items-center justify-content-center">
               <div className="login-card">
                 <img src="images/account.webp" />
-                <h2>Log In</h2>
-                <h3 className="mb-0">Enter your credentials</h3>
+                <h2>{t("login_title")}</h2>
+                <h3 className="mb-0">{t("enter_credentials")}</h3>
                 <form className="login-form" onSubmit={ProceedLogin}>
                   <div className="username">
                     <input
                       autoComplete="off"
                       className="control"
                       type="text"
-                      placeholder="Username"
+                      placeholder={t("username")}
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       required
@@ -135,32 +88,27 @@ const Login = () => {
                     className="control"
                     id="password"
                     type="password"
-                    placeholder="Password"
+                    placeholder={t("password")}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    // onChange={handlePasswordChange}
                   />
-                  {/* 
-                  <div id="weak" className={`${strength} text-center mb-2`}>
-                    {strength ? `${strength} Pass` : ""}
-                  </div> */}
 
                   <div>
                     <div className="d-flex justify-content-between  align-items-center gap-15">
                       <button type="submit" className="button border-0 px-5">
-                        Login
+                        {t("login_button")}
                       </button>
                       <Link
                         to="/signup"
                         className="button signup bg-light text-secondary"
                       >
-                        SignUp
+                        {t("signup_button")}
                       </Link>
                     </div>
                   </div>
 
                   <Link to="/forgot-password" className="text-light mt-2">
-                    Forgot Password?
+                    {t("forgot_password")}
                   </Link>
                 </form>
               </div>

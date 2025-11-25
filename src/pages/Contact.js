@@ -69,27 +69,27 @@ const Contact = () => {
             <div className="col-12 mt-5">
               <div className="contact-inner-wrapper d-flex justify-content-between">
                 <div>
-                  <h3 className="contact-title mb-4">Contact</h3>
+                  <h3 className="contact-title mb-4">{t("contact")}</h3>
                   <form action="" className="d-flex flex-column gap-15">
                     <div>
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Name"
+                        placeholder={t("name")}
                       />
                     </div>
                     <div>
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Email"
+                        placeholder={t("email")}
                       />
                     </div>
                     <div>
                       <input
                         type="tel"
                         className="form-control"
-                        placeholder="Mobile Number"
+                        placeholder={t("mobile_number")}
                       />
                     </div>
                     <div>
@@ -99,22 +99,22 @@ const Contact = () => {
                         className="w-100 form-control"
                         cols="30"
                         rows="4"
-                        placeholder="Comments"
+                        placeholder={t("comments")}
                       ></textarea>
                     </div>
                     <div>
-                      <button className="button border-0">Send</button>
+                      <button className="button border-0">{t("send")}</button>
                     </div>
                   </form>
                 </div>
                 <div>
-                  <h3 className="contact-title mb-4">Get in touch with us</h3>
+                  <h3 className="contact-title mb-4">{t("get_in_touch")}</h3>
                   <div>
                     <ul className="ps-0">
                       <li className="mb-3 d-flex gap-15 align-items-center">
                         <AiOutlineHome className="fs-5" />
                         <address className="mb-0">
-                          Hno : Somewhere in the World
+                          {t("address")}
                         </address>
                       </li>
                       <li className="mb-3 d-flex gap-15 align-items-center">
@@ -129,7 +129,7 @@ const Contact = () => {
                       </li>
                       <li className="mb-3 d-flex gap-15 align-items-center">
                         <BsInfoCircle className="fs-5" />
-                        <p className="mb-0"> Mondey - friday 10 AM - 8 PM</p>
+                        <p className="mb-0">{t("working_hours")}</p>
                       </li>
                     </ul>
                   </div>

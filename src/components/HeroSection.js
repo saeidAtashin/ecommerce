@@ -36,50 +36,6 @@ const HeroSection = () => {
     setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    localStorage.setItem("myData", true);
-  };
-
-  const handleInputChange = (e) => {
-    setPhoneNumber(e.target.value);
-    localStorage.setItem("myData", true);
-
-    if (e.target.value === !null) {
-      setNoMessage(true);
-    } else {
-      setNoMessage(false);
-    }
-  };
-
-  const handleButtonClick = () => {
-    if (phoneNumber) {
-      fetch("http://rest.ippanel.com/v1/messages/patterns/send", requestOptions)
-        .then((response) => response.text())
-        .then((result) => console.log(result))
-        .catch((error) => console.log("error", error));
-      setThanksShow(true);
-      setTimeout(() => {
-        setPhoneNumber("");
-        setThanksShow(false);
-        handleCloseModal();
-        setNoMessage(false);
-      }, 2000);
-    } else {
-      setNoMessage(true);
-      setThanksShow(true);
-
-      setTimeout(() => {
-        console.log(phoneNumber);
-
-        setPhoneNumber("");
-        setThanksShow(false);
-        handleCloseModal();
-        setNoMessage(false);
-      }, 2000);
-    }
-  };
-
   useEffect(() => {
     const myData = localStorage.getItem("myData");
     if (myData === "true") {
@@ -142,72 +98,6 @@ const HeroSection = () => {
           66% { transform: translate(-20px, 20px) rotate(240deg); }
         }
       `}</style>
-
-      <div
-        className="home-wrapper container-sm"
-        style={{ position: "relative", zIndex: 1 }}
-      >
-        <button
-          onClick={handleOpenModal}
-          style={{
-            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-            border: "none",
-            borderRadius: "25px",
-            padding: "10px 20px",
-            color: "#fff",
-            fontWeight: "600",
-            cursor: "pointer",
-            boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
-            transition: "all 0.3s ease",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "scale(1.05)";
-            e.currentTarget.style.boxShadow =
-              "0 6px 20px rgba(102, 126, 234, 0.6)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "scale(1)";
-            e.currentTarget.style.boxShadow =
-              "0 4px 15px rgba(102, 126, 234, 0.4)";
-          }}
-        >
-          Recieve Message
-        </button>
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-          <div className="modal-container">
-            {thanksShow === false ? (
-              <>
-                <label className="modal-label" htmlFor="phoneNumber">
-                  Welcome Message
-                  <br />
-                  <span className="modal-span">
-                    Because of filtering,
-                    <br />
-                    it only works locally
-                  </span>
-                </label>
-                <input
-                  className="modal-input"
-                  type="text"
-                  id="phoneNumber"
-                  value={phoneNumber}
-                  onChange={handleInputChange}
-                  placeholder="Enter your phone number"
-                />
-                <button onClick={handleButtonClick} className="buttonsmall ">
-                  Submit
-                </button>
-              </>
-            ) : (
-              <div
-                className={` ${
-                  noMessage === false ? "thanks-message" : "no-message"
-                }`}
-              ></div>
-            )}
-          </div>
-        </Modal>
-      </div>
 
       <div
         className="container-sm"

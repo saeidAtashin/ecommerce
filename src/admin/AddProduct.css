@@ -100,8 +100,12 @@
 }
 
 .tab-btn.active {
-  background: var(--accent-gold);
-  color: var(--primary-dark);
+  background: var(--accent-gold) !important;
+  color: #0d0d0d !important;
+}
+
+.tab-btn.active svg {
+  color: #0d0d0d !important;
 }
 
 .tab-btn svg {
@@ -492,16 +496,17 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.025em;
+  display: inline-block;
 }
 
-.status-badge.active {
-  background: rgba(34, 197, 94, 0.15);
-  color: var(--success-green);
+.status-badge.status-active {
+  background: rgba(34, 197, 94, 0.15) !important;
+  color: #22c55e !important;
 }
 
-.status-badge.inactive {
-  background: rgba(239, 68, 68, 0.15);
-  color: var(--error-red);
+.status-badge.status-inactive {
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #ef4444 !important;
 }
 
 .offer-badge {

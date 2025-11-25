@@ -455,7 +455,9 @@ const AddProduct = () => {
                             <td>
                               <span
                                 className={`status-badge ${
-                                  product.isActive ? "active" : "inactive"
+                                  product.isActive
+                                    ? "status-active"
+                                    : "status-inactive"
                                 }`}
                               >
                                 {product.isActive ? "Active" : "Inactive"}

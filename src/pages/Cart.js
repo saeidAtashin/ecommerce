@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -12,9 +12,67 @@ import {
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const [showFloatingCheckout, setShowFloatingCheckout] = useState(false);
+  const [animationClass, setAnimationClass] = useState("");
+  const checkoutRef = useRef(null);
+
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch]);
+
+  // Check if checkout button is visible
+  useEffect(() => {
+    const handleScroll = () => {
+      if (checkoutRef.current && cart.cartItems.length > 0) {
+        const rect = checkoutRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Show floating button only when:
+        // 1. Checkout section is below the viewport (we haven't reached it yet)
+        // 2. Checkout section is not visible in viewport
+        // Hide when we've scrolled past it (top of checkout is above viewport top)
+        const isCheckoutInViewport = rect.top < windowHeight && rect.bottom > 0;
+        const hasScrolledPast = rect.top < 0; // Checkout section is above viewport
+        
+        const shouldShow = !isCheckoutInViewport && !hasScrolledPast;
+        
+        if (shouldShow !== showFloatingCheckout) {
+          if (shouldShow) {
+            // Button is appearing - use enter animation
+            setShowFloatingCheckout(true);
+            setAnimationClass("floating-checkout-enter");
+            // After enter animation completes, switch to float animation
+            setTimeout(() => {
+              setAnimationClass("floating-checkout-float");
+            }, 400); // Match scaleIn animation duration
+          } else {
+            // Button is disappearing - use exit animation
+            setAnimationClass("floating-checkout-exit");
+            setTimeout(() => {
+              setShowFloatingCheckout(false);
+              setAnimationClass("");
+            }, 300); // Match scaleOut animation duration
+          }
+        } else if (shouldShow && animationClass === "") {
+          // If button should be shown but no animation class, apply float
+          setAnimationClass("floating-checkout-float");
+        }
+      } else {
+        if (showFloatingCheckout) {
+          setAnimationClass("floating-checkout-exit");
+          setTimeout(() => {
+            setShowFloatingCheckout(false);
+            setAnimationClass("");
+          }, 300);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Check on mount
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [cart.cartItems.length, showFloatingCheckout]);
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeFromCart(cartItem));
   };
@@ -70,6 +128,44 @@ const Cart = () => {
           @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
+          }
+          @keyframes scaleIn {
+            from {
+              opacity: 0;
+              transform: translateX(-50%) translateY(20px) scale(0.8);
+            }
+            to {
+              opacity: 1;
+              transform: translateX(-50%) translateY(0) scale(1);
+            }
+          }
+          @keyframes scaleOut {
+            from {
+              opacity: 1;
+              transform: translateX(-50%) translateY(0) scale(1);
+            }
+            to {
+              opacity: 0;
+              transform: translateX(-50%) translateY(20px) scale(0.8);
+            }
+          }
+          @keyframes floatButton {
+            0%, 100% {
+              transform: translateX(-50%) translateY(0);
+            }
+            50% {
+              transform: translateX(-50%) translateY(-8px);
+            }
+          }
+          .floating-checkout-enter {
+            animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+                       floatButton 3s ease-in-out infinite 0.4s;
+          }
+          .floating-checkout-float {
+            animation: floatButton 3s ease-in-out infinite;
+          }
+          .floating-checkout-exit {
+            animation: scaleOut 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
           }
           .cart-item-animated {
             animation: fadeInUp 0.5s ease forwards;
@@ -575,6 +671,7 @@ const Cart = () => {
                 Clear Cart
               </button>
               <div
+                ref={checkoutRef}
                 className="cart-summary-checkout"
                 style={{
                   background: "#fff",
@@ -700,6 +797,95 @@ const Cart = () => {
           </div>
         )}
       </div>
+
+      {/* Floating Checkout Button */}
+      {showFloatingCheckout && (
+        <div
+          className={animationClass}
+          style={{
+            position: "fixed",
+            bottom: "30px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 1000,
+            width: "100%",
+            maxWidth: "500px",
+            padding: "0 20px",
+          }}
+        >
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: "30px",
+              padding: "20px 30px",
+              boxShadow: "0 8px 40px rgba(0, 0, 0, 0.2)",
+              border: "2px solid #667eea",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "20px",
+              width: "100%",
+            }}
+          >
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div
+                style={{
+                  color: "#666",
+                  fontSize: "0.85rem",
+                  marginBottom: "5px",
+                  fontWeight: "500",
+                }}
+              >
+                Total Amount
+              </div>
+              <div
+                style={{
+                  color: "#667eea",
+                  fontSize: "1.8rem",
+                  fontWeight: "700",
+                  lineHeight: "1.2",
+                }}
+              >
+                ${cart.cartTotalAmount}
+              </div>
+            </div>
+            <button
+              onClick={() => {
+                checkoutRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "center",
+                });
+              }}
+              style={{
+                background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                border: "none",
+                color: "#fff",
+                padding: "15px 35px",
+                borderRadius: "25px",
+                cursor: "pointer",
+                fontWeight: "700",
+                fontSize: "1.1rem",
+                transition: "all 0.3s ease",
+                boxShadow: "0 4px 20px rgba(102, 126, 234, 0.4)",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-3px) scale(1.05)";
+                e.currentTarget.style.boxShadow =
+                  "0 6px 25px rgba(102, 126, 234, 0.5)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0) scale(1)";
+                e.currentTarget.style.boxShadow =
+                  "0 4px 20px rgba(102, 126, 234, 0.4)";
+              }}
+            >
+              Check Out
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
